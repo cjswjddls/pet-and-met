@@ -53,8 +53,9 @@
 	    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 
 		<style>
-			.sidebar { background-color: rgb(176, 217, 177); width: 33%; height: 100%; margin: 0; padding: 0; outline: none; box-sizing: border-box; position: fixed; }
-			.sidebar ul { list-style-type:circle; color: white; font-size: 22px; font-weight: 1000; }
+			.sidebar { background-color: rgb(176, 217, 177); width: 20%; height: 100%; margin: 0; padding: 0; outline: none; box-sizing: border-box; position: fixed; }
+			.sidebar ul { list-style-type:circle; color: white; font-size: 30px; font-weight: 1000; }
+			.sidebar li { color: white; font-size: 22px; font-weight: 1000; }
 			.sidebar a { text-decoration: none; color: white; cursor: context-menu; }
 			.sidebar ul a:hover { background: rgb(176, 217, 177); box-shadow: -7px -7px 20px 0px rgb(121, 172, 120), -4px -4px 5px 0px rgb(121, 172, 120), 7px 7px 20px 0px rgb(121, 172, 120), 4px 4px 5px 0px rgb(121, 172, 120); transition: all 0.3s ease; }
 		</style>
