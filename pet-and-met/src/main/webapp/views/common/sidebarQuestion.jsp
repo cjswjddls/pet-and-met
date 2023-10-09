@@ -6,7 +6,6 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<style>
-		.li-tag-accent { border: 0px 2px; }
 		.sidebar { background-color: rgb(176, 217, 177); width: 240px; height: 400px; margin: 0; padding: 0; outline: none; border: outset; box-sizing: border-box; position: fixed; box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1); }
 		.sidebar hr { background-color: rgb(121, 172, 120); border: 0; height: 4px; margin-right: 20%; }
 		.sidebar ul { list-style-type: '-  '; color: white; font-size: 16px; font-weight: 1000; }
