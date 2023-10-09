@@ -18,14 +18,8 @@
 		<br><br><br><br>
 		<nav class="sidebar" style="padding: 0px; margin: 0px;">
 			<br>
-			<ul>
-				<h3><a href="">내정보</a></h3>
-				<hr>
-				<li><a href="">프로필 수정</a></li>
-				<li><a href="">비밀번호 변경</a></li>
-			</ul>
-		    <ul><h3><a href="">예약확인/취소</a></h3><hr></ul>
-		    <ul><h3><a href="">회원 탈퇴</a><hr></h3></ul>
+		    <ul><h3><a href="">FAQ</a></h3><hr></ul>
+		    <ul><h3><a href="">1:1 문의</a><hr></h3></ul>
 		</nav>
 	</body>
 </html>
