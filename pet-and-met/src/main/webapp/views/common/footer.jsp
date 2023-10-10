@@ -58,6 +58,7 @@
                                 <li><i class="bx bx-chevron-right"></i> <a href="#">개인정보 수집 및 이용 약관</a></li>
                                 <li><i class="bx bx-chevron-right"></i> <a href="#">개인정보 제3자 제공 약관</a></li>
                                 <li><i class="bx bx-chevron-right"></i> <a href="#">예약 취소 약관</a></li>
+                                <li><i class="bx bx-chevron-right"></i> <a href="<%= contextPath %>/terms.service">서비스 이용 약관</a></li>
                             </ul>
                         </div>
                         <div class="col-lg-3 col-md-6 footer-info">

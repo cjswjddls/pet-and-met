@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import = "com.kh.common.IP" %>
+<%@ page import = "com.kh.common.IP, java.io.File" %>
 
     <% 
         String contextRoot = "/pet-and-met"; 
@@ -101,7 +101,7 @@
             <div class="container d-flex justify-content-between align-items-center mainBackGroundGreen" style="height: 100%; width:100%">      
                 <div class="navbar">
                     <ul>
-                        <li><a class="active" href="/">예약</a></li>
+                        <li><a class="active" href="<%= contextPath %>">예약</a></li>
                         <li class="dropdown"><a href="#"><span>소개</span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
                                 <li><a href="#">호텔 및 객실소개</a></li>
@@ -117,7 +117,7 @@
                 </div>
                 <div id="navbar" class="navbar">
                     <ul>
-                        <li><a href="/">리뷰게시판</a></li>
+                        <li><a href="<%= contextPath %>">리뷰게시판</a></li>
                         <li class="dropdown"><a href="#"><span>고객문의</span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
                                 <li><a href="#">FAQ 게시판</a></li>
