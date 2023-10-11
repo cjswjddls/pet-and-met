@@ -3,6 +3,7 @@
     
     <%
     	String pagePath = "../";
+		String pageName = "어드민 페이지";
     %>
 <!DOCTYPE html>
 <html>

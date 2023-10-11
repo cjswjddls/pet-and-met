@@ -1,31 +1,33 @@
-package com.kh.terms;
+package com.kh.admin.controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class TermsServiceController
+ * Servlet implementation class AdminStatisticsController
  */
-@WebServlet("/terms.service")
-public class TermsServiceController extends HttpServlet {
+@WebServlet("/admin.statistics")
+public class AdminStatisticsController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public TermsServiceController() {
+    public AdminStatisticsController() {
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("views/terms/service.jsp").forward(request, response);
+		HttpSession session = request.getSession();
+		if((session.getAttribute("loginUser")) != null) { session.setAttribute("alertMsg", "접근이 불가능합니다."); response.sendRedirect(request.getContextPath()); }
+		else { request.getRequestDispatcher("views/statistics/adminStatistics.jsp").forward(request, response); }
 	}
 
 	/**

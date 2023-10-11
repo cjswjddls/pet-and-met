@@ -30,7 +30,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6" style="display: flex; width: 100%;">
-                            <img src="<%= pagePath %>resources/img/main.png" width="140" height="140">
+                            <img src="<%= pagePath %>resources/img/main.png" width="140" height="140" onclick="location.href='<%= contextPath %>'">
                             <div style="display: flex; padding-top: 30px; padding-bottom: 30px;">
                                 <h2 style="line-height: 60px;"><b>&nbsp;Pet & Met</b></h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <h5 style="line-height: 60px;"><b><a href="" class="mainFooterAHover">호텔 소식</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="" class="mainFooterAHover">고객문의</a></b></h5>

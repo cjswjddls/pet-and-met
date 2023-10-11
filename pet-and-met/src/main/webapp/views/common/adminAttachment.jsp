@@ -58,6 +58,8 @@
 			.sidebar li { color: white; font-size: 22px; font-weight: 1000; }
 			.sidebar a { text-decoration: none; color: white; cursor: context-menu; }
 			.sidebar ul a:hover { background: rgb(176, 217, 177); box-shadow: -7px -7px 20px 0px rgb(121, 172, 120), -4px -4px 5px 0px rgb(121, 172, 120), 7px 7px 20px 0px rgb(121, 172, 120), 4px 4px 5px 0px rgb(121, 172, 120); transition: all 0.3s ease; }
+			.adminNameBar { margin: 0% 0% 0% 30%; }
+			.adminNameBar hr { background-color: rgb(121, 172, 120); border: 0; height: 4px; margin-right: 20%; }
 		</style>
 	</head>
 	<body>
@@ -72,13 +74,19 @@
 				<li><a>예약 현황 조회</a></li>
 			</ul>
 			<ul>통계
-				<li><a>매출 조회</a></li>
+				<li><a href="<%= contextPath %>/admin.statistics">매출 조회</a></li>
 			</ul>
 			<ul>회원 관리
 				<li><a>전체 회원 조회</a></li>
 			</ul>
 			<ul>문의 내역</h2>
 		</nav>
+
+		<div class="adminNameBar">
+			<br><br><br><br>
+			<h1><%= pageName %></h1>
+			<hr>
+		</div>
 
 		<script>
 			$(function() {

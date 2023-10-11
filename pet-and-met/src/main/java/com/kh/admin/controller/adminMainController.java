@@ -1,4 +1,4 @@
-package com.kh.admin;
+package com.kh.admin.controller;
 
 import java.io.IOException;
 
@@ -27,7 +27,7 @@ public class adminMainController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		if((session.getAttribute("loginUser")) == null) { session.setAttribute("alertMsg", "접근이 불가능합니다."); response.sendRedirect(request.getContextPath()); }
+		if((session.getAttribute("loginUser")) != null) { session.setAttribute("alertMsg", "접근이 불가능합니다."); response.sendRedirect(request.getContextPath()); }
 		else { request.getRequestDispatcher("views/admin/adminMain.jsp").forward(request, response); }
 	}
 
