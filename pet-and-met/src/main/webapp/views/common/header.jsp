@@ -32,7 +32,6 @@
         <link href="<%= pagePath %>resources/img/apple-touch-icon.png" rel="apple-touch-icon">
 
         <!-- Vendor CSS Files -->
-        
         <link href="<%= pagePath %>resources/vendor/animate.css/animate.min.css" rel="stylesheet">
         <link href="<%= pagePath %>resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="<%= pagePath %>resources/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -66,6 +65,9 @@
         <!-- Popper JS -->
 	    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 
+        <!-- Latest compiled and minified CSS -->
+        <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"> -->
+
         <!-- =======================================================
         * Template Name: Eterna
         * Updated: Sep 18 2023 with Bootstrap v5.3.2
@@ -85,7 +87,7 @@
                     <i class="bi bi-phone d-flex align-items-center ms-4"><span style="color: white;">82+ 010-1234-5678</span></i>
                 </div>
                 <div class="social-links d-none d-md-flex align-items-center">
-                    <a href="" style="color: white;"><b>로그인</b></a><p style="color: white;">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</p><a href="" style="color: white;"><b>회원가입</b></a>
+                    <a href="<%= contextPath %>/login.us" style="color: white;"><b>로그인</b></a><p style="color: white;">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</p><a href="<%= contextPath %>/views/user/account/registerAgreements.jsp" style="color: white;"><b>회원가입</b></a>
                     <!--
                     <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
                     <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
@@ -101,13 +103,13 @@
             <div class="container d-flex justify-content-between align-items-center mainBackGroundGreen" style="height: 100%; width:100%">      
                 <div class="navbar">
                     <ul>
-                        <li><a class="active" href="<%= contextPath %>">예약</a></li>
-                        <li class="dropdown"><a href="#"><span>소개</span> <i class="bi bi-chevron-down"></i></a>
+                        <li><a class="active" href="<%= contextPath %>/reservationTest.do">예약</a></li>
+                        <li class="dropdown"><a href="<%= contextPath %>/doghouse"><span>소개</span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
-                                <li><a href="#">호텔 및 객실소개</a></li>
-                                <li><a href="#">이용안내</a></li>
+                                <li><a href="<%= contextPath %>/doghouse">호텔 및 객실소개</a></li>
+                                <li><a href="<%= contextPath %>/use">이용안내</a></li>
                                 <li><a href="#">공지사항</a></li>
-                                <li><a href="#">위치안내</a></li>
+                                <li><a href="<%= contextPath %>/map">위치안내</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -118,9 +120,9 @@
                 <div id="navbar" class="navbar">
                     <ul>
                         <li><a href="<%= contextPath %>">리뷰게시판</a></li>
-                        <li class="dropdown"><a href="#"><span>고객문의</span> <i class="bi bi-chevron-down"></i></a>
+                        <li class="dropdown"><a href="<%= contextPath %>/FAQ"><span>고객문의</span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
-                                <li><a href="#">FAQ 게시판</a></li>
+                                <li><a href="<%= contextPath %>/FAQ">FAQ 게시판</a></li>
                                 <li><a href="#">1:1 문의</a></li>
                             </ul>
                         </li>

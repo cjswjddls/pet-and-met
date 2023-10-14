@@ -21,6 +21,7 @@
         <style>
             .mainFooterAHover { color: white; }
             .mainFooterAHover:hover { color: coral; }
+            .mainFooterImgHover:hover { cursor: pointer; }
         </style>
     </head>
     <body>
@@ -30,10 +31,10 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6" style="display: flex; width: 100%;">
-                            <img src="<%= pagePath %>resources/img/main.png" width="140" height="140" onclick="location.href='<%= contextPath %>'">
+                            <img src="<%= pagePath %>resources/img/main.png" width="140" height="140" onclick="location.href='<%= contextPath %>'" class="mainFooterImgHover">
                             <div style="display: flex; padding-top: 30px; padding-bottom: 30px;">
                                 <h2 style="line-height: 60px;"><b>&nbsp;Pet & Met</b></h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <h5 style="line-height: 60px;"><b><a href="" class="mainFooterAHover">호텔 소식</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="" class="mainFooterAHover">고객문의</a></b></h5>
+                                <h5 style="line-height: 60px;"><b><a href="" class="mainFooterAHover">호텔 소식</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="FAQ" class="mainFooterAHover">고객문의</a></b></h5>
                             </div>
                         </div>
                     </div>
@@ -46,7 +47,7 @@
                             <h4>사업자 정보</h4>
                             <p>
                             Pet & Met <br>
-                            최수정 <br>
+                            천정인 <br>
                             서울 영등포구 선유동2로 57 이레빌딩 19,20층<br><br>
                             <strong>Phone:</strong> +82 010 1234 5678<br>
                             <strong>Email:</strong> petmet@kh.com<br>

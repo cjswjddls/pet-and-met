@@ -1,4 +1,5 @@
 .settings
 .metadata
+.git
 driver.properties
 Servers

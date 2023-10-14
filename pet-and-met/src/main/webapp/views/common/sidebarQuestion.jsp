@@ -17,7 +17,7 @@
 		<br><br><br><br>
 		<nav class="sidebar" style="padding: 0px; margin: 0px;">
 			<br>
-		    <ul><h3><a href="">FAQ</a></h3><hr></ul>
+		    <ul><h3><a href="FAQ">FAQ</a></h3><hr></ul>
 		    <ul><h3><a href="">1:1 문의</a><hr></h3></ul>
 		</nav>
 	</body>

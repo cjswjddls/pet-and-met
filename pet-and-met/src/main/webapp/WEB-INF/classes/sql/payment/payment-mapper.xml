@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="insertPayment">INSERT INTO PAYMENT VALUES(SEQ_PAYMENT.NEXTVAL, ?, SYSDATE, NULL, ?)</entry>
+	<entry key="checkPaymentByToday">SELECT PAYMENT_NO, PAYMENT_TID FROM PAYMENT WHERE TO_CHAR(PAYMENT_DATE, 'YYYYMMDD') = ?</entry>
+</properties>
