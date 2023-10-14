@@ -18,7 +18,7 @@
 		<nav class="sidebar" style="padding: 0px; margin: 0px;">
 			<br>
 			<ul>
-				<h3><a href="">내정보</a></h3>
+				<h3><a href="<%= contextPath %>/main.mp">내정보</a></h3>
 				<hr>
 				<li><a href="">프로필 수정</a></li>
 				<li><a href="">비밀번호 변경</a></li>

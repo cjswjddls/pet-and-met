@@ -1,15 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import = "com.kh.common.IP, java.io.File" %>
+<%@ page import = "com.kh.common.IP, java.io.File, 
+                    com.kh.member.model.vo.Member" %>
 
     <% 
         String contextRoot = "/pet-and-met"; 
         String contextPath = request.getContextPath();
 
         String ip = request.getRemoteAddr();
-        String alertMsg = (String)session.getAttribute("alertMsg");
 
-        // Member loginUser = (Member)session.getAttribute("loginUser");
+        Member loginMember = (Member)session.getAttribute("loginMember");
+        String alertMsg = (String)session.getAttribute("alertMsg");
 
         Cookie[] cookies = request.getCookies();
 	    String saveId = "";
@@ -87,7 +88,11 @@
                     <i class="bi bi-phone d-flex align-items-center ms-4"><span style="color: white;">82+ 010-1234-5678</span></i>
                 </div>
                 <div class="social-links d-none d-md-flex align-items-center">
-                    <a href="<%= contextPath %>/login.us" style="color: white;"><b>로그인</b></a><p style="color: white;">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</p><a href="<%= contextPath %>/views/user/account/registerAgreements.jsp" style="color: white;"><b>회원가입</b></a>
+                    <% if(loginMember == null) { %>
+	                	<a href="<%= contextPath %>/login.mb" style="color: white;"><b>로그인</b></a><p style="color: white;">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</p><a href="<%= contextPath %>/send.rg" style="color: white;"><b>회원가입</b></a>
+                	<% } else { %>
+		                <a href="<%= contextPath %>/logout.mb" style="color: white;"><b>로그아웃</b></a><p style="color: white;">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</p><a href="<%= contextPath %>/main.mp" style="color: white;"><b>마이페이지</b></a>
+                	<% } %>
                     <!--
                     <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
                     <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
@@ -103,12 +108,13 @@
             <div class="container d-flex justify-content-between align-items-center mainBackGroundGreen" style="height: 100%; width:100%">      
                 <div class="navbar">
                     <ul>
-                        <li><a class="active" href="<%= contextPath %>/reservationTest.do">예약</a></li>
+                        <li><a class="active" href="<%= contextPath %>">예약</a></li>
                         <li class="dropdown"><a href="<%= contextPath %>/doghouse"><span>소개</span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
-                                <li><a href="<%= contextPath %>/doghouse">호텔 및 객실소개</a></li>
-                                <li><a href="<%= contextPath %>/use">이용안내</a></li>
+                                <li><a href="<%= contextPath %>/hotel">호텔 소개</a></li>
+                                <li><a href="<%= contextPath %>/doghouse">객실 소개</a></li>
                                 <li><a href="#">공지사항</a></li>
+                                <li><a href="<%= contextPath %>/use">이용안내</a></li>
                                 <li><a href="<%= contextPath %>/map">위치안내</a></li>
                             </ul>
                         </li>

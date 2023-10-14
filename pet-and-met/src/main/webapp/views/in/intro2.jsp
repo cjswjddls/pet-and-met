@@ -19,9 +19,11 @@
 	            padding : 10px;
 	            background-color : white;
 	            border : 1px solid black;
-	            width : 500px;
+	            width : 900px;
 	            height : 500px;
 	            margin-left:35%;
+	            border-style: outset; /* 면적이 튀어나온 */ 
+            	border-width: 10px;
 	        }
 	        
 	        .adminNameBar { 
@@ -31,19 +33,21 @@
 			.adminNameBar hr { 
 			background-color: rgb(121, 172, 120); border: 0; height: 4px; margin-right: 20%; 
 			}
+			
     </style>
 	</head>
 	<body>
 		<%@ include file="/views/common/header.jsp" %>
 		
 		<div class="adminNameBar">
-			<br><br><br><br>
+			<br><br><br>
 			<h1>이용안내</h1>
 			<hr>
 		</div>
 		
 		<%@ include file="/views/common/sidebarHotel.jsp" %>
-		<div id="test1" class="test">객실 외적 시설 서비스</div>
+		<div id="test1" class="test"><img src="<%= pagePath %>resources/img/intro/er1.jpg" width="100%" height="100%"></img></div>
+		<br><br><br>
         <%@ include file="/views/common/footer.jsp" %>
 	</body>
 </html>

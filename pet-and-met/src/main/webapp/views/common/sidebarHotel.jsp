@@ -17,9 +17,10 @@
 		<br><br><br><br>
 		<nav class="sidebar" style="padding: 0px; margin: 0px;">
 			<br>
-		    <ul><h3><a href="doghouse">호텔 및 객실 소개</a></h3><hr></ul>
-		    <ul><h3><a href="use">이용안내</a><hr></h3></ul>
+		    <ul><h3><a href="hotel">호텔 소개</a><hr></h3></ul>
+		    <ul><h3><a href="doghouse">객실 소개</a></h3><hr></ul>
 		    <ul><h3><a href="">공지사항</a><hr></h3></ul>
+			<ul><h3><a href="use">이용안내</a><hr></h3></ul>
 		    <ul><h3><a href="map">위치 안내</a><hr></h3></ul>
 		</nav>
 	</body>

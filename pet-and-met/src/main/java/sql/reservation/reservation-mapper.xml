@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	
+	<entry key="selectReservation">
+		SELECT ROWNUM, ROOM_TYPE, ROOM_FEE, ROOM_SIZE
+		  FROM (SELECT ROOM_TYPE, ROOM_FEE, ROOM_SIZE
+		          FROM ROOM 
+		         WHERE ROOM_TYPE = ?
+		         ORDER BY ROOM_NO) 
+		 WHERE ROWNUM = 1
+	</entry>
+</properties>
+
+
+
+
+

@@ -23,8 +23,8 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import com.kh.common.StringToJson;
+import com.kh.member.model.vo.Member;
 import com.kh.payment.model.service.PaymentService;
-import com.kh.user.model.vo.Member;
 
 /**
  * Servlet implementation class PaymentDone

@@ -1,14 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import = "com.kh.member.model.vo.Member" %>
 
 	<% 
 		String contextRoot = "/pet-and-met"; 
 		String contextPath = request.getContextPath();
 
 		String ip = request.getRemoteAddr();
+		
+		Member loginMember = (Member)session.getAttribute("loginMember");
 		String alertMsg = (String)session.getAttribute("alertMsg");
-
-		// Member loginUser = (Member)session.getAttribute("loginUser");
 
 		Cookie[] cookies = request.getCookies();
 		String saveId = "";
@@ -70,16 +71,16 @@
 				<li><a>리뷰게시판 관리</a></li>
 			</ul>
 		    <ul>객실 / 예약 현황
-				<li><a>객실 관리</a></li>
+				<li><a  href="<%= contextPath %>/check">객실 관리</a></li>
 				<li><a>예약 현황 조회</a></li>
 			</ul>
 			<ul>통계
 				<li><a href="<%= contextPath %>/admin.statistics">매출 조회</a></li>
 			</ul>
 			<ul>회원 관리
-				<li><a>전체 회원 조회</a></li>
+				<li><a href="<%= contextPath %>/listAll.mm">전체 회원 조회</a></li>
 			</ul>
-			<ul>문의 내역</h2>
+			<ul>문의 내역</ul>
 		</nav>
 
 		<div class="adminNameBar">

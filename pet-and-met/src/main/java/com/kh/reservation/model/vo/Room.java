@@ -1,12 +1,14 @@
 package com.kh.reservation.model.vo;
 
 public class Room {
-	private int roomNo;
-	private String roomType;
-	private int roomFee;
-	private String roomUseable;
-	private int roomSize;
+	// 필드부
+	private int roomNo;//	ROOM_NO	NUMBER
+	private String roomType;//	ROOM_TYPE	CHAR(2 BYTE)
+	private int roomFee;//	ROOM_FEE	NUMBER
+	private String roomUseable;//	ROOM_USEABLE	NUMBER
+	private int roomSize;//	ROOM_SIZE	NUMBER
 	
+	// 생성자부
 	public Room() {}
 
 	public Room(int roomNo, String roomType, int roomFee, String roomUseable, int roomSize) {
@@ -16,7 +18,15 @@ public class Room {
 		this.roomUseable = roomUseable;
 		this.roomSize = roomSize;
 	}
-
+	
+	// 객실 정보 생정자
+	public Room(String roomType, int roomFee, int roomSize) {
+		this.roomType = roomType;
+		this.roomFee = roomFee;
+		this.roomSize = roomSize;
+	}
+	
+	// 필드부
 	public int getRoomNo() {
 		return roomNo;
 	}

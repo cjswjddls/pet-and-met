@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+	<entry key="registerMember">
+	INSERT INTO MEMBER(
+	    MEMBER_NO,
+	    MEMBER_ID,
+	    MEMBER_PWD,
+	    MEMBER_NAME,
+	    MEMBER_BIRTH,
+	    MEMBER_PHONE ,
+	    MEMBER_EMAIL,
+	    MEMBER_ADDRESS,
+	    MEMBER_ADDRESS_DETAIL,
+	    MEMBER_JOIN,
+	    MEMBER_STATUS
+		)
+		VALUES(
+		    SEQ_MEMBER.NEXTVAL,
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		    SYSDATE,
+		    1
+		)
+	
+	</entry>
+	
+	<entry key="duplicateCheck">
+		SELECT COUNT(*)
+		 FROM MEMBER
+       WHERE MEMBER_ID = ?
+	</entry>
+	
+	<entry key="loginMember">
+		SELECT *
+		 FROM MEMBER
+	   WHERE MEMBER_ID = ?
+		  AND MEMBER_PWD = ?
+		  AND MEMBER_STATUS = 1
+	</entry>
+
+</properties>

@@ -4,24 +4,22 @@ import java.sql.Date;
 
 public class Photo {
 	private int photoNo;
-	private int photoRoomNo;
-	private String photoOriginName;
-	private String photoChangeName;
+	private String photoType;
+	private String photoOrigin;
+	private String photoName;
 	private String photoPath;
-	private Date photoUploadDate;
-	private String photoStatus;
+	private Date photoDate;
 	
 	public Photo() {}
 
-	public Photo(int photoNo, int photoRoomNo, String photoOriginName, String photoChangeName, String photoPath,
-			Date photoUploadDate, String photoStatus) {
+	public Photo(int photoNo, String photoType, String photoOrigin, String photoName, String photoPath,
+			Date photoDate) {
 		this.photoNo = photoNo;
-		this.photoRoomNo = photoRoomNo;
-		this.photoOriginName = photoOriginName;
-		this.photoChangeName = photoChangeName;
+		this.photoType = photoType;
+		this.photoOrigin = photoOrigin;
+		this.photoName = photoName;
 		this.photoPath = photoPath;
-		this.photoUploadDate = photoUploadDate;
-		this.photoStatus = photoStatus;
+		this.photoDate = photoDate;
 	}
 
 	public int getPhotoNo() {
@@ -32,28 +30,28 @@ public class Photo {
 		this.photoNo = photoNo;
 	}
 
-	public int getPhotoRoomNo() {
-		return photoRoomNo;
+	public String getPhotoType() {
+		return photoType;
 	}
 
-	public void setPhotoRoomNo(int photoRoomNo) {
-		this.photoRoomNo = photoRoomNo;
+	public void setPhotoType(String photoType) {
+		this.photoType = photoType;
 	}
 
-	public String getPhotoOriginName() {
-		return photoOriginName;
+	public String getPhotoOrigin() {
+		return photoOrigin;
 	}
 
-	public void setPhotoOriginName(String photoOriginName) {
-		this.photoOriginName = photoOriginName;
+	public void setPhotoOrigin(String photoOrigin) {
+		this.photoOrigin = photoOrigin;
 	}
 
-	public String getPhotoChangeName() {
-		return photoChangeName;
+	public String getPhotoName() {
+		return photoName;
 	}
 
-	public void setPhotoChangeName(String photoChangeName) {
-		this.photoChangeName = photoChangeName;
+	public void setPhotoName(String photoName) {
+		this.photoName = photoName;
 	}
 
 	public String getPhotoPath() {
@@ -64,26 +62,17 @@ public class Photo {
 		this.photoPath = photoPath;
 	}
 
-	public Date getPhotoUploadDate() {
-		return photoUploadDate;
+	public Date getPhotoDate() {
+		return photoDate;
 	}
 
-	public void setPhotoUploadDate(Date photoUploadDate) {
-		this.photoUploadDate = photoUploadDate;
-	}
-
-	public String getPhotoStatus() {
-		return photoStatus;
-	}
-
-	public void setPhotoStatus(String photoStatus) {
-		this.photoStatus = photoStatus;
+	public void setPhotoDate(Date photoDate) {
+		this.photoDate = photoDate;
 	}
 
 	@Override
 	public String toString() {
-		return "Photo [photoNo=" + photoNo + ", photoRoomNo=" + photoRoomNo + ", photoOriginName=" + photoOriginName
-				+ ", photoChangeName=" + photoChangeName + ", photoPath=" + photoPath + ", photoUploadDate="
-				+ photoUploadDate + ", photoStatus=" + photoStatus + "]";
+		return "Photo [photoNo=" + photoNo + ", photoType=" + photoType + ", photoOrigin=" + photoOrigin
+				+ ", photoName=" + photoName + ", photoPath=" + photoPath + ", photoDate=" + photoDate + "]";
 	}
 }

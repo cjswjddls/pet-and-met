@@ -93,7 +93,7 @@
             </div>
         </footer><!-- End Footer -->
 
-        <!-- 수정씨 상담버튼 -->
+        <!--  상담버튼 -->
         <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-phone"></i></a>
 
         <!-- 페이지 맨위로 올라가는 아이콘(우상단에 있음)-->

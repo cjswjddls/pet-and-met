@@ -91,7 +91,7 @@
       <section id="mainCalender" class="mainCalender container">
         <div>
           <h2 align="center">예약</h2><br>
-          <form action="" method="POST">
+          <form action="<%= contextPath %>/list.resv" method="POST">
             <table> 
               <thead>
                 <tr>

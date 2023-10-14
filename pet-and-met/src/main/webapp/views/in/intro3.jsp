@@ -49,7 +49,7 @@
             float: right;
             margin-left: 5px;
         }
-        .active:after {
+        .active1:after {
             content: "\2212";
         }
     </style>
@@ -71,6 +71,8 @@
 	    </script>
 	</head>
 	<body>
+	
+	
 		<%@ include file="/views/common/header.jsp" %>
 		<%@ include file="/views/common/sidebarQuestion.jsp" %>
 		
@@ -78,31 +80,33 @@
 			<h2>FAQ (자주 묻는 질문)</h2>
 		</div>
 		
-	    <button type="button" class="collapsible" onclick="collapse(this);">제목 1</button>
-	    <div class="content">
-	        <p>내용 1 입니다.</p>
-	    </div>
-	
-	    <button type="button" class="collapsible" onclick="collapse(this);">제목 2</button>
-	    <div class="content">
-	        <p>내용 2 입니다.</p>
-	    </div>
-	    
-	    <button type="button" class="collapsible" onclick="collapse(this);">제목 3</button>
-	    <div class="content">
-	        <p>내용 3 입니다.</p>
-	    </div>
-	
-	    <button type="button" class="collapsible" onclick="collapse(this);">제목 4</button>
-	    <div class="content">
-	        <p>내용 4 입니다.</p>
-	    </div>
-	
-	    <button type="button" class="collapsible" onclick="collapse(this);">제목 5</button>
-	    <div class="content">
-	        <p>내용 5 입니다.</p>
-	    </div>
+    <button type="button" class="collapsible" onclick="collapse(this);">전화번호를 알려주세요.</button>
+    <div class="content">
+        <p>010-9481-1400입니다.</p>
+    </div>
+
+    <button type="button" class="collapsible" onclick="collapse(this);">예약문의는 어떻게 하나요?</button>
+    <div class="content">
+        <p>모릅니다.</p>
+    </div>
+    
+    <button type="button" class="collapsible" onclick="collapse(this);">제목 3</button>
+    <div class="content">
+        <p>내용 3 입니다.</p>
+    </div>
+
+    <button type="button" class="collapsible" onclick="collapse(this);">제목 4</button>
+    <div class="content">
+        <p>내용 4 입니다.</p>
+    </div>
+
+    <button type="button" class="collapsible" onclick="collapse(this);">제목 5</button>
+    <div class="content">
+        <p>내용 5 입니다.</p>
+    </div>
 		
         <%@ include file="/views/common/footer.jsp" %>
+        
+        
 	</body>
 </html>
