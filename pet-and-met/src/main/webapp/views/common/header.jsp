@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import = "com.kh.common.IP, java.io.File, 
-                    com.kh.member.model.vo.Member" %>
+                    com.kh.member.model.vo.Member,
+                    com.kh.common.Keys" %>
 
     <% 
         String contextRoot = "/pet-and-met"; 
@@ -88,6 +89,9 @@
                     <i class="bi bi-phone d-flex align-items-center ms-4"><span style="color: white;">82+ 010-1234-5678</span></i>
                 </div>
                 <div class="social-links d-none d-md-flex align-items-center">
+                    <% if((loginMember != null) && (((Member)(loginMember)).getMemberAdmin() == 1)) { %>
+                        <a href="<%= contextPath %>/admin.mainPage" style="color: white;"><b>어드민 페이지</b></a><p style="color: white;">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</p>
+                    <% } %>
                     <% if(loginMember == null) { %>
 	                	<a href="<%= contextPath %>/login.mb" style="color: white;"><b>로그인</b></a><p style="color: white;">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</p><a href="<%= contextPath %>/send.rg" style="color: white;"><b>회원가입</b></a>
                 	<% } else { %>

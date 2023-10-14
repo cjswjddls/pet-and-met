@@ -46,9 +46,6 @@ public class PaymentDone extends HttpServlet {
 		/*
 		String token = request.getParameter("pg_token");
 		
-		String adminKey = "e39607307b6b713e20a922160d23b7dd";
-		String apiKey = "456c01f67377389b8aa979082c5c3662";
-		
 		String domain = "http://192.168.40.19:8888";
 		
 		String cid = "TC0ONETIME";

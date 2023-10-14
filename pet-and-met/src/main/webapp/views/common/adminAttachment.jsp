@@ -80,7 +80,12 @@
 			<ul>회원 관리
 				<li><a href="<%= contextPath %>/listAll.mm">전체 회원 조회</a></li>
 			</ul>
-			<ul>문의 내역</ul>
+			<ul>문의 내역
+				<li><a>문의 내역 조회</a></li>
+			</ul>
+			<ul>메인페이지
+				<li><a href="<%= contextPath %>">메인페이지</a></li>
+			</ul>
 		</nav>
 
 		<div class="adminNameBar">

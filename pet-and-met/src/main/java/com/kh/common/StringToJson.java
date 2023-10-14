@@ -24,6 +24,7 @@ public class StringToJson {
 	    while ((line = change.readLine()) != null) {
 	        message += line;
 	    }
+	    System.out.println(message);
 	    
 		return stringToJson(message, key1, key2);
 	}

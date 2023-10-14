@@ -12,7 +12,6 @@ import java.util.InvalidPropertiesFormatException;
 import java.util.Properties;
 
 import com.kh.common.JDBCTemplate;
-import com.kh.payment.model.service.PaymentService;
 
 public class PaymentDao {
 	private Properties prop = new Properties();

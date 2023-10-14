@@ -1,7 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<% String pagePath = "./"; %>
+<% 
+    String pagePath = "./";
+	String googleSiteKey = (String)request.getAttribute("googleKey");
+    // String googleSiteKey = Keys.read(Keys.class.getResource("/com/kh/common/recaptcha2.json").getPath(), "key");
+    // String googleSiteKey = Keys.read("\\keys\\recaptcha2.json", "key");
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -272,7 +277,7 @@
                 <tr>
                     <th></th>
                     <td>
-                        <div class="g-recaptcha" data-sitekey="6LfllG4jAAAAAHl2gmj51tnVeIKQArzfQ0g2RdnL"></div>
+                        <div class="g-recaptcha" data-sitekey="<%= googleSiteKey %>"></div>
                     </td>
                     <script>
                         function onGoogle() {
