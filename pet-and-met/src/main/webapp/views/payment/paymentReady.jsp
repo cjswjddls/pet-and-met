@@ -4,6 +4,8 @@
 	<%
     	String pagePath = "./";
 		String kakaoUrl = (String)request.getAttribute("kakaoUrl");
+		String oid = (String)request.getAttribute("oid");
+		String tid = (String)request.getAttribute("tid");
     %>
 
 <!DOCTYPE html>
@@ -17,13 +19,17 @@
 		<br><br><br><br>
 		<div class="container" style="width: 800px; height: 800px; text-align: center; background-image: url(<%= pagePath %>resources/img/kakao.jpg); background-repeat : no-repeat; background-size : 100% 100%;">
 			<!-- <img src="<%= pagePath %>resources/img/kakao.jpg" width="100%"> --><br><br><br>
-			<iframe src="<%= kakaoUrl %>" frameborder="0" width="80%" height="60%" style="margin-top: 200px"></iframe>
+			<iframe src="<%= kakaoUrl %>" name="kakaoIframe" id="kakaoIframe" frameborder="0" width="80%" height="60%" style="margin-top: 200px"></iframe>
 		</div>
 		<div class="container" style="text-align: center;">
-			<button class="btn btn-sm btn-success" style="background-color: rgb(121, 172, 120);">다음으로</button>
 			<br><br><br><br>
 		</div>
 		<%@ include file="../common/footer.jsp" %>
-		<script></script>
+		<script>
+			$(function() {
+				let kakaoIframe = document.getElementsByName("kakaoIframe");
+				kakaoIframe.setAttribute("tid", tid);
+			});
+		</script>
 	</body>
 </html>

@@ -50,13 +50,10 @@ public class PaymentReadyController extends HttpServlet {
 		catch (IOException e) { e.printStackTrace(); }
 		catch (org.json.simple.parser.ParseException e) { e.printStackTrace(); }
 		
-		System.out.println(adminKey);
-		System.out.println(apiKey);
-		
 		// String domain = "http://192.168.40.19:8888";
 		String domain = "http://" + InetAddress.getLocalHost().getHostAddress() + ":8888";
-		String redirectSuccess = "https://kapi.kakao.com/v1/payment/approve";
-		// String redirectSuccess = domain + request.getContextPath() + "/payment.done";
+		// String redirectSuccess = "https://kapi.kakao.com/v1/payment/approve";
+		String redirectSuccess = domain + request.getContextPath() + "/payment.approve";
 		String redirectHome = domain + request.getContextPath();
 		
 		String itemName = "Pet&Met 예약"; // request.getParameter();
@@ -88,7 +85,7 @@ public class PaymentReadyController extends HttpServlet {
 					+ "&total_amount=" + amount // 총 금액
 					+ "&vat_amount=" + (int)(amount * (10 / 100)) // 부가세
 					+ "&tax_free_amount=0" // 상품 비과세 금액
-					+ "&approval_url=" + redirectSuccess // 결제 성공 시
+					+ "&approval_url=" + redirectSuccess + "?oid=" + reservationNo // 결제 성공 시
 					+ "&fail_url=" + redirectHome // 결제 실패 시
 					+ "&cancel_url=" + redirectHome; // 결제 취소 시
 			
@@ -117,13 +114,12 @@ public class PaymentReadyController extends HttpServlet {
 			String url = ele[0];
 			String tid = ele[1];
 			
-			System.out.println(url);
 			// int paymentNo = 10;
 			
 			request.setAttribute("kakaoUrl", url);
 			request.setAttribute("tid", tid);
 			
-			// int ins = new PaymentService().insertPayment(tid, paymentNo);
+			int ins = new PaymentService().insertPayment(reservationNo, tid, memberNo, 0);
 			
 			request.getRequestDispatcher("/views/payment/paymentReady.jsp").forward(request, response);
 		}

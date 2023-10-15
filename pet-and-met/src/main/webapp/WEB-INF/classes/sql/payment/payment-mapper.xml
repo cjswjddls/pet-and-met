@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
-	<entry key="insertPayment">INSERT INTO PAYMENT VALUES(SEQ_PAYMENT.NEXTVAL, ?, SYSDATE, NULL, ?)</entry>
-	<entry key="checkPaymentByToday">SELECT PAYMENT_NO, PAYMENT_TID FROM PAYMENT WHERE TO_CHAR(PAYMENT_DATE, 'YYYYMMDD') = ?</entry>
+	<entry key="insertPayment">INSERT INTO PAYMENT VALUES(SEQ_PAYMENT.NEXTVAL, ?, NULL, NULL, SYSDATE, NULL, NULL, ?, ?, ?)</entry>
+	<entry key="selectPaymentForTID">SELECT PAYMENT_TID FROM PAYMENT WHERE PAYMENT_RESERVATION_NO = ? AND PAYMENT_STATUS_CODE = ?</entry>
+	<entry key="updatePaymentDone">UPDATE PAYMENT SET PAYMENT_AID = ?, PAYMENT_METHOD = ?, PAYMENT_APPROVED = ?, PAYMENT_STATUS_CODE = ? WHERE PAYMENT_TID = ? AND PAYMENT_RESERVATION_NO = ? AND PAYMENT_USER_NO = ?</entry>
 </properties>

@@ -7,7 +7,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.InvalidPropertiesFormatException;
 import java.util.Properties;
 
@@ -21,7 +20,7 @@ public class PaymentDao {
 		catch (FileNotFoundException e) { e.printStackTrace(); }
 		catch (IOException e) { e.printStackTrace(); }
 	}
-	public int insertPayment(Connection conn, String tid, int paymentNo) {
+	public int insertPayment(Connection conn, int oid, String tid, int userNo, int sCode) {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		
@@ -31,7 +30,9 @@ public class PaymentDao {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, tid);
-			pstmt.setInt(2, paymentNo);
+			pstmt.setInt(2, oid);
+			pstmt.setInt(3, userNo);
+			pstmt.setInt(4, sCode);
 			
 			result = pstmt.executeUpdate();
 		} 
@@ -41,26 +42,54 @@ public class PaymentDao {
 		
 		return result;
 	}
-	public int checkPaymentByToday(Connection conn, Date date) {
+	public String selectPaymentForTID(Connection conn, int oid) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
+		String tid = "";
 		
-		String sql = prop.getProperty("checkPaymentByToday");
+		String sql = prop.getProperty("selectPaymentForTID");
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, date.toString().replace("-", ""));
+			pstmt.setInt(1, oid);
+			pstmt.setInt(2, 0);
 			
 			rset = pstmt.executeQuery();
-			
-			// while(rset.next()) { }
+			if(rset.next()) { tid = rset.getString("PAYMENT_TID"); }
 		} 
 		catch (SQLException e) { e.printStackTrace(); }
 		
 		JDBCTemplate.close(rset);
 		JDBCTemplate.close(pstmt);
 		
-		return 0;
+		return tid;
+	}
+	public int updatePaymentDone(Connection conn, String tid, String aid, String method, String appTime, int oid, int memberNo, int sCode) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String sql = prop.getProperty("updatePaymentDone");
+		// UPDATE PAYMENT SET PAYMENT_AID = ?, PAYMENT_METHOD = ?, PAYMENT_APPROVED = ?, PAYMENT_STATUS_CODE = ? WHERE PAYMENT_TID = ? 
+		// AND PAYMENT_RESERVATION_NO = ? AND PAYMENT_USER_NO = ?
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, aid);
+			pstmt.setString(2, method);
+			pstmt.setString(3, appTime);
+			pstmt.setInt(4, sCode);
+			pstmt.setString(5, tid);
+			pstmt.setInt(6, oid);
+			pstmt.setInt(7, memberNo);
+			
+			result = pstmt.executeUpdate();
+		} 
+		catch (SQLException e) { e.printStackTrace(); }
+		
+		JDBCTemplate.close(pstmt);
+		
+		return result;
 	}
 }

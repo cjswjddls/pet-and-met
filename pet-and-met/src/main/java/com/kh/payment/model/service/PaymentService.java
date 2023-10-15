@@ -1,15 +1,14 @@
 package com.kh.payment.model.service;
 
 import java.sql.Connection;
-import java.util.Date;
 
 import com.kh.common.JDBCTemplate;
 import com.kh.payment.model.dao.PaymentDao;
 
 public class PaymentService {
-	public int insertPayment(String tid, int paymentNo) {
+	public int insertPayment(int oid, String tid, int uNo, int sCode) {
 		Connection conn = JDBCTemplate.getConnection();
-		int result = new PaymentDao().insertPayment(conn, tid, paymentNo);
+		int result = new PaymentDao().insertPayment(conn, oid, tid, uNo, sCode);
 		
 		if(result > 0) { JDBCTemplate.commit(conn); }
 		else { JDBCTemplate.rollback(conn); }
@@ -19,13 +18,24 @@ public class PaymentService {
 		return result;
 	}
 
-	public void checkPaymentByToday(Date date) {
+	public String selectPaymentForTID(int oid) {
 		Connection conn = JDBCTemplate.getConnection();
-		int result = new PaymentDao().checkPaymentByToday(conn, date);
+		String tid = new PaymentDao().selectPaymentForTID(conn, oid);
+		
+		JDBCTemplate.close(conn);
+		
+		return tid;
+	}
+
+	public int updatePaymentDone(String tid, String aid, String method, String appTime, int oid, int memberNo, int sCode) {
+		Connection conn = JDBCTemplate.getConnection();
+		int result = new PaymentDao().updatePaymentDone(conn, tid, aid, method, appTime, oid, memberNo, sCode);
 		
 		if(result > 0) { JDBCTemplate.commit(conn); }
 		else { JDBCTemplate.rollback(conn); }
 		
 		JDBCTemplate.close(conn);
+		
+		return result;
 	}
 }

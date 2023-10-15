@@ -13,12 +13,14 @@ public class Reservation {
 	private String reservationMemo;
 	private Date reservationRegistDate;
 	private Date reservationCancelDate;
+	private int reservationPaymentStatus;
 	
 	public Reservation() {}
 
 	public Reservation(int reservationNo, int reservationUserNo, String reservationUserName,
 			String reservationUserPhone, int reservationRoomNo, Date reservationStartDate, Date reservationEndDate,
-			String reservationMemo, Date reservationRegistDate, Date reservationCancelDate) {
+			String reservationMemo, Date reservationRegistDate, Date reservationCancelDate,
+			int reservationPaymentStatus) {
 		this.reservationNo = reservationNo;
 		this.reservationUserNo = reservationUserNo;
 		this.reservationUserName = reservationUserName;
@@ -29,6 +31,7 @@ public class Reservation {
 		this.reservationMemo = reservationMemo;
 		this.reservationRegistDate = reservationRegistDate;
 		this.reservationCancelDate = reservationCancelDate;
+		this.reservationPaymentStatus = reservationPaymentStatus;
 	}
 
 	public int getReservationNo() {
@@ -111,6 +114,14 @@ public class Reservation {
 		this.reservationCancelDate = reservationCancelDate;
 	}
 
+	public int getReservationPaymentStatus() {
+		return reservationPaymentStatus;
+	}
+
+	public void setReservationPaymentStatus(int reservationPaymentStatus) {
+		this.reservationPaymentStatus = reservationPaymentStatus;
+	}
+
 	@Override
 	public String toString() {
 		return "Reservation [reservationNo=" + reservationNo + ", reservationUserNo=" + reservationUserNo
@@ -118,6 +129,6 @@ public class Reservation {
 				+ ", reservationRoomNo=" + reservationRoomNo + ", reservationStartDate=" + reservationStartDate
 				+ ", reservationEndDate=" + reservationEndDate + ", reservationMemo=" + reservationMemo
 				+ ", reservationRegistDate=" + reservationRegistDate + ", reservationCancelDate="
-				+ reservationCancelDate + "]";
+				+ reservationCancelDate + ", reservationPaymentStatus=" + reservationPaymentStatus + "]";
 	}
 }

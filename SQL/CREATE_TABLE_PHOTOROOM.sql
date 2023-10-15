@@ -1,6 +1,6 @@
 // ============ 테이블 초기화 ============
 
-DROP TABLE PHOTO;
+// DROP TABLE PHOTO;
 
 DROP TABLE ROOM;
 
@@ -8,11 +8,11 @@ DROP TABLE ROOM;
 
 // ============ 테이블 시퀀스 초기화 ============
 
-DROP SEQUENCE SEQ_PHOTO;
+// DROP SEQUENCE SEQ_PHOTO;
 
 // ============ 테이블 시퀀스 생성 ============
 
-CREATE SEQUENCE SEQ_PHOTO;
+// CREATE SEQUENCE SEQ_PHOTO;
 
 
 // =============================================================================
@@ -45,27 +45,27 @@ COMMENT ON COLUMN ROOM.ROOM_SIZE IS '객실면적';
 
 
 // ============ 객실 사진 테이블 생성 ============
-CREATE TABLE PHOTO (
-    PHOTO_NO	    NUMBER		    PRIMARY KEY NOT NULL,
-    PHOTO_TYPE       CHAR(2)	    DEFAULT 'A'	NOT NULL,
-    PHOTO_ORIGINAL	VARCHAR2(100)	NOT NULL,
-	PHOTO_NAME	    VARCHAR2(100)	NOT NULL,
-	PHOTO_PATH	    VARCHAR2(100)	,
-	PHOTO_DATE	    DATE	        DEFAULT SYSDATE	NOT NULL
-);
-
-// ============ 객실 사진 테이블 컬럼명 ============
-COMMENT ON COLUMN PHOTO.PHOTO_NO IS '사진번호';
-
-COMMENT ON COLUMN PHOTO.PHOTO_TYPE IS '객실타입';
-
-COMMENT ON COLUMN PHOTO.PHOTO_ORIGINAL IS '원본명';
-
-COMMENT ON COLUMN PHOTO.PHOTO_NAME IS '수정명';
-
-COMMENT ON COLUMN PHOTO.PHOTO_PATH IS '파일경로';
-
-COMMENT ON COLUMN PHOTO.PHOTO_DATE IS '파일등록일';
+--CREATE TABLE PHOTO (
+--    PHOTO_NO	    NUMBER		    PRIMARY KEY NOT NULL,
+--    PHOTO_TYPE       CHAR(2)	    DEFAULT 'A'	NOT NULL,
+--    PHOTO_ORIGINAL	VARCHAR2(100)	NOT NULL,
+--	PHOTO_NAME	    VARCHAR2(100)	NOT NULL,
+--	PHOTO_PATH	    VARCHAR2(100)	,
+--	PHOTO_DATE	    DATE	        DEFAULT SYSDATE	NOT NULL
+--);
+--
+--// ============ 객실 사진 테이블 컬럼명 ============
+--COMMENT ON COLUMN PHOTO.PHOTO_NO IS '사진번호';
+--
+--COMMENT ON COLUMN PHOTO.PHOTO_TYPE IS '객실타입';
+--
+--COMMENT ON COLUMN PHOTO.PHOTO_ORIGINAL IS '원본명';
+--
+--COMMENT ON COLUMN PHOTO.PHOTO_NAME IS '수정명';
+--
+--COMMENT ON COLUMN PHOTO.PHOTO_PATH IS '파일경로';
+--
+--COMMENT ON COLUMN PHOTO.PHOTO_DATE IS '파일등록일';
 
 
 // =============================================================================
@@ -187,23 +187,23 @@ INSERT INTO ROOM (ROOM_NO
 // ============ 객실 사진 테이블 데이터 입력 ============
 
 
-INSERT INTO PHOTO (PHOTO_NO
-                 , PHOTO_TYPE
-                 , PHOTO_ORIGINAL
-                 , PHOTO_NAME)                                      
-            VALUES(SEQ_PHOTO.NEXTVAL
-                 , 'A'
-                 , 'portfolio-1.jpg'
-                 , 'portfolio-1.jpg');
-
-INSERT INTO PHOTO (PHOTO_NO
-                 , PHOTO_TYPE
-                 , PHOTO_ORIGINAL
-                 , PHOTO_NAME)                                      
-            VALUES(SEQ_PHOTO.NEXTVAL
-                 , 'B'
-                 , 'portfolio-2.jpg'
-                 , 'portfolio-2.jpg');   
+--INSERT INTO PHOTO (PHOTO_NO
+--                 , PHOTO_TYPE
+--                 , PHOTO_ORIGINAL
+--                 , PHOTO_NAME)                                      
+--            VALUES(SEQ_PHOTO.NEXTVAL
+--                 , 'A'
+--                 , 'portfolio-1.jpg'
+--                 , 'portfolio-1.jpg');
+--
+--INSERT INTO PHOTO (PHOTO_NO
+--                 , PHOTO_TYPE
+--                 , PHOTO_ORIGINAL
+--                 , PHOTO_NAME)                                      
+--            VALUES(SEQ_PHOTO.NEXTVAL
+--                 , 'B'
+--                 , 'portfolio-2.jpg'
+--                 , 'portfolio-2.jpg');   
                  
 
 // =============================================================================
