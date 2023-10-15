@@ -117,7 +117,7 @@
                             <ul>
                                 <li><a href="<%= contextPath %>/hotel">호텔 소개</a></li>
                                 <li><a href="<%= contextPath %>/doghouse">객실 소개</a></li>
-                                <li><a href="#">공지사항</a></li>
+                                <li><a href="<%= contextPath %>/list.bo">공지사항</a></li>
                                 <li><a href="<%= contextPath %>/use">이용안내</a></li>
                                 <li><a href="<%= contextPath %>/map">위치안내</a></li>
                             </ul>

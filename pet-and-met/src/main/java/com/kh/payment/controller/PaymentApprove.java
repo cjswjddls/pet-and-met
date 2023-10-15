@@ -107,7 +107,7 @@ public class PaymentApprove extends HttpServlet {
 				
 				int updateResult = new PaymentService().updatePaymentDone(tid, aid, method, appTime, oid, memberNo, 1);
 				
-				if(updateResult > 0) { request.getRequestDispatcher("/views/payment/paymentDone.jsp").forward(request, response); }
+				if(updateResult > 0) { request.setAttribute("tid", tid); request.setAttribute("aid", aid); request.getRequestDispatcher("/views/payment/paymentDone.jsp").forward(request, response); }
 				else { session.setAttribute("alertMsg", "결제는 완료되었으나 DB연동에 실패하였습니다. 문의를 진행해주세요."); response.sendRedirect(request.getContextPath()); }
 			}
 			catch (Exception e) { 
