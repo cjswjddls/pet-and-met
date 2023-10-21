@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.reservation.model.service.ReservationService;
+import com.kh.reservation.model.vo.Reservation;
 import com.kh.reservation.model.vo.Room;
 
 /**
@@ -31,48 +32,39 @@ public class ReservationRequestController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// type
-		String hiddenTypeA = request.getParameter("hiddenTypeA");
-		String hiddenTypeB = request.getParameter("hiddenTypeB");
-			
-		// test
-		// System.out.println(hiddenTypeA);
-		// System.out.println(hiddenTypeB);
+		// System.out.println(request.getParameter("startDate"));
 		
-		Room r = null;
+		// 예약 일자
+		String startDate = request.getParameter("startDate");
+		String endDate = request.getParameter("endDate");	
+		int stayDate = Integer.parseInt(request.getParameter("stayDate"));
 		
-		if(hiddenTypeA != null && hiddenTypeB == null) {
-			
-			r = new ReservationService().selectReservation(hiddenTypeA);
-			
-			// type 정보를 응답데이터로 넘김
-			request.setAttribute("type", r);
-			
-			// 포워딩
-			request.getRequestDispatcher("views/reservation/reservationRequestView.jsp").forward(request, response);
-
-		} else if(hiddenTypeB != null && hiddenTypeA == null) {
-			
-			r = new ReservationService().selectReservation(hiddenTypeB);
+		// System.out.println(request.getParameter("startDate"));
 		
-			// type 정보를 응답데이터로 넘김
-			request.setAttribute("type", r);
-			
-			// 포워딩
-			request.getRequestDispatcher("views/reservation/reservationRequestView.jsp").forward(request, response);
-			
-		} else {
-			
-			// 알림 만들것
-			
-			//
-			// response.sendRedirect(request.getContextPath()+ "/views/reservation/reservationListView.jsp");
-			
-			// request.getRequestDispatcher("views/reservation/reservationListView.jsp").forward(request, response);
-		}
+		Reservation resvDay = new Reservation();
 		
+		resvDay.setReservationStartDate(startDate);
+		resvDay.setReservationEndDate(endDate);
+		resvDay.setReservationStayDate(stayDate);
 		
+		// 타입별 객실 정보
+		String roomType = request.getParameter("roomType");
+		int roomSize = Integer.parseInt(request.getParameter("roomSize"));
+		int roomFee = Integer.parseInt(request.getParameter("roomFee"));
 		
+		Room resvType = new Room();
+		resvType.setRoomType(roomType);
+		resvType.setRoomSize(roomSize);
+		resvType.setRoomFee(roomFee);
+		
+		// 사용자가 선택한 날짜
+		request.setAttribute("resvDay", resvDay);
+		
+		// 사용자가 선택한 객실 정보 
+		request.setAttribute("resvType", resvType);
+		
+		request.getRequestDispatcher("views/reservation/reservationRequestView.jsp").forward(request, response);
+	
 	}
 
 	/**

@@ -45,5 +45,115 @@
 		  AND MEMBER_PWD = ?
 		  AND MEMBER_STATUS = 1
 	</entry>
+	
+	<entry key="findMemberId">
+		SELECT MEMBER_ID
+		   FROM MEMBER
+		WHERE MEMBER_NAME = ?
+		     AND MEMBER_EMAIL = ?
+		     AND MEMBER_PHONE = ?
+	</entry>
+	
+	<entry key="findMemberPwd">
+		SELECT *
+		   FROM MEMBER
+		WHERE MEMBER_ID = ?
+			 AND MEMBER_NAME = ?
+		     AND MEMBER_EMAIL = ?
+		     AND MEMBER_PHONE = ?
+	</entry>
+	
+	<entry key="updatePwd">
+		UPDATE MEMBER
+			  SET MEMBER_PWD = ?
+		 WHERE MEMBER_NO = ?
+	</entry>
+	
+		<entry key="withdrawMember">
+		UPDATE MEMBER
+			  SET MEMBER_STATUS = 0,
+			        MEMBER_LEAVE = SYSDATE,
+			        MEMBER_LEAVE_REASON = ?
+		WHERE MEMBER_NO = ?
+	</entry>
+	
+	<entry key="updateProfile">
+	UPDATE MEMBER
+    	SET MEMBER_PHONE = ?,
+      		   MEMBER_EMAIL = ?,
+      		   MEMBER_ADDRESS = ?,
+      		   MEMBER_ADDRESS_DETAIL = ?,
+      		   MEMBER_DESCRIPTION = ?
+   	WHERE MEMBER_NO = ?
+	</entry>
+	
+	
+	<entry key="selectAllMember">
+		SELECT *
+		FROM MEMBER
+		WHERE MEMBER_ADMIN = 0
+		AND ROWNUM BETWEEN ? AND ?
+		ORDER BY MEMBER_JOIN DESC
+	</entry>
+	
+	<entry key="selectByIdCount">
+		SELECT COUNT(*)
+		FROM MEMBER
+		WHERE MEMBER_ADMIN = 0
+		AND MEMBER_ID LIKE ?
+		ORDER BY MEMBER_JOIN DESC
+	</entry>
+	
+	<entry key="selectByNameCount">
+		SELECT COUNT(*)
+		FROM MEMBER
+		WHERE MEMBER_ADMIN = 0
+		AND MEMBER_NAME LIKE ?
+		ORDER BY MEMBER_JOIN DESC	
+	</entry>
+	
+	<entry key="selectById">
+        SELECT *
+		  FROM (
+		    SELECT ROWNUM RNUM, M.*
+		      FROM (
+		        SELECT *
+		          FROM MEMBER M
+		         WHERE MEMBER_STATUS = 1
+		           AND MEMBER_ADMIN = 0
+                   AND MEMBER_ID LIKE ?
+		         ORDER BY MEMBER_JOIN DESC
+		      ) M
+		  )
+		 WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="selectByName">
+        SELECT *
+		  FROM (
+		    SELECT ROWNUM RNUM, M.*
+		      FROM (
+		        SELECT *
+		          FROM MEMBER M
+		         WHERE MEMBER_STATUS = 1
+		           AND MEMBER_ADMIN = 0
+                   AND MEMBER_NAME LIKE ?
+		         ORDER BY MEMBER_JOIN DESC
+		      ) M
+		  )
+		 WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="memberDetailView">
+		SELECT *
+		FROM MEMBER
+		WHERE MEMBER_NO = ?
+	</entry>
 
+	<entry key="changeMemberStatus">
+		UPDATE MEMBER
+			  SET MEMBER_STATUS = ?
+		 WHERE MEMBER_NO = ?
+	</entry>
+	
 </properties>

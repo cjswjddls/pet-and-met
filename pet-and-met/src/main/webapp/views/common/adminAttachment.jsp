@@ -67,7 +67,7 @@
 		<nav class="sidebar" style="padding: 0px; margin: 0px; text-align: center;">
 			<br>
 			<ul>홈페이지 관리
-				<li><a>공지사항 관리</a></li>
+				<li><a href="<%= contextPath %>/lists.bo?currentPage=1&keyword=&method=">공지사항 관리</a></li>
 				<li><a>리뷰게시판 관리</a></li>
 			</ul>
 		    <ul>객실 / 예약 현황
@@ -78,7 +78,7 @@
 				<li><a href="<%= contextPath %>/admin.statistics">매출 조회</a></li>
 			</ul>
 			<ul>회원 관리
-				<li><a href="<%= contextPath %>/listAll.mm">전체 회원 조회</a></li>
+				<li><a href="<%= contextPath %>/selectBy.mm?currentPage=1&selected=&search=">전체 회원 조회</a></li>
 			</ul>
 			<ul>문의 내역
 				<li><a>문의 내역 조회</a></li>

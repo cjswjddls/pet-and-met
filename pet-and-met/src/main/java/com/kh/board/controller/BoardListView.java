@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class BoardListView
  */
-@WebServlet("/list.bo")
+@WebServlet("/lists.bo")
 public class BoardListView extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -24,7 +24,15 @@ public class BoardListView extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("views/board/boardListView.jsp").forward(request, response);
+		int currentPage = Integer.parseInt(request.getParameter("currentPage"));
+		String keyword = request.getParameter("keyword");
+		String method = request.getParameter("method");
+		
+		request.setAttribute("currentPage", currentPage);
+		request.setAttribute("keyword", keyword);
+		request.setAttribute("method", method);
+		
+		request.getRequestDispatcher("views/board/boardListAjaxView.jsp").forward(request, response);
 	}
 
 	/**

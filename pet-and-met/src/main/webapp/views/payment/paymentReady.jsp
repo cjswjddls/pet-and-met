@@ -17,13 +17,14 @@
 	<body>
 		<%@ include file="../common/header.jsp" %>
 		<br><br><br><br>
+		<div class="container" style="text-align: center;">
+			<img src="<%= pagePath %>resources/img/payment/payment_icon_yellow_medium.png">
+		</div>
 		<div class="container" style="width: 800px; height: 800px; text-align: center; background-image: url(<%= pagePath %>resources/img/kakao.jpg); background-repeat : no-repeat; background-size : 100% 100%;">
 			<!-- <img src="<%= pagePath %>resources/img/kakao.jpg" width="100%"> --><br><br><br>
 			<iframe src="<%= kakaoUrl %>" name="kakaoIframe" id="kakaoIframe" frameborder="0" width="80%" height="60%" style="margin-top: 200px"></iframe>
 		</div>
-		<div class="container" style="text-align: center;">
-			<br><br><br><br>
-		</div>
+		<br><br><br><br>
 		<%@ include file="../common/footer.jsp" %>
 		<script>
 			$(function() {

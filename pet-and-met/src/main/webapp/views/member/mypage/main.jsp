@@ -57,15 +57,19 @@
             height: 80%;
         }
         #profile-table{ margin-top: 120px; }
-        #profile-image{
+        #profile-img{
             width: 200px;
             height: 200px;
             box-sizing: border-box;
-            border: 2px dotted black;
-            border-radius: 20px;
+            border: 1px solid lightgray;
+            border-radius: 10px;
             margin-right: 12px;
         }
-        #profile-intro{ margin-top: 18px; }
+        #profile-intro{
+        	margin-top: 18px;
+        	border:1px solid lightgray;
+        	border-radius:10px
+        }
         .mypage-body span{ font-size: 20px; }
 
     </style>
@@ -74,6 +78,8 @@
 <body>
 
 	<%@ include file="../../common/header.jsp" %>
+	
+
 
 	<div style="display:flex">
 	<%@ include file="../../common/sidebarMember.jsp" %>
@@ -88,18 +94,17 @@
             <table align="center" id="profile-table">
                 <tr>
                     <td rowspan="2">
-                        <img src="" id="profile-image">
+                        <img id="profile-img" src="resources/img/profile/<%= loginMember.getMemberNo() %>.png">
                     </td>
                     <td>
-                        <span>user_name 님 환영합니다!</span>
+                        <span><b><%= loginMember.getMemberName() %></b> 님 환영합니다!</span>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <textarea id="profile-intro"
                         style="resize: none;" readonly
-                        rows="5px" cols="40px">
-
+                        rows="5px" cols="40px"><% if(loginMember.getMemberDescription() != null) { %><%= loginMember.getMemberDescription() %><% } %>                        
                         </textarea>
                     </td>
                 </tr>
@@ -107,6 +112,18 @@
         </div>
     </div>
     
+	<script>
+	$(function(){
+		
+		$("#profile-img").on("error", function() {
+			
+	        $(this).attr("src", "resources/img/profile/Default-Profile-Picture.png");
+	        
+	    });
+		
+	})
+	</script>
+	
     <%@ include file="../../common/footer.jsp" %>
     
 </body>

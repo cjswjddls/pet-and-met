@@ -67,10 +67,109 @@
 				let today = "" + new Date().getFullYear() + "-" + ("" + (new Date().getMonth()+1)).padStart(2, "0");
 				$("#adminStatisticsMonth").val(today);
 				$("#adminStatisticsMonth").attr("max", today);
+				cha($("#adminStatisticsMonth").val());
 				$("#adminStatisticsMonth").change(function() {
-					console.log($(this).val());
+					// console.log($(this).val());
+					cha($(this).val());
 				})
 			});
+			function cha(d) {
+				reloadVisitorMonth(d);
+				reloadVisitorYear(d);
+				reloadIncomeMonth(d);
+			};
+			function reloadVisitorMonth(e) {
+				$.ajax({
+					url: "stat.visitorMonth",
+					type: "get",
+					data: { date: e },
+					success: function(list) {
+						function drawChartVisitorMonth() {
+							var data = google.visualization.arrayToDataTable([
+								['Month', 'Visitor', 'Cancel'],
+								[parseInt(list[0].month), parseInt(list[0].confirm), parseInt(list[0].cancel)],
+								[parseInt(list[1].month), parseInt(list[1].confirm), parseInt(list[1].cancel)],
+								[parseInt(list[2].month), parseInt(list[2].confirm), parseInt(list[2].cancel)],
+							]);
+							var options = {
+							title: '월별 사용자수',
+							fontSize: <%= fontSize %>,
+							hAxis: {title: 'Month',  titleTextStyle: {color: '#333'}},
+							vAxis: {minValue: 0}
+							};
+							var chart = new google.visualization.AreaChart(document.getElementById('areaChartVisitorMonth'));
+							chart.draw(data, options);
+						}
+						google.charts.setOnLoadCallback(drawChartVisitorMonth);
+					},
+					error: function() {
+						console.log("");
+					}
+				})
+			}
+			function reloadVisitorYear(e) {
+				$.ajax({
+					url: "stat.visitorYear",
+					type: "get",
+					data: { date: e },
+					success: function(list) {
+						function drawChartVisitorYear() {
+							var data = google.visualization.arrayToDataTable([
+								['Year', 'Visitor', 'Cancel'],
+								[parseInt(list[0].month), parseInt(list[0].confirm), parseInt(list[0].cancel)],
+								[parseInt(list[1].month), parseInt(list[1].confirm), parseInt(list[1].cancel)],
+								[parseInt(list[2].month), parseInt(list[2].confirm), parseInt(list[2].cancel)],
+							]);
+							var options = {
+							title: '년간 사용자수',
+							fontSize: <%= fontSize %>,
+							hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},
+							vAxis: {minValue: 0}
+							};
+							var chart = new google.visualization.AreaChart(document.getElementById('areaChartVisitorYear'));
+							chart.draw(data, options);
+						}
+						google.charts.setOnLoadCallback(drawChartVisitorYear);
+					},
+					error: function() {
+						console.log("");
+					}
+				})
+			}
+			function reloadIncomeMonth(e) {
+				$.ajax({
+					url: "stat.incomeMonth",
+					type: "get",
+					data: { date: e },
+					success: function(list) {
+						function drawChartIncomeMonth() {
+							var data = google.visualization.arrayToDataTable([
+								['Month', 'Income', 'Profit', { role: 'style' } ],
+								[parseInt(list[0].date), parseInt(list[0].income), parseInt(list[0].profit), 'color: gray'],
+								[parseInt(list[1].date), parseInt(list[1].income), parseInt(list[1].profit), 'color: #76A7FA'],
+								[parseInt(list[2].date), parseInt(list[2].income), parseInt(list[2].profit), 'opacity: 0.2'],
+							]);
+							var view = new google.visualization.DataView(data);
+							view.setColumns([0, 1,
+											{ calc: "stringify",
+												sourceColumn: 1,
+												type: "string",
+												role: "annotation" },
+											2]);
+							var options = {
+									title: '월별 매출',
+									fontSize: <%= fontSize %>
+							};
+							var chart = new google.visualization.BarChart(document.getElementById('drawchartIncomeMonth'));
+							chart.draw(view, options);
+						}
+						google.charts.setOnLoadCallback(drawChartIncomeMonth);
+					},
+					error: function() {
+						console.log("");
+					}
+				})
+			}
 		</script>
 
 		<!-- 3 * 2 행렬 -->
@@ -91,77 +190,9 @@
 
 		<script type="text/javascript">
 			google.charts.load('current', {'packages':['corechart']});
-			google.charts.setOnLoadCallback(drawChartVisitorMonth);
-
-			function drawChartVisitorMonth() {
-				var data = google.visualization.arrayToDataTable([
-					['Month', 'Visitor', 'Cancel'],
-					['05월',  <%= reserveMonth1 %>, 163],
-					['06월',  <%= reserveMonth2 %>, 180],
-					['07월',  <%= reserveMonth3 %> ,60],
-				]);
-				var options = {
-				title: '월별 방문자수',
-				fontSize: <%= fontSize %>,
-				hAxis: {title: 'Month',  titleTextStyle: {color: '#333'}},
-				vAxis: {minValue: 0}
-				};
-				var chart = new google.visualization.AreaChart(document.getElementById('areaChartVisitorMonth'));
-				chart.draw(data, options);
-			}
 		</script>
 
 		<script type="text/javascript">
-			google.charts.load('current', {'packages':['corechart']});
-			google.charts.setOnLoadCallback(drawChartVisitorYear);
-
-			function drawChartVisitorYear() {
-				var data = google.visualization.arrayToDataTable([
-					['Year', 'Visitor', 'Cancel'],
-					['2013년',  <%= reserveYear1 %>, 456],
-					['2014년',  <%= reserveYear2 %>, 568],
-					['2015년',  <%= reserveYear3 %> ,742],
-				]);
-				var options = {
-				title: '년간 방문자수',
-				fontSize: <%= fontSize %>,
-				hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},
-				vAxis: {minValue: 0}
-				};
-				var chart = new google.visualization.AreaChart(document.getElementById('areaChartVisitorYear'));
-				chart.draw(data, options);
-			}
-		</script>
-
-		<script type="text/javascript">
-			google.charts.load("current", {'packages':["corechart"]});
-			google.charts.setOnLoadCallback(drawChartIncomeMonth);
-			
-			function drawChartIncomeMonth() {
-			      var data = google.visualization.arrayToDataTable([
-			        ['Month', 'Income', 'Profit', { role: 'style' } ],
-			        ['05월', <%= incomeMonth1 %>, <%= profitMonth1 %>, 'color: gray'],
-			        ['06월', <%= incomeMonth2 %>, <%= profitMonth2 %>, 'color: #76A7FA'],
-			        ['07월', <%= incomeMonth3 %>, <%= profitMonth3 %>, 'opacity: 0.2'],
-			      ]);
-			      var view = new google.visualization.DataView(data);
-			      view.setColumns([0, 1,
-			                       { calc: "stringify",
-			                         sourceColumn: 1,
-			                         type: "string",
-			                         role: "annotation" },
-			                       2]);
-			      var options = {
-						title: '월별 매출',
-						fontSize: <%= fontSize %>
-				  };
-			      var chart = new google.visualization.BarChart(document.getElementById('drawchartIncomeMonth'));
-				  chart.draw(view, options);
-			}
-		</script>
-
-		<script type="text/javascript">
-			google.charts.load("current", {'packages':["corechart"]});
 			google.charts.setOnLoadCallback(drawChartIncomeYear);
 			
 			function drawChartIncomeYear() {
@@ -188,7 +219,6 @@
 		</script>
 
 		<script type="text/javascript">
-			google.charts.load("current", {'packages':["corechart"]});
 			google.charts.setOnLoadCallback(drawChartEmptyRoom);
 			
 			function drawChartEmptyRoom() {
@@ -215,7 +245,6 @@
 		</script>
 		
 		<script type="text/javascript">
-			google.charts.load('current', {'packages':['corechart']});
 			google.charts.setOnLoadCallback(drawChartType);
 			
 			function drawChartType() {

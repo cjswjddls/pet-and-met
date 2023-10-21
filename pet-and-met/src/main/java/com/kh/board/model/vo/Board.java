@@ -28,6 +28,37 @@ public class Board {
 		this.boardIp = boardIp;
 	}
 
+	public Board(int boardNo, String boardName, Date boardInsert, int boardView) {
+		this.boardNo = boardNo;
+		this.boardName = boardName;
+		this.boardInsert = boardInsert;
+		this.boardView = boardView;
+	}
+
+	public Board(int boardNo, String boardName, String boardContent, Date boardInsert, int boardView) {
+		this.boardNo = boardNo;
+		this.boardName = boardName;
+		this.boardContent = boardContent;
+		this.boardInsert = boardInsert;
+		this.boardView = boardView;
+	}
+	
+	public Board(int boardNo, String boardName, String boardContent, Date boardInsert, int boardView, int boardAccent) {
+		this.boardNo = boardNo;
+		this.boardName = boardName;
+		this.boardContent = boardContent;
+		this.boardInsert = boardInsert;
+		this.boardView = boardView;
+		this.boardAccent = boardAccent;
+	}
+
+	public Board(String boardName, String boardContent, int boardAccent, String boardIp) {
+		this.boardName = boardName;
+		this.boardContent = boardContent;
+		this.boardAccent = boardAccent;
+		this.boardIp = boardIp;
+	}
+
 	public int getBoardNo() {
 		return boardNo;
 	}

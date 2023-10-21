@@ -34,7 +34,7 @@
                             <img src="<%= pagePath %>resources/img/main.png" width="140" height="140" onclick="location.href='<%= contextPath %>'" class="mainFooterImgHover">
                             <div style="display: flex; padding-top: 30px; padding-bottom: 30px;">
                                 <h2 style="line-height: 60px;"><b>&nbsp;Pet & Met</b></h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <h5 style="line-height: 60px;"><b><a href="" class="mainFooterAHover">호텔 소식</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="FAQ" class="mainFooterAHover">고객문의</a></b></h5>
+                                <h5 style="line-height: 60px;"><b><a href="<%= contextPath %>/lists.bo?currentPage=1&keyword=&method=" class="mainFooterAHover">호텔 소식</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="FAQ" class="mainFooterAHover">고객문의</a></b></h5>
                             </div>
                         </div>
                     </div>
@@ -79,6 +79,8 @@
             <div class="container" style="background-color: rgb(121, 172, 120);">
                 <div align="center">
                     <a href="https://www.freepik.com/free-photo/modern-skyscraper-reflects-blue-cityscape-glass-window-generative-ai_41074064.htm#query=hotel&position=21&from_view=search&track=sph">작가 vecstock</a> 출처 Freepik<br>
+                    <a href='https://kor.pngtree.com/freebackground/three-puppies-with-their-mouths-open-are-posing-for-a-photo_3054035.html'>작가 tree</a> 출처 pngtree<br>
+                    <a href="https://www.freepik.com/free-psd/luxury-beach-house-generative-ai_47893239.htm#query=hotel&position=1&from_view=search&track=sph">작가 WangXiNa</a> 출처 Freepik<br>
                 </div>
                 <div class="copyright">
                     &copy; Copyright <strong><span>Eterna</span></strong>. All Rights Reserved

@@ -2,17 +2,81 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 	
-	<entry key="selectReservation">
-		SELECT ROWNUM, ROOM_TYPE, ROOM_FEE, ROOM_SIZE
-		  FROM (SELECT ROOM_TYPE, ROOM_FEE, ROOM_SIZE
+	<entry key="selectReservationRoom">
+		SELECT ROOM_TYPE, ROOM_FEE, ROOM_SIZE
 		          FROM ROOM 
 		         WHERE ROOM_TYPE = ?
-		         ORDER BY ROOM_NO) 
-		 WHERE ROWNUM = 1
+		         ORDER BY ROOM_NO
 	</entry>
+	
+	<entry key="selectReservationDay">
+		SELECT ROOM_TYPE, COUNT(ROOM_TYPE)
+		  FROM ROOM
+		 WHERE ROOM_NO IN (
+		        SELECT ROOM_NO
+		          FROM ROOM
+		        MINUS
+		        SELECT ROOM_NO
+		          FROM RESERVATION 
+		         WHERE (RESERVATION_START_DATE = TO_DATE(?))
+		            OR ( TO_DATE(?) BETWEEN RESERVATION_START_DATE AND RESERVATION_END_DATE)
+		            OR (( TO_DATE(?) &lt; RESERVATION_START_DATE) AND (RESERVATION_START_DATE &lt; TO_DATE(?)))
+		        GROUP BY ROOM_NO
+		)
+		AND ROOM_USEABLE = 1
+		GROUP BY ROOM_TYPE
+	</entry>
+	
+	<entry key="selectReservationRoomNo">
+		
+		SELECT ROOM_NO
+		  FROM ROOM
+		 WHERE ROOM_NO IN (
+		        SELECT ROOM_NO
+		          FROM ROOM
+		        MINUS
+		        SELECT ROOM_NO
+		          FROM RESERVATION 
+		         WHERE RESERVATION_START_DATE = TO_DATE(?)
+		            OR (TO_DATE(?) BETWEEN RESERVATION_START_DATE AND RESERVATION_END_DATE)
+		            OR ((TO_DATE(?) &lt; RESERVATION_START_DATE) AND (RESERVATION_START_DATE &lt; TO_DATE(?)))
+		        GROUP BY ROOM_NO
+		)
+		 AND ROOM_USEABLE = 1
+		 AND ROOM_TYPE = ?
+	</entry>
+	
+	<entry key="insertReservationRoom">
+		INSERT INTO RESERVATION (RESERVATION_NO
+		                       , MEMBER_NO
+		                       , ROOM_NO
+		                       , RESERVATION_START_DATE
+		                       , RESERVATION_END_DATE
+		                       , RESERVATION_STAY_DATE
+		                       , RESERVATION_MEMO
+		                       , RESERVATION_USER_NAME
+		                       , RESERVATION_USER_EMAIL
+		                       , RESERVATION_PHONE)                                      
+		                 VALUES (SEQ_RESERVATION.NEXTVAL
+		                        , ?
+		                        , ?
+		                        , TO_DATE(?)
+		                        , TO_DATE(?)
+		                        , ?
+		                        , ?
+		                        , ?
+		                        , ?
+		                        , ?)
+	</entry>
+	
+	<entry key="selectReservationList">
+		SELECT RESV.*, R.ROOM_TYPE, R.ROOM_FEE
+		  FROM RESERVATION RESV
+		  JOIN PAYMENT ON (RESERVATION_NO = PAYMENT_RESERVATION_NO)
+		  LEFT JOIN ROOM R ON (RESV.ROOM_NO = R.ROOM_NO)
+		 WHERE MEMBER_NO = ?
+		   AND PAYMENT_STATUS_CODE = 1	
+	</entry>
+	
+	
 </properties>
-
-
-
-
-

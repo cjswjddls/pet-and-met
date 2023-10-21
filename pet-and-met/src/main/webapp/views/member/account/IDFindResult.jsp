@@ -1,13 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<% String pagePath="./"; %>
+<% String pagePath="./";
+	   String resultId = (String)request.getAttribute("resultId");
+	   String failMsg = (String)request.getAttribute("failMsg");
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>회원가입</title>
+    <title>아이디찾기</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
     <!-- jQuery 라이브러리 연동 (온라인 방식) -->
@@ -52,6 +55,16 @@
             border-radius: 10px;
             width: 120px;
             height: 50px;
+            margin-bottom: 100px;
+        }
+        #btn-back{
+            background-color: lightgray;
+            color: white;
+            border: 0px;
+            border-radius: 10px;
+            width: 120px;
+            height: 50px;
+            margin-bottom: 100px;
         }
     </style>
 </head>
@@ -61,15 +74,24 @@
 
     <div id="head-line"></div>
     <div id="display-result-area">
-        <p>
-            회원님의 아이디는 <span>[userId]</span> 입니다
-        </p>
+        <% if(resultId != null) { %>
+        	<p>
+            회원님의 아이디는 <span><%= resultId %></span> 입니다
+        	</p>
+        <% } else { %>
+        	<p><%= failMsg %></p>
+        <% } %>
+        
+        
     </div>
 
     <!-- 로그인 화면으로 포워딩 -->
     <div align="center">
-        <button type="button" id="btn-login">
+        <button type="button" id="btn-login" onclick="location.href='<%= contextPath %>/login.mb'">
             로그인
+        </button>
+        <button type="button" id="btn-back" onclick="location.href='<%= contextPath %>/find.ac'">
+            뒤로
         </button>
     </div>
     

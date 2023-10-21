@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-    <% String pagePath = "./"; %>
+    <% 
+      String pagePath = "./";
+      String reservationNextPage = "list.resv";
+    %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +30,10 @@
     <style>
       .mainInputCoral { height: 50px; border-top: none; border-left: none; border-right: none; border-bottom: 3px solid coral; }
       .mainBackGroundGreen { background-color: rgb(121, 172, 120); width: 100%; }
-      .mainCalender { display: flex; justify-content: center; background-color: aliceblue; }
+
+      /* 지우기!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! .mainCalender !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+      /* .mainCalender { display: flex; justify-content: center; background-color: aliceblue; } */
+      
       .mainReservationDays, .mainReservationRoom { width: 100%; }
       .mainFooterAHover { color: white; }
       .mainFooterAHover:hover { color: rgb(227, 240, 111) }
@@ -88,71 +94,8 @@
 
     <main id="main">
       <br><br><br><br><br><br><br>
-      <section id="mainCalender" class="mainCalender container">
-        <div>
-          <h2 align="center">예약</h2><br>
-          <form action="<%= contextPath %>/list.resv" method="POST">
-            <table> 
-              <thead>
-                <tr>
-                  <td width="100">객실선택</td>
-                  <td width="280">날짜선택</td>
-                  <td width="80">일수</td>
-                  <td width="20"></td>
-                  <td width="80">객실</td>
-                  <td width="40"></td>
-                  <td rowspan="2"><input type="submit" value="예약" class="btn btn-outline-success"></td>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><select name="mainReservationType" id="mainReservationType" required>
-                    <option value="A">A타입</option>
-                    <option value="B">B타입</option>
-                  </select></td>
-                  <td><input type="input" class="mainReservationDatePicker" id="mainReservationDatePicker" required></td>
-                  <td><input type="text" id="mainReservationDays" class="mainReservationDays" readonly value="1일"></td>
-                  <td></td>
-                  <td><input type="text" id="mainReservationRoom" class="mainReservationRoom" readonly value="A타입"></td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table>
-          </form>
-        </div>
-      </section>
-
-      <script>
-        $(function() {
-          $(".mainReservationDatePicker").daterangepicker({
-            locale: {
-              "separator": " ~ ",
-              "format": 'YYYY-MM-DD',
-              showMonthAfterYear:true,
-              showOn:"both",
-              numberOfMonths:[1,2],
-              "daysOfWeek": ["일", "월", "화", "수", "목", "금", "토"],
-              "monthNames": ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
-              "applyLabel": "확인",
-              "cancelLabel": "취소",
-            },
-            minDate: new Date(),
-            showDropdowns: true,
-            cancelButtonClasses: "btn btn-outline-secondary",
-            applyButtonClasses:"btn btn-outline-success"
-          })
-          $(".mainReservationDatePicker").change(function() {
-            let startDate = $(this).val().split(" ~ ")[0];
-            let endDate = $(this).val().split(" ~ ")[1];
-            $(".mainReservationDays").val(((new Date(endDate) - new Date(startDate))/(1000*60*60*24) + 1) + "일");
-          })
-          $("#mainReservationType").change(function(){
-            let room = $(this).val() + '타입';
-            $(".mainReservationRoom").val(room);
-          })
-        })
-      </script>
-    
+      <%@ include file="views/reservation/reservationCalender.jsp" %>
+      <br><br>
       <section id="portfolio" class="portfolio">
         <div class="container" data-aos="fade-up">
           <div class="section-title">
@@ -163,20 +106,20 @@
             <div class="col-lg-12 d-flex justify-content-center">
               <ul id="portfolio-flters">
                 <li data-filter="*" class="filter-active">전체</li>
-                <li data-filter=".filter-app">공지사항</li>
-                <li data-filter=".filter-card">리뷰게시판</li>
+                <li data-filter=".filter-app">시설사진</li>
+                <li data-filter=".filter-card">이달의 강아지</li>
               </ul>
             </div>
           </div>
           <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
             <div class="col-lg-4 col-md-6 portfolio-item filter-app">
               <div class="portfolio-wrap">
-                <img src="resources/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
+                <img src="resources/img/main/facil/1.PNG" class="img-fluid" alt="">
                 <div class="portfolio-info">
                   <h4>App 1</h4>
                   <p>App</p>
                   <div class="portfolio-links">
-                    <a href="resources/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
+                    <a href="resources/img/main/facil/1.PNG" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
                     <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
                   </div>
                 </div>
@@ -184,12 +127,12 @@
             </div>
             <div class="col-lg-4 col-md-6 portfolio-item filter-app">
               <div class="portfolio-wrap">
-                <img src="resources/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
+                <img src="resources/img/main/facil/2.PNG" class="img-fluid" alt="">
                 <div class="portfolio-info">
                   <h4>App</h4>
                   <p>App</p>
                   <div class="portfolio-links">
-                    <a href="resources/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3"><i class="bx bx-plus"></i></a>
+                    <a href="resources/img/main/facil/2.PNG" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3"><i class="bx bx-plus"></i></a>
                     <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
                   </div>
                 </div>
@@ -197,12 +140,12 @@
             </div>
             <div class="col-lg-4 col-md-6 portfolio-item filter-app">
               <div class="portfolio-wrap">
-                <img src="resources/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
+                <img src="resources/img/main/facil/3.PNG" class="img-fluid" alt="">
                 <div class="portfolio-info">
                   <h4>App 2</h4>
                   <p>App</p>
                   <div class="portfolio-links">
-                    <a href="resources/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
+                    <a href="resources/img/main/facil/3.PNG" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
                     <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
                   </div>
                 </div>
@@ -236,12 +179,12 @@
             </div>
             <div class="col-lg-4 col-md-6 portfolio-item filter-app">
               <div class="portfolio-wrap">
-                <img src="resources/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
+                <img src="resources/img/main/facil/4.PNG" class="img-fluid" alt="">
                 <div class="portfolio-info">
                   <h4>App 3</h4>
                   <p>App</p>
                   <div class="portfolio-links">
-                    <a href="resources/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3"><i class="bx bx-plus"></i></a>
+                    <a href="resources/img/main/facil/4.PNG" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3"><i class="bx bx-plus"></i></a>
                     <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
                   </div>
                 </div>

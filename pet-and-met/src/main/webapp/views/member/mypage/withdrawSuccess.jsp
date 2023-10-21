@@ -82,11 +82,13 @@
             </p>
             <span>
                 그동안 이용해주셔서 감사합니다.
-            </span>
+    	    </span>
             <div align="center">
+            <form action="<%= contextPath %>" method="post">
                 <button type="submit" id="redirect">
                    메인화면으로
                 </button>
+            </form>
             </div>
 
         </div>

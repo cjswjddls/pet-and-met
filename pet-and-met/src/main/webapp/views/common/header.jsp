@@ -79,6 +79,23 @@
         ======================================================== -->
         <style>
             .mainBackGroundGreen { background-color: rgb(121, 172, 120); width: 100%; }
+            .modal{ transform: translate(-5%, 40%); }
+            .modal-header {background-color: rgb(230, 230, 230);}
+            .modal-body { height: 160px; }
+            .modal-content{ width: 700px;}
+            .modal-reservation {
+                width: 45%;
+                height: 75%;
+                display: inline-block;
+                margin: auto;
+                margin-left: 5px;
+                border: 1px solid lightgrey;
+                margin-top: 20px;
+            }
+            #modal-reservation1 { margin-left: 25px;}
+            .reservation-div1 { width: 30px; height: 30px; margin: auto; margin-top: 15px;}
+            .reservation-div2 { margin: auto; margin-top: 15px; text-align: center;}
+            .reservation-img {width: 100%; height: 100%;}
         </style>
     </head>
     <body>
@@ -112,18 +129,50 @@
             <div class="container d-flex justify-content-between align-items-center mainBackGroundGreen" style="height: 100%; width:100%">      
                 <div class="navbar">
                     <ul>
-                        <li><a class="active" href="<%= contextPath %>">예약</a></li>
+                        <li><a class="active" href="<%= contextPath %>" data-toggle="modal" data-target="#myModal">예약</a></li>
                         <li class="dropdown"><a href="<%= contextPath %>/doghouse"><span>소개</span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
                                 <li><a href="<%= contextPath %>/hotel">호텔 소개</a></li>
                                 <li><a href="<%= contextPath %>/doghouse">객실 소개</a></li>
-                                <li><a href="<%= contextPath %>/list.bo">공지사항</a></li>
+                                <li><a href="<%= contextPath %>/lists.bo?currentPage=1&keyword=&method=">공지사항</a></li>
                                 <li><a href="<%= contextPath %>/use">이용안내</a></li>
                                 <li><a href="<%= contextPath %>/map">위치안내</a></li>
                             </ul>
                         </li>
                     </ul>
                 </div>
+
+                <!-- 예약하기 모달창 -->
+				<div class="modal" id="myModal">
+				    <div class="modal-dialog">
+				        <div class="modal-content">
+			
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+				                <h4 class="modal-title">예약</h4>
+				                <button type="button" class="close" data-dismiss="modal">&times;</button>
+				            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <div class="modal-reservation" id="modal-reservation1" style=" cursor: pointer;" onclick="location.href='<%= contextPath %>/main.resv';">
+                                    <div class="reservation-div1">
+                                        <img class="reservation-img" src="<%= pagePath %>resources/img/room/bed_icon.png">
+                                    </div>
+                                    <div class="reservation-div2">객실 예약</div>
+                                </div>             
+                                <div class="modal-reservation" style=" cursor: pointer;" onclick="location.href='<%= contextPath %>/check.resv';">
+                                    <div class="reservation-div1">
+                                        <img class="reservation-img" src="<%= pagePath %>resources/img/room/note_icon.png">
+                                    </div>
+                                    <div class="reservation-div2">예약 내역 조회</div>
+                                </div>
+                            </div>
+
+				        </div>
+				    </div>
+				</div>
+
                 <div class="logo">
                     <h1 style="color: white;"><img src="<%= pagePath %>resources/img/main.png" width="80px" height="100px"><a href="<%= contextPath %>">Pet & Met</a></h1>
                 </div>
@@ -141,5 +190,12 @@
                 </div><!-- .navbar -->
             </div>
         </header><!-- End Header -->
+        <script>
+            let msg = "<%= alertMsg %>";
+            if (msg != "null") {
+                window.alert(msg);
+                <% session.removeAttribute("alertMsg"); %>
+            }
+		</script>
     </body>
 </html>

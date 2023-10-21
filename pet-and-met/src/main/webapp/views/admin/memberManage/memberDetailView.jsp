@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page import="com.kh.member.model.vo.Member" %>
+    <%
+        String contextPath = request.getContextPath();
+        Member m = (Member)request.getAttribute("m");
+    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -86,7 +91,6 @@
 
 </head>
 
-
 <body>
 
     <div class="head-area">
@@ -97,44 +101,56 @@
 
     <div class="detailView-body" align="center">
 
-        <form action="" method="get">
+        <form action="statusChange.mm" method="get">
             <table id="detailView-table">
                 <tr>
                     <th>회원번호</th>
-                    <td>11111</td>
+                    <td>
+                    	<%= m.getMemberNo() %>
+                    	<input type="hidden" name="memberNo" value="<%= m.getMemberNo() %>">
+                    </td>
                 </tr>
                 <tr>
                     <th>아이디</th>
-                    <td>user01</td>
+                    <td><%= m.getMemberId() %></td>
                 </tr>
                 <tr>
                     <th>회원명</th>
-                    <td>홍길동</td>
+                    <td><%= m.getMemberName() %></td>
                 </tr>
                 <tr>
                     <th>휴대폰번호</th>
-                    <td>010-9090-8888</td>
+                    <td><%= m.getMemberPhone() %></td>
                 </tr>
                 <tr>
                     <th>주소</th>
                     <td>
-                        서웉특별시 영등포구 양평동3가
+                        <%= m.getMemberAddress() %>
                     </td>
                 </tr>
                 <tr>
                     <th>이메일</th>
-                    <td>hong97@naver.com</td>
+                    <td><%= m.getMemberEmail() %></td>
                 </tr>
                 <tr>
                     <th>가입일</th>
-                    <td>2023-10-12</td>
+                    <td><%= m.getMemberJoin() %></td>
                 </tr>
                 <tr>
                     <th>회원상태</th>
                     <td>
-                        <select id="selectStatus">
-                            <option selected>이용중</option>
-                            <option>이용중지</option>
+                    	<% if(m.getMemberStatus() == 1) { %>
+                    	<span style="color:green;">이용중</span>&nbsp;&nbsp;&nbsp;
+                    	<% } else { %>
+                    	<span style="color:red;">이용중지</span>&nbsp;&nbsp;&nbsp;
+                    	<% } %>
+                        <select id="selectStatus" name="status">
+                            <option value="1">
+                            이용중
+                            </option>
+                            <option value="0">
+                            이용중지
+                            </option>
                         </select>
                         <button type="submit" id="btn-updateStatus">
                             변경하기
@@ -143,17 +159,32 @@
                 </tr>
                 <tr>
                     <th>탈퇴일자</th>
-                    <td>-</td>
+                    <td>
+                    <% if(m.getMemberLeave() == null) { %>
+                    	-
+                    <% } else { %>
+                    	<%= m.getMemberLeave() %>
+                    <% } %>
+                    </td>
+                </tr>
+                <tr>
+                    <th>탈퇴사유</th>
+                    <td>
+                    <% if(m.getMemberLeaveReason() == null) { %>
+                    	-
+                    <% } else { %>
+                    	<%= m.getMemberLeaveReason() %>
+                    <% } %></td>
                 </tr>
             </table>
             
-            <button type="button" id="btn-goList">
+            <button type="button" id="btn-goList" onclick="location.href='<%= contextPath %>/selectBy.mm?currentPage=1&selected=&search='">
                 목록으로
             </button>
 
         </form>
-
     </div>
+
 
 </body>
 </html>

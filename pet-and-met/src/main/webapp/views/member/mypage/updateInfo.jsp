@@ -1,16 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page import="com.kh.member.model.vo.Member" %>
     
-<% String pagePath = "./"; %>
+<%
+	String pagePath = "./";
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>마이페이지</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
     <!-- jQuery 라이브러리 연동 (온라인 방식) -->
@@ -34,6 +34,7 @@
             height: 600px;
             box-sizing: border-box;
             margin: auto;
+            margin-bottom:250px;
         }
        .mypage-head{
             border-bottom: 3px solid rgb(121, 172, 120);
@@ -72,23 +73,24 @@
         #profile-update-table th{
             text-align: center;
             padding: 20px;
-            
+            width:120px;     
         }
 
-        /* 입력칸 사이즈 */
-        .input{ width: 200px; }
-        .email-input{ width: 150px; }
-        .address-input{ width: 350px; }
+
+        /* 입력칸 사이즈 */	
+        .input{ width: 400px; }
+        .email-input{ width: 400px; }
+        .address-input{ width: 400px; }
         #profile-img{
-            margin-left: 30px;
+            margin-left: 50px;
             width: 200px;
             height: 200px;
         }
 
         #introduce{ 
-            width: 300px;
-            height: 80px;
-            margin-left: 30px;
+            width: 400px;
+            height: 80px;      
+            margin-bottom : 10px;
         }
 
         #btn-action button{ /* 변경, 취소 버튼 */
@@ -109,11 +111,14 @@
             font-weight: bold;
         }
         #btn-imgUpload{
-            float: right;
-            margin-top: 175px;
+        	margin-left:50px;
+        	margin-top : 8px;
             border: 0px;
             font-size: 14px;
-            margin-right: 20px;
+        }
+        #extext{
+        margin-left:50px;
+        color:red;
         }
 
 
@@ -123,55 +128,69 @@
 <body>
 
 	<%@ include file="../../common/header.jsp" %>
+	
+	<div style="display:flex">
+	<%@ include file="../../common/sidebarMember.jsp" %>
+	</div>
+	
     <div class="mypage-area">
         <div class="mypage-head">
             <h4>프로필 수정</h4>
         </div>
-
         <div class="mypage-body">
             <br><br>
             <p>기본 정보</p>
-            <form>
+            <form action="updateExecute.mp" method="post" enctype="multipart/form-data">
             <table id="profile-update-table">
                 <tr>
                     <th>아이디</th>
                     <td>
-                        <input class="input" type="text" readonly>
+                        <input class="input form-control" type="text" readonly value="<%= loginMember.getMemberId()%>">
                     </td>
-                    <td rowspan="4">
-                        <img src="" id="profile-img">
-                        <button type="button" id="btn-imgUpload">이미지 첨부</button>
+                    <td rowspan="5">
+                    <img id="profile-img" src="resources/img/profile/<%= loginMember.getMemberNo() %>.png">
+                    <div style="display:flex"  align="right">	
+                        <input type="file" name="file" id="btn-imgUpload">
+                    </div>
+                    <span id="extext">파일은 .png 로 업로드해주세요.</span>
                     </td>
                 </tr>
                 <tr>
                     <th>성명</th>
                     <td>
-                        <input class="input" type="text" readonly>
+                        <input class="input form-control" type="text" readonly value="<%= loginMember.getMemberName()%>">
                     </td>
                 </tr>
                 <tr>    
                     <th>휴대전화</th>
                     <td>
-                        <input class="input" type="text" id="">
+                        <input class="input form-control" type="text" name="memberPhone" value="<%= loginMember.getMemberPhone()%>">
                     </td>
                 </tr>
                 <tr>
                     <th>이메일</th>
                     <td>
-                        <input class="email-input" type="text">
-                        <span>@</span>
-                        <input class="email-input" type="text">
+                    <div style="display:flex;">
+                        <input class="email-input form-control form-control" name="memberEmail" type="email" value="<%= loginMember.getMemberEmail()%>">
+                    </div>
                     </td>
                 </tr>
                 <tr>
                     <th>주소</th>
                     <td>
-                        <input class="address-input" type="text">
+                        <input class="address-input form-control" type="text" name="memberAddress" value="<%= loginMember.getMemberAddress()%>">
                     </td>
-                    <td>
-                        <textarea id="introduce" style="resize: none;">
-
-                        </textarea>
+                <tr>
+                	<th>상세주소</th>
+                	<td>
+                        <input class="address-input form-control" type="text" name="memberAddressDetail" value="<%= loginMember.getMemberAddressDetail()%>">
+                    </td>
+                	
+                </tr>
+                <tr>
+                <th>회원 소개</th>
+                    <td colspan="2">
+                        <textarea id="introduce" name="memberDescription" class="form-control" style="resize: none;"><% if(loginMember.getMemberDescription() != null) { %><%= loginMember.getMemberDescription() %><% } %></textarea>
                     </td>
                 </tr>
             </table>
@@ -183,6 +202,18 @@
         </form>
         </div>
     </div>
+    
+    <script>
+    $(function(){
+    	
+		$("#profile-img").on("error", function() {
+			
+	        $(this).attr("src", "resources/img/profile/Default-Profile-Picture.png");
+	        
+	    });
+		
+	})
+	</script>
     
     <%@ include file="../../common/footer.jsp" %>
 </body>

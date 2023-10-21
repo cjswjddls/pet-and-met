@@ -6,7 +6,7 @@ public class Review {
 	private int reviewNo;
 	private String reviewName;
 	private String reviewContent;
-	private int reviewAuthor;
+	private String reviewAuthor;
 	private Date reviewInsert;
 	private Date reviewUpdate;
 	private Date reviewDelete;
@@ -15,7 +15,7 @@ public class Review {
 	
 	public Review() {}
 
-	public Review(int reviewNo, String reviewName, String reviewContent, int reviewAuthor, Date reviewInsert,
+	public Review(int reviewNo, String reviewName, String reviewContent, String reviewAuthor, Date reviewInsert,
 			Date reviewUpdate, Date reviewDelete, int reviewView, String reviewIp) {
 		this.reviewNo = reviewNo;
 		this.reviewName = reviewName;
@@ -26,6 +26,12 @@ public class Review {
 		this.reviewDelete = reviewDelete;
 		this.reviewView = reviewView;
 		this.reviewIp = reviewIp;
+	}
+
+	public Review(int reviewNo, String reviewName, String reviewAuthor) {
+		this.reviewNo = reviewNo;
+		this.reviewName = reviewName;
+		this.reviewAuthor = reviewAuthor;
 	}
 
 	public int getReviewNo() {
@@ -52,11 +58,11 @@ public class Review {
 		this.reviewContent = reviewContent;
 	}
 
-	public int getReviewAuthor() {
+	public String getReviewAuthor() {
 		return reviewAuthor;
 	}
 
-	public void setReviewAuthor(int reviewAuthor) {
+	public void setReviewAuthor(String reviewAuthor) {
 		this.reviewAuthor = reviewAuthor;
 	}
 

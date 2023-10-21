@@ -1,6 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<% String pagePath = "./"; %>
+<%@ page import="com.kh.reservation.model.vo.Room, com.kh.reservation.model.vo.Reservation" %>
+<%
+	String pagePath = "./";
+	String reservationNextPage = "list.resv";
+	
+	Reservation resvDay = (Reservation)request.getAttribute("resvDay");
+	
+	String resvType = (String)request.getAttribute("resvType");
+	
+	Room roomTypeA = (Room)request.getAttribute("roomTypeA");
+	Room roomTypeB = (Room)request.getAttribute("roomTypeB");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,13 +20,13 @@
 <style>
 
 	.outer{
-		width: 1000px;
+		width: 1400px;
 		margin: auto;
 		margin-top: 50px;
-		border: 1px solid red;
+		/* border: 1px solid red; */
 	}
 
-	div { border: 1px solid black;}
+	/* div { border: 1px solid black;} */
 
 	/* index outer */
 	.reservation-index {
@@ -89,14 +100,14 @@
 		margin-top: 0px;
 	}
 
-	form {width: 100%; height: 40%; margin-top: 50px;}
+	.form-resv {width: 100%; height: 40%; margin-top: 50px; margin-left: 20px;}
 
 	/* type div */
 	.type {width: 100%; height: 100%; box-sizing: border-box;}
-	.type > div {float: left; box-sizing: border-box;}
+	.type > div {float: left; box-sizing: border-box; border: 1px solid lightgrey;}
 	.type-img { width: 45%; height: 100%; }
 	.type-content { width: 35%; height: 100%;}
-	.type-submit { width: 20%; height: 100%;}
+	.type-submit { width: 18%; height: 100%;}
 	
 	/* 객실 img */
 	.roomImg { width: 100%; height: 80%; margin-top: 35px;}
@@ -115,6 +126,7 @@
 		text-align: center;
 		line-height: 80px;
 		font-size: 25px;
+		border: 1px solid black;
 	}
 
 
@@ -129,10 +141,40 @@
 		left: 50px;
 	}
 
+	.type-data-div {
+		width: 80%;
+		height: 50%;
+		margin: auto;
+		background-color: beige;
+	}
+
+	.type-data {
+		width: 100%;
+		height: 33.4%;
+		margin: auto;
+		padding-top: 15px;
+		text-align: center;
+		font-size: 20px;
+		border: solid 1px black;
+	}
+	
+	.null-content {
+		width : 700px;
+		height : 200px;
+		margin: auto;
+		margin-top: 150px;
+		padding-top: 80px;
+		text-align: center;
+		font-size: 25px;
+		font-weight: 700;
+		color: rgb(51, 51, 51);
+	}
+
 	
 </style>
 </head>
 <body>
+
 	<%@ include file="../common/header.jsp" %>
 
 	<div class="outer" >
@@ -149,12 +191,16 @@
 		
 		<!-- contnet 구분선 -->
 		<div class="dividing-line"></div>
+		<br>
+		<%@ include file="../reservation/reservationCalender.jsp" %>
 		
 		<!-- content -->
 		<div class="reservation-content">	
 			
+		<%if(roomTypeA != null) { %>
+			
 			<!-- A type -->
-			<form action="<%= pagePath %>request.resv" method="get">
+			<form action="<%= pagePath %>request.resv" method="get" class="form-resv">
 				<div class="type">
 					
 					<!-- 객실 img typeA -->
@@ -166,22 +212,42 @@
 	
 					<!-- A type content -->
 					<div class="type-content">
-						<div class="roomType" id="typeA">A TYPE</div>
-						<input type="hidden" id="hiddenTypeA" name="hiddenTypeA" value="">
+						<div class="roomType" id="typeA"><%= roomTypeA.getRoomType() %> TYPE</div>
+						<input type="hidden" id="hiddenTypeA" name="hiddenTypeA" value="A">
+						<br><br>
+						<div class="type-data-div">
+							<div class="type-data">면적 : <%= roomTypeA.getRoomSize() %></div>
+							
+							<div class="type-data">요금 : <%= roomTypeA.getRoomFee() %></div>
+							<div class="type-data">남은 객실 수 : <%= resvType.substring(1,2) %></div>
+						</div>
 					</div>
 	
 					<!-- select-button -->
 					<div class="type-submit">
-						<button class="type-select-button"  onclick="typeA();" type="submit">예약하기</button>
+						<button class="type-select-button" type="submit">예약하기</button>
 					</div>
 				</div>
+				
+				<!-- A type hidden data -->
+				<input type="hidden" id="roomType" name="roomType" value="<%= roomTypeA.getRoomType() %>">
+				<input type="hidden" id="roomSize" name="roomSize" value="<%= roomTypeA.getRoomSize() %>">
+				<input type="hidden" id="roomFee" name="roomFee" value="<%= roomTypeA.getRoomFee() %>">
+				
+				<!-- Calender hidden -->
+				<input type="hidden" id="startDate" name="startDate" value="<%= resvDay.getReservationStartDate() %>">
+				<input type="hidden" id="endDate"   name="endDate"   value="<%= resvDay.getReservationEndDate() %>">
+				<input type="hidden" id="stayDate"  name="stayDate"  value="<%= resvDay.getReservationStayDate() %>">
 			</form>
-
+			
+			<% } %>
+			
+			<% if(roomTypeB != null) { %>
 			<!-- contnet 구분선 -->
 			<div class="dividing-line"></div>
 			
 			<!-- B type -->
-			<form action="<%= pagePath %>request.resv" method="get">
+			<form action="<%= pagePath %>request.resv" method="get" class="form-resv">
 				<div class="type">
 					
 					<!-- 객실 img typeB -->
@@ -193,30 +259,80 @@
 					
 					<!-- B type content -->
 					<div class="type-content">
-						<div class="roomType" id="typeB">B TYPE</div>
+						<div class="roomType" id="typeB"><%= roomTypeB.getRoomType() %> TYPE</div>
 						<input type="hidden" id="hiddenTypeB" name="hiddenTypeB" value="B">
+						<br><br>
+						<div class="type-data-div">
+							<div class="type-data">면적 : <%= roomTypeB.getRoomSize() %></div>
+							<div class="type-data">요금 : <%= roomTypeB.getRoomFee() %></div>
+							<div class="type-data">남은 객실 수 : <%= resvType.substring(3,4) %></div>
+						</div>
 					</div>
 	
 					<!-- select-button -->
 					<div class="type-submit">
-						<button class="type-select-button" onclick="typeB();" type="submit">예약하기</button>
+						<button class="type-select-button" type="submit">예약하기</button>
 					</div>
 				</div>
+				
+				<!-- B type hidden data -->
+				<input type="hidden" id="roomType" name="roomType" value="<%= roomTypeB.getRoomType() %>">
+				<input type="hidden" id="roomSize" name="roomSize" value="<%= roomTypeB.getRoomSize() %>">
+				<input type="hidden" id="roomFee" name="roomFee" value="<%= roomTypeB.getRoomFee() %>">
+				
+				<!-- Calender hidden -->
+				<input type="hidden" id="startDate" name="startDate" value="<%= resvDay.getReservationStartDate() %>">
+				<input type="hidden" id="endDate"   name="endDate"   value="<%= resvDay.getReservationEndDate() %>">
+				<input type="hidden" id="stayDate"  name="stayDate"  value="<%= resvDay.getReservationStayDate() %>">
 			</form>
+				
+			<% } %>
+			
+			<% if(roomTypeA == null && roomTypeB == null) { %>
+				
+				<div class="null-content">예약 가능한 객실이 없습니다.</div>
+
+				<!-- Calender hidden -->
+				<input type="hidden" id="startDate" name="startDate" value="<%= resvDay.getReservationStartDate() %>">
+				<input type="hidden" id="endDate"   name="endDate"   value="<%= resvDay.getReservationEndDate() %>">
+				<input type="hidden" id="stayDate"  name="stayDate"  value="<%= resvDay.getReservationStayDate() %>">
+				
+				<script>
+					
+					$(function() {
+						
+						$(".reservation-content").css("height", "500px");
+							
+				});
+
+				</script>
+			
+			<% } %>
+			<!-- Calender hidden -->
+			<input type="hidden" id="sDate" value="<%= resvDay.getReservationStartDate() %>">
+			<input type="hidden" id="eDate" value="<%= resvDay.getReservationEndDate() %>">
+			<input type="hidden" id="tDate" value="<%= resvDay.getReservationStayDate() %>">
 
 			<script>
-				// type 값 보내기
-				function typeA() {
-
-					$("#hiddenTypeA").val("A");
+				
+				// 데이트피커에 선택한 값 넣어주기
+				$(function() {
 					
-				}
-
-				function typeB() {
-
-					$("#hiddenTypeB").val("B");
-
-				}
+					let startDate = $("#sDate").val();
+		        	let endDate = $("#eDate").val();
+		        	let stayDate = $("#tDate").val();
+		        	
+		        	let sDate = startDate.substring(0, 4) + "-" + startDate.substring(4, 6) + "-" + startDate.substring(6, 8);
+					let eDate = endDate.substring(0, 4) + "-" + endDate.substring(4, 6) + "-" + endDate.substring(6, 8);
+		        	
+		        	// console.log(startDate);
+		        	// console.log(endDate);
+		        	   	
+		        	$("#mainReservationStartDate").val(sDate);
+		        	$("#mainReservationEndDate").val(eDate);
+		        	$(".mainReservationDays").val(stayDate + "박");
+							
+				});
 				
 			</script>
 
@@ -224,5 +340,6 @@
 	</div>
 
 	<%@ include file="../common/footer.jsp" %>
+	
 </body>
 </html>

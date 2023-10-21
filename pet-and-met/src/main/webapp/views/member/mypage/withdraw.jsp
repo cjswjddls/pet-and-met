@@ -7,10 +7,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>마이페이지</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>마이페이지 - 회원탈퇴</title>
+
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
     <!-- jQuery 라이브러리 연동 (온라인 방식) -->
@@ -96,6 +94,10 @@
 <body>
 
 	<%@ include file="../../common/header.jsp" %>
+	
+	<div style="display:flex">
+	<%@ include file="../../common/sidebarMember.jsp" %>
+	</div>
     
     <div class="mypage-area">
         <div class="mypage-head">
@@ -103,7 +105,7 @@
         </div>
 
         <div class="mypage-body" align="center">
-            <form action="" method="post">
+            <form action="withdraw.mb" method="post">
                 
                 <div id="info">
                     <p>
@@ -117,8 +119,8 @@
                     <span>
                         탈퇴 사유(선택)
                     </span>
-                    <select id="select-reason" class="form-control form-control">
-                        <option>원하는 서비스가 아님</option>
+                    <select id="select-reason" name="memberLeaveReason" class="form-control form-control">
+                        <option selected>원하는 서비스가 아님</option>
                         <option>타사 사이트 이용</option>
                         <option>회원 혜택 부족</option>
                         <option>기타</option>
@@ -133,8 +135,9 @@
             </form>
         </div>
     </div>
-    
+    <br>
     <%@ include file="../../common/footer.jsp" %>
+    
     
 </body>
 </html>

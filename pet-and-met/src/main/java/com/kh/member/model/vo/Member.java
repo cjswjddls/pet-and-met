@@ -49,7 +49,6 @@ public class Member {
 	public Member(int memberNo, String memberId, String memberPwd, String memberName, Date memberBirth,
 			String memberPhone, String memberEmail, String memberAddress, String memberAddressDetail,
 			String memberDescription, Date memberJoin, Date memberLeave, String memberLeaveReason, int memberStatus) {
-		super();
 		this.memberNo = memberNo;
 		this.memberId = memberId;
 		this.memberPwd = memberPwd;
@@ -69,7 +68,6 @@ public class Member {
 	// 회원가입 시 생성자
 	public Member(String memberId, String memberPwd, String memberName, Date memberBirth, String memberPhone,
 			String memberEmail, String memberAddress, String memberAddressDetail) {
-		super();
 		this.memberId = memberId;
 		this.memberPwd = memberPwd;
 		this.memberName = memberName;
@@ -78,6 +76,23 @@ public class Member {
 		this.memberEmail = memberEmail;
 		this.memberAddress = memberAddress;
 		this.memberAddressDetail = memberAddressDetail;
+	}
+
+	// 비번변경용 생성자
+	public Member(int memberNo, String memberPwd) {
+		this.memberNo = memberNo;
+		this.memberPwd = memberPwd;
+	}
+	
+	// 회원리스트 조회용 생성자
+	public Member(int memberNo, String memberId, String memberName, String memberPhone, String memberEmail,
+			int memberStatus) {
+		this.memberNo = memberNo;
+		this.memberId = memberId;
+		this.memberName = memberName;
+		this.memberPhone = memberPhone;
+		this.memberEmail = memberEmail;
+		this.memberStatus = memberStatus;
 	}
 
 	public int getMemberNo() {

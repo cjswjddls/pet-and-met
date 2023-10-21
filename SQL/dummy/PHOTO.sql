@@ -1,0 +1,17 @@
+--INSERT INTO PHOTO (PHOTO_NO
+--                 , PHOTO_TYPE
+--                 , PHOTO_ORIGINAL
+--                 , PHOTO_NAME)                                      
+--            VALUES(SEQ_PHOTO.NEXTVAL
+--                 , 'A'
+--                 , 'portfolio-1.jpg'
+--                 , 'portfolio-1.jpg');
+--
+--INSERT INTO PHOTO (PHOTO_NO
+--                 , PHOTO_TYPE
+--                 , PHOTO_ORIGINAL
+--                 , PHOTO_NAME)                                      
+--            VALUES(SEQ_PHOTO.NEXTVAL
+--                 , 'B'
+--                 , 'portfolio-2.jpg'
+--                 , 'portfolio-2.jpg');

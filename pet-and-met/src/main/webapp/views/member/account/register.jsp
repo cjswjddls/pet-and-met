@@ -324,7 +324,6 @@
 
         <div align="center">
             <p id="requireDuplicateText">아이디 중복체크를 진행해주세요</p>
-            <button type="reset" id="reset-form">초기화</button>
             <button type="submit" id="submit-form"  disabled onclick="return validate();">확인</button>
         </div>
 
@@ -348,8 +347,7 @@
     			if(result == "N"){		// 사용불가
     				pText.text("이미 사용중인 아이디입니다.").css("color", "red", "");
     				$memberId.focus();
-    			} else {		// 사용가능
-    				
+    			} else {		// 사용가능 				
     				if(!regExp.test($memberId.val())){ // 아이디 조건이 맞지 않는다면
     					alert("유효한 아이디값이 아닙니다. 영문 소문자, 숫자 포함 5~15자");
     					$memberId.focus();
@@ -382,7 +380,7 @@
     	}
     </script>
     
-    <script> // 비밀번호 유효성 검사
+    <script> // 유효성 검사
     		function validate () {
         		
         		let memberName = $("#userName").val();

@@ -20,11 +20,11 @@
 			<ul>
 				<h3><a href="<%= contextPath %>/main.mp">내정보</a></h3>
 				<hr>
-				<li><a href="">프로필 수정</a></li>
-				<li><a href="">비밀번호 변경</a></li>
+				<li><a href="<%= contextPath %>/updateProfile.mp">프로필 수정</a></li>
+				<li><a href="<%= contextPath %>/updatePwd.mp">비밀번호 변경</a></li>
 			</ul>
 		    <ul><h3><a href="">예약확인/취소</a></h3><hr></ul>
-		    <ul><h3><a href="">회원 탈퇴</a><hr></h3></ul>
+		    <ul><h3><a href="<%= contextPath %>/withdraw.mp">회원 탈퇴</a><hr></h3></ul>
 		</nav>
 	</body>
 </html>

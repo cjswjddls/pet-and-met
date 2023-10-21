@@ -92,4 +92,67 @@ public class PaymentDao {
 		
 		return result;
 	}
+	public int cancelPayment(Connection conn, String tid, String aid) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String sql = prop.getProperty("cancelPayment");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, tid);
+			
+			result = pstmt.executeUpdate();
+		} 
+		catch (SQLException e) { e.printStackTrace(); }
+		
+		JDBCTemplate.close(pstmt);
+		
+		return result;
+	}
+	public String cancelPaymentPrepare(Connection conn, int rno) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String result = "";
+		
+		String sql = prop.getProperty("cancelPaymentPrepare");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, rno);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) { result += rset.getString("PAYMENT_TID"); }
+		} 
+		catch (SQLException e) { e.printStackTrace(); }
+		
+		return result;
+	}
+	public int getCurrentRNO(Connection conn, int mno) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int result = 0;
+		
+		String sql = prop.getProperty("getCurrentRNO");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, mno);
+			
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				result = rset.getInt("RESERVATION_NO");
+			}
+		} 
+		catch (SQLException e) { e.printStackTrace(); }
+		
+		JDBCTemplate.close(rset);
+		JDBCTemplate.close(pstmt);
+		
+		return result;
+	}
 }

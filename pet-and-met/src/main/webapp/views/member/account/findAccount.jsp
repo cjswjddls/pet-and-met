@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>아이디/비밀번호 찾기</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
     <!-- jQuery 라이브러리 연동 (온라인 방식) -->
@@ -139,7 +139,7 @@
 
     <!-- 아이디 찾기 영역 -->
     <div id="find-id-area">
-        <form action="" method="post">
+        <form action="findID.ac" method="post">
             <table class="find-form-table">
                 <tr>
                     <th>성명</th>
@@ -165,14 +165,14 @@
                     <th>이메일</th>
                     <td>
                     <div style="display:flex">
-                        <input type="text" name="email" class="email form-control form-control" required>
-                        <span>@</span>
+                        <input type="text" name="email" required class="email form-control form-control">@
+                        <input type="text" name="domain" class="domainText form-control form-control" required>
                         <select class="domain form-control form-control">
                             <option selected>직접입력</option>
                             <option>naver.com</option>
                             <option>daum.net</option>
                             <option>gmail.com</option>
-                         </select>
+                        </select>
                     </div>
                     </td>
                 </tr>
@@ -186,7 +186,7 @@
 
     <!-- 비밀번호 찾기 영역 -->
     <div id="find-pwd-area">
-        <form action="" method="post">
+        <form action="findPwd.ac" method="post">
             <table class="find-form-table">
                 <tr>
                     <th>아이디</th>
@@ -204,13 +204,13 @@
                     <th>휴대폰번호</th>
                     <td>
                     <div style="display:flex">
-                        <select name="telecom" class="telecom phone form-control form-control">
+                         <select id="telecom" name="telecom"  class="phone form-control form-control">
                             <option selected>SKT</option>
                             <option>KT</option>
                             <option>LG U+</option>
                         </select>
-                        <input type="text" name="phone1" class="phone form-control form-control" required>
-                        <input type="text" name="phone2" class="phone form-control form-control" required>
+                        <input type="text" name="memberPhone1" class="phone form-control form-control" required>
+                        <input type="text" name="memberPhone2" class="phone form-control form-control" required>
                     </div>
                     </td>
                 </tr>
@@ -218,74 +218,32 @@
                     <th>이메일</th>
                     <td>
                     <div style="display:flex">
-                        <input type="text" name="email" class="email form-control form-control" required>
-                        <span>@</span>
-                        <select class="domain form-control form-control">
+                        <input type="text" name="email" required class="email form-control form-control">@
+                        <input type="text" id="domainText" name="domain" class="domainText form-control form-control" required>
+                        <select id="domain" class="domain form-control form-control">
                             <option selected>직접입력</option>
                             <option>naver.com</option>
                             <option>daum.net</option>
                             <option>gmail.com</option>
-                         </select>
+                        </select>
                     </div>
                     </td>
                 </tr>
             </table>
 
-           <!-- 확인버튼을 누르면 Modal 열림 -->
+           <!-- 확인버튼을 누르면 비밀번호 찾기 열림 -->
            <div align="center">
-           <button type="button" class="find-submit-btn" data-toggle="modal" data-target="#myModal">
+           <button type="submit"  class="find-submit-btn">
             확인
             </button>
            </div>
-
-            <!-- The Modal -->
-            <div class="modal" id="myModal">
-                <div class="modal-dialog">
-                <div class="modal-content">
-            
-                    <!-- Modal Header -->
-                    <div class="modal-header">
-                    <h4 class="modal-title">
-                        새 비밀번호 변경
-                    </h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-            
-                    <!-- Modal body -->
-                    <div class="modal-body">
-                        <table class="change-pwd-table" align="center">
-                            <tr>
-                                <th>새 비밀번호</th>
-                                <td>
-                                    <input type="password" name="newUserPwd" required class="userPwd form-control form-control"
-                                    minlength="8" maxlength="20" required>
-                                    <p>영문, 숫자, 특수기호 포함 8-20자</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>비밀번호 확인</th>
-                                <td>
-                                    <input type="password" required class="checkPwd form-control form-control"
-                                    minlength="8" maxlength="20" required>
-                                    <p>영문, 숫자, 특수기호 포함 8-20자</p>
-                                </td>
-                            </tr>
-                            </table>
-
-                        <div align="center">
-                            <button type="submit" class="btn-changePwd find-submit-btn" data-dismiss="modal">
-                            변경하기
-                            </button>
-                        </div>
-
-                    </div>            
-                </div>
-                </div>
-            </div>
         </form>
+        
     </div>
     
     <script>
+    	
+    	// 아이디 비밀번호 찾기 페이지 보이기/숨기기 핸들링
         $(function() {        
             $("#find-id").click(function () {
                 $("#find-id-area").show();
@@ -296,9 +254,48 @@
                 $("#find-pwd-area").show();
                 $("#find-id-area").hide();
             });
-
+            
         });
     </script>
+    
+    
+    <script>
+ 	// 아이디 찾기용 이메일 핸들링
+    $(function() {
+		$(".domain").change(function() {
+			
+			let selectDomain = $(this).val();
+			
+			if(selectDomain == "직접입력"){
+				$(".domainText").val("");
+			} else {
+				$(".domainText").val($(".domain").val());
+			}
+			
+		});
+    });
+    </script>
+    
+     <script>
+     // 비밀번호 찾기용 이메일 핸들링
+    $(function() {
+		$("#domain").change(function() {
+			
+			let selectDomain = $(this).val();
+			
+			if(selectDomain == "직접입력"){
+				$("#domainText").val("");
+			} else {
+				$("#domainText").val($("#domain").val());
+			}
+			
+		});
+    });
+    
+    </script>
+    
+    
+
     
     <%@ include file="../../common/footer.jsp" %>
     

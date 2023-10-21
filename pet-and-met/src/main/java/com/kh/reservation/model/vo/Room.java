@@ -5,13 +5,13 @@ public class Room {
 	private int roomNo;//	ROOM_NO	NUMBER
 	private String roomType;//	ROOM_TYPE	CHAR(2 BYTE)
 	private int roomFee;//	ROOM_FEE	NUMBER
-	private String roomUseable;//	ROOM_USEABLE	NUMBER
+	private int roomUseable;//	ROOM_USEABLE	NUMBER
 	private int roomSize;//	ROOM_SIZE	NUMBER
 	
 	// 생성자부
 	public Room() {}
 
-	public Room(int roomNo, String roomType, int roomFee, String roomUseable, int roomSize) {
+	public Room(int roomNo, String roomType, int roomFee, int roomUseable, int roomSize) {
 		this.roomNo = roomNo;
 		this.roomType = roomType;
 		this.roomFee = roomFee;
@@ -51,11 +51,11 @@ public class Room {
 		this.roomFee = roomFee;
 	}
 
-	public String getRoomUseable() {
+	public int getRoomUseable() {
 		return roomUseable;
 	}
 
-	public void setRoomUseable(String roomUseable) {
+	public void setRoomUseable(int roomUseable) {
 		this.roomUseable = roomUseable;
 	}
 

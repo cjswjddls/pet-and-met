@@ -114,7 +114,7 @@
 
                   <div class="form-group-etc">
                     <a href="<%= contextPath %>/send.rg">회원가입</a> 
-                    <a href="<%= contextPath %>/find.rg">ID / PW 찾기</a>
+                    <a href="<%= contextPath %>/find.ac">ID / PW 찾기</a>
                   </div>
         </form>
     </div>

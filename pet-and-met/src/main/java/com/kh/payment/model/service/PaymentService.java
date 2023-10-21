@@ -38,4 +38,34 @@ public class PaymentService {
 		
 		return result;
 	}
+
+	public int cancelPayment(String tid, String aid) {
+		Connection conn = JDBCTemplate.getConnection();
+		int result = new PaymentDao().cancelPayment(conn, tid, aid);
+		
+		if(result > 0) { JDBCTemplate.commit(conn); }
+		else { JDBCTemplate.rollback(conn); }
+		
+		JDBCTemplate.close(conn);
+		
+		return result;
+	}
+	
+	public String cancelPaymentPrepare(int rno) {
+		Connection conn = JDBCTemplate.getConnection();
+		String tid = new PaymentDao().cancelPaymentPrepare(conn, rno);
+		
+		JDBCTemplate.close(conn);
+		
+		return tid;
+	}
+
+	public int getCurrentRNO(int mno) {
+		Connection conn = JDBCTemplate.getConnection();
+		int result = new PaymentDao().getCurrentRNO(conn, mno);
+		
+		JDBCTemplate.close(conn);
+		
+		return result;
+	}
 }

@@ -7,10 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>마이페이지</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>비밀번호 변경</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
     <!-- jQuery 라이브러리 연동 (온라인 방식) -->
@@ -34,6 +31,7 @@
             height: 600px;
             box-sizing: border-box;
             margin: auto;
+            margin-bottom:150px;
         }
        .mypage-head{
             border-bottom: 3px solid rgb(121, 172, 120);
@@ -95,12 +93,12 @@
         </div>
 
         <div class="mypage-body">
-            <form action="" method="post">
+            <form action="updatePwdExecute.mp" method="post">
                 <table id="change-pwd-table" align="center">
                     <tr>
                         <th>새 비밀번호</th>
                         <td>
-                            <input type="password" name="userPwd" required class="userPwd form-control form-control"
+                            <input type="password" name="newMemberPwd" id="newMemberPwd" required class="userPwd form-control form-control"
                             minlength="8" maxlength="20">
                             <p>영문, 숫자, 특수기호 포함 8-20자</p>
                         </td>
@@ -108,22 +106,53 @@
                     <tr>
                         <th>비밀번호 확인</th>
                         <td>
-                            <input type="password" required class="userPwd form-control form-control"
+                            <input type="password" required id="pwdCheck" class="userPwd form-control form-control"
                             minlength="8" maxlength="20">
                             <p>영문, 숫자, 특수기호 포함 8-20자</p>
                         </td>
                     </tr>
                     </table>
+                    
+            <div align="center">
+	            <button type="submit" id="btn-login">
+	                확인
+	            </button>
+        	</div>
                 </form>
         </div>
 
-        <div align="center">
-            <button type="button" id="btn-login">
-                확인
-            </button>
-        </div>
-
     </div>
+ 
+ 	<script>
+    // 비밀번호 유효성 여부 검사
+    function validate() {
+        let newMemberPwd = $("#newMemberPwd");
+        let checkPwd = $("#pwdCheck");
+        
+        regExp = /^[a-zA-Z\d!@#$%^&*]{8,20}$/i;
+        
+        if(!regExp.test(newMemberPwd.val())){
+            alert("비밀번호가 유효하지 않습니다. 8~20자리 영문대소문자, 숫자, 특수문자를 사용하세요.");
+            newMemberPwd.focus();
+            return false;
+        }
+        
+        if(newMemberPwd.val() != checkPwd.val()){
+            alert("비밀번호가 일치하지 않습니다. 다시 확인해주세요.");
+            checkPwd.focus();
+            return false;
+        } 
+        
+        return true;
+    }
+
+    // 문서가 로드되면 validate 함수를 참조할 수 있도록 설정
+    $(function(){
+        $("#btn-login").click(function() {
+            return validate();
+        });
+    });
+</script>   
     
     <%@ include file="../../common/footer.jsp" %>
 </body>
