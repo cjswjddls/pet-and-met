@@ -50,6 +50,8 @@ public class StringToJson {
 	        message += line;
 	    }
 	    
+	    System.out.println(message);
+	    
 		return stringToJson(message, key1, key2);
 	}
 
@@ -61,6 +63,8 @@ public class StringToJson {
 	        message += line;
 	    }
 	    
+	    System.out.println(message);
+	    
 		return stringToJson(message, key1, key2, key3);
 	}
 
@@ -71,6 +75,8 @@ public class StringToJson {
 	    while ((line = change.readLine()) != null) {
 	        message += line;
 	    }
+	    
+	    System.out.println(message);
 		
 	    String element[] = new String[3];
 	    element[0] = stringToJson(message, "status");
@@ -87,6 +93,8 @@ public class StringToJson {
 	    while ((line = change.readLine()) != null) {
 	        message += line;
 	    }
+	    
+	    System.out.println(message);
 		
 	    String element[] = new String[3];
 	    element[0] = stringToJson(message, "aid");

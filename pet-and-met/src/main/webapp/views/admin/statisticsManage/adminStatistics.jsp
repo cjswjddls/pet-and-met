@@ -6,39 +6,6 @@
     	String pagePath = "../";
 
 		String pageName = "매출 현황";
-		
-		int reserveMonth1 = 327;
-		int reserveMonth2 = 410;
-		int reserveMonth3 = 291;
-		
-		int reserveYear1 = 1678;
-		int reserveYear2 = 1820;
-		int reserveYear3 = 1589;
-		
-		int incomeMonth1 = 7820000;
-		int incomeMonth2 = 8946000;
-		int incomeMonth3 = 3510000;
-
-		int profitMonth1 = 3450000;
-		int profitMonth2 = 4120000;
-		int profitMonth3 = 2200000;
-		
-		int incomeYear1 = 99246500;
-		int incomeYear2 = 76547000;
-		int incomeYear3 = 99658000;
-
-		int profitYear1 = 45861000;
-		int profitYear2 = 2661000;
-		int profitYear3 = 35806000;
-
-		int currA = 110;
-		int currB = 123;
-		int maxA = 160;
-		int maxB = 140;
-
-		int typeA=46;
-		int typeB=32;
-		int typeTotal = typeA + typeB;
 
 		int fontSize = 20;
     %>

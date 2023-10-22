@@ -40,6 +40,63 @@ VALUES(
 )
 </entry>
 
+<entry key="showReviewCountAll">
+	SELECT COUNT(*)
+	FROM REVIEW
+	WHERE REVIEW_DELETE IS NULL
+</entry>
+
+<entry key="showReviewList">
+        SELECT *
+		  FROM (
+		    SELECT ROWNUM RNUM, R.*
+		      FROM (
+				SELECT *
+				FROM REVIEW
+				JOIN MEMBER ON(REVIEW_AUTHOR = MEMBER_NO)
+				WHERE REVIEW_DELETE IS NULL
+				ORDER BY REVIEW_INSERT DESC
+		      ) R
+		  )
+		 WHERE RNUM BETWEEN ? AND ?
+</entry>
+
+<entry key="detailReview">
+	SELECT *
+	FROM REVIEW
+	JOIN MEMBER ON (REVIEW_AUTHOR=MEMBER_NO)
+	WHERE REVIEW_NO = ?
+</entry>
+
+<entry key="getFiles">
+SELECT *
+FROM FILES
+JOIN REVIEW ON (REVIEW_NO = FILES_REVIEW_NO)
+WHERE FILES_REVIEW_NO = ?
+</entry>
+
+<entry key="increaseView">
+		UPDATE REVIEW
+		   SET REVIEW_VIEW = REVIEW_VIEW + 1
+		 WHERE REVIEW_NO = ?
+</entry>
+
+<entry key="deleteReview">
+	UPDATE REVIEW
+	SET REVIEW_DELETE = SYSDATE
+	WHERE REVIEW_NO = ?
+</entry>
+
+<entry key="deleteFiles">
+UPDATE FILES
+SET FILES_STATUS = 0
+WHERE FILES_REVIEW_NO
+IN (SELECT REVIEW_NO
+	  FROM REVIEW
+	  WHERE REVIEW_NO = ?)
+
+</entry>
+
 <entry key="selectReviewList">
 	SELECT *
 	FROM REVIEW INNER JOIN MEMBER ON (REVIEW_AUTHOR=MEMBER_NO)
@@ -48,4 +105,5 @@ VALUES(
 	SELECT * FROM REVIEW INNER JOIN MEMBER ON (REVIEW_AUTHOR=MEMBER_NO)
 	WHERE REVIEW_NO= ?
 </entry>
+
 </properties>

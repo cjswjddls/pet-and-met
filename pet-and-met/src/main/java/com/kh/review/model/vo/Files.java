@@ -24,6 +24,14 @@ public class Files {
 		this.filesStatus = filesStatus;
 	}
 
+	// 상세조회용 파일 생성자
+	public Files(int filesReviewNo, String filesOriginName, String filesChangeName, String filesPath) {
+		this.filesReviewNo = filesReviewNo;
+		this.filesOriginName = filesOriginName;
+		this.filesChangeName = filesChangeName;
+		this.filesPath = filesPath;
+	}
+
 	public int getFilesNo() {
 		return filesNo;
 	}

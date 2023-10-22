@@ -71,8 +71,8 @@
 				<li><a href="<%= contextPath %>/reviewListController">리뷰게시판 관리</a></li>
 			</ul>
 		    <ul>객실 / 예약 현황
-				<li><a  href="<%= contextPath %>/check">객실 관리</a></li>
-				<li><a>예약 현황 조회</a></li>
+				<li><a href="<%= contextPath %>/check">객실 관리</a></li>
+				<li><a href="<%= contextPath %>/adminList.resv?currentPage=1">예약 현황 조회</a></li>
 			</ul>
 			<ul>통계
 				<li><a href="<%= contextPath %>/admin.statistics">매출 조회</a></li>

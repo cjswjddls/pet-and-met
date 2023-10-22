@@ -32,13 +32,16 @@
 		.Table { width: 100%; height: 500px; box-sizing:border-box; 	}
 		.Table th, .Table td { height: 10px; text-align: center; }
 		.Table th { background-color: rgb(121, 172, 120); border-radius: 10px; height: 40px; width:20%;}
-		#goList { text-decoration: none; color: white; background-color: rgb(121, 172, 120); font-size: 24px; border-style: solid; border-radius: 10px;}
-		#goList:hover { text-decoration: none; color: rgb(121, 172, 120); background-color: white; }
-        
-		.deleteButton{ text-decoration: none; color: white; background-color:rgb(121, 172, 120); font-size: 24px; border-style: solid; border-radius: 10px;}
-		.deleteButton:hover { text-decoration: none; color: rgb(121, 172, 120); background-color: white; }
-		#updateButton{ height:35px; text-decoration: none; color: white; background-color: rgb(121, 172, 120);  border: 0px; border-radius: 10px;}
-		#updateButton:hover { height:35px; box-sizing:border-box; text-decoration: none;  border: 3px solid rgb(121, 172, 120); border-radius: 10px; color: rgb(121, 172, 120); background-color: white; }
+		#upFile1{}
+		#goList { width:100px; text-decoration: none; color: white; background-color:rgb(121, 172, 120); font-size: 24px; border: 3px solid rgb(121, 172, 120); border-radius: 10px;}
+		#goList:hover { width:100px;
+		border: 3px solid rgb(121, 172, 120);
+		 text-decoration: none; color: rgb(121, 172, 120); background-color: white; }
+		#updateButton{ width:100px; text-decoration: none; color: white; background-color:rgb(121, 172, 120); font-size: 24px; border: 3px solid rgb(121, 172, 120); border-radius: 10px;}
+		#updateButton:hover { 
+		width:100px;
+		border: 3px solid rgb(121, 172, 120);
+		 text-decoration: none; color: rgb(121, 172, 120); background-color: white; }
 	</style>
 	</head>
 	<body>
@@ -68,7 +71,7 @@
 				<tr>
 					<td colspan="6" rowspan="20">
 					<br><br><br><br><br><br><br>
-
+					<br><br>
 						<textarea name="reviewContent" 
                         				style="width: 100%;
                         				border:2px solid rgb(121, 172, 120);
@@ -101,18 +104,22 @@
 				<tr></tr>
 				<tr></tr>
                 <tr><td>
-						<br><br><br><br><input type="file" id="upFile1"  name="upFile1" class="form-control form-control"></td></tr>
-                        <tr><td><input type="file" id="upFile2"  name="upFile2" class="form-control form-control"></td></tr>
-                        <tr><td><input type="file" id="upFile3"  name="upFile3" class="form-control form-control"></td></tr>
-                        <tr><td><input type="file" id="upFile4"  name="upFile4" class="form-control form-control"></td></tr>
+						<br><br><br><br></td></tr>
+                        <tr><td></td></tr>
+                        <tr><td></td></tr>
+                        <tr><td></td></tr>
 			</table>
+	
+			<input type="file" id="upFile1"  name="upFile1" class="upFileInput form-control form-control">
+            <input type="file" id="upFile2"  name="upFile2" class="upFileInput form-control form-control">
+            <input type="file" id="upFile3"  name="upFile3" class="upFileInput form-control form-control">
+            <input type="file" id="upFile4"  name="upFile4" class="upFileInput form-control form-control">
 	
             <br><br>
 			<div style="float:left;"><a href="javascript:history.back();" 
-				class="But	ton" id="goList">&nbsp;&nbsp;목록&nbsp;&nbsp;</a>
+				class="But	ton" id="goList">&nbsp;&nbsp;취소&nbsp;&nbsp;</a>
 			</div>
-			<div style="float:right;"><a href="javascript:history.back()" class="deleteButton">&nbsp;&nbsp;취소&nbsp;&nbsp;</a></div>
-			<div style="float:right;"><button type="submit"  id="updateButton">&nbsp;&nbsp;등록&nbsp;&nbsp;</button></div>
+			<div style="float:right;"><button type="submit"  id="updateButton">등록</button></div>
 		<br><br>
 		</form>
 </div>

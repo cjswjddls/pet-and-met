@@ -11,6 +11,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import com.kh.common.JDBCTemplate;
+import com.kh.common.model.vo.PageInfo;
 import com.kh.reservation.model.vo.Reservation;
 import com.kh.reservation.model.vo.Room;
 
@@ -317,6 +319,82 @@ public class ReservationDao {
 		
 		return resvMember;
 	}
+
+	public int selectListCount(Connection conn) {
+		int listCount = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectListCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) { listCount = rset.getInt("COUNT"); }
+		} 
+		catch (SQLException e) { e.printStackTrace(); }
+		
+		JDBCTemplate.close(rset); JDBCTemplate.close(pstmt);
+		
+		return listCount;
+	}
+
+	public ArrayList<Reservation> selectReservationListAll(Connection conn, PageInfo pi) {
+		ArrayList<Reservation> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectReservationListAll");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
 	
-	
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Reservation r = new Reservation();
+				r.setReservationNo(rset.getInt("RESERVATION_NO"));
+				r.setReservationUserName(rset.getString("RESERVATION_USER_NAME"));
+				r.setReservationRegistDate(rset.getDate("RESERVATION_REGIST_DATE").toLocaleString());
+				r.setReservationRoomNo(rset.getString("ROOM_TYPE").equals("A")?1:2);
+				r.setReservationStartDate(rset.getDate("RESERVATION_START_DATE").toLocaleString());
+				r.setReservationEndDate(rset.getDate("RESERVATION_END_DATE").toLocaleString());
+				r.setReservationFee((rset.getString("ROOM_TYPE").equals("A")?8000:12000) * rset.getInt("RESERVATION_STAY_DATE"));
+				list.add(r);
+			}
+		} 
+		catch (SQLException e) { e.printStackTrace(); }
+		
+		JDBCTemplate.close(rset); JDBCTemplate.close(pstmt);
+		
+		return list;
+	}
+
+	public int cancelReservation(Connection conn, int rno) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("cancelReservation");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, rno);
+			
+			result = pstmt.executeUpdate();
+		} 
+		catch (SQLException e) { e.printStackTrace(); }
+		
+		JDBCTemplate.close(pstmt);
+		
+		return result;
+	}
 }

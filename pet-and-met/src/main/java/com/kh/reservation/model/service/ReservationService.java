@@ -6,6 +6,7 @@ import static com.kh.common.JDBCTemplate.*;
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import com.kh.common.model.vo.PageInfo;
 import com.kh.reservation.model.dao.ReservationDao;
 import com.kh.reservation.model.vo.Reservation;
 import com.kh.reservation.model.vo.Room;
@@ -119,6 +120,39 @@ public class ReservationService {
 		return resvMemer;
 		
 	}
-	
-	
+
+	// 관리자 페이지에서 페이지네이션하기전 개수 구하는 용도
+	public int selectListCount() {
+		Connection conn = getConnection();
+		
+		int listCount = new ReservationDao().selectListCount(conn);
+		
+		close(conn);
+		
+		return listCount;
+	}
+
+	// 관리자 페이지에서 페이지 기반 잘라서 일부만 가져오는 친구에요 ><
+	public ArrayList<Reservation> selectReservationListAll(PageInfo pi) {
+		Connection conn = getConnection();
+		
+		ArrayList<Reservation> list = new ReservationDao().selectReservationListAll(conn, pi);
+		
+		close(conn);
+		
+		return list;
+	}
+
+	public int cancelReservation(int rno) {
+		Connection conn = getConnection();
+		
+		int result = new ReservationDao().cancelReservation(conn, rno);
+		
+		if(result > 0) { commit(conn); }
+		else { rollback(conn); }
+		
+		close(conn);
+		
+		return result;
+	}
 }

@@ -178,7 +178,7 @@
                 </div>
                 <div id="navbar" class="navbar">
                     <ul>
-                        <li><a href="<%= contextPath %>/reviewList.rv">리뷰게시판</a></li>
+                        <li><a href="<%= contextPath %>/reviewList.rv?currentPage=1">리뷰게시판</a></li>
                         <li class="dropdown"><a href="<%= contextPath %>/FAQ"><span>고객문의</span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
                                 <li><a href="<%= contextPath %>/FAQ">FAQ 게시판</a></li>

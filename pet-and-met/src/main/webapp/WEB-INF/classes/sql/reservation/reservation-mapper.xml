@@ -88,4 +88,27 @@
 		   AND PAYMENT_STATUS_CODE = 1
 			
 	</entry>
+	
+	<entry key="selectListCount"> SELECT COUNT(*) COUNT FROM RESERVATION 
+		JOIN PAYMENT ON(RESERVATION_NO = PAYMENT_RESERVATION_NO) 
+		WHERE PAYMENT_STATUS_CODE = 1
+	</entry>
+	
+	<entry key="selectReservationListAll">
+		SELECT *
+		  FROM (
+		    SELECT ROWNUM RNUM, A.*
+		      FROM (
+		        SELECT *
+		          FROM RESERVATION R
+		          LEFT JOIN PAYMENT P ON (R.RESERVATION_NO=P.PAYMENT_RESERVATION_NO)
+		          LEFT JOIN ROOM RO ON (R.ROOM_NO=RO.ROOM_NO)
+		         WHERE PAYMENT_STATUS_CODE = 1
+		         ORDER BY RESERVATION_NO
+		      ) A
+		  )
+		 WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="cancelReservation">UPDATE RESERVATION SET RESERVATION_CANCLE_DATE=SYSDATE WHERE RESERVATION_NO=? AND RESERVATION_CANCLE_DATE IS NULL</entry>
 </properties>

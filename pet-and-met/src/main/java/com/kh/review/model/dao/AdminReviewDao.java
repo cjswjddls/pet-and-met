@@ -30,7 +30,7 @@ public class AdminReviewDao {
 		
 		ArrayList<Review> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
-		ResultSet rset = null;	
+		ResultSet rset = null;
 		String sql = prop.getProperty("selectReviewList");
 		
 		try {
