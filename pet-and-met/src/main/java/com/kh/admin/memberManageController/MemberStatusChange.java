@@ -21,8 +21,6 @@ public class MemberStatusChange extends HttpServlet {
      * @see HttpServlet#HttpServlet()
      */
     public MemberStatusChange() {
-        super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**

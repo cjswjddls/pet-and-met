@@ -236,15 +236,15 @@
 								</tr>
 								<tr>
 									<th class="table-text">&nbsp;성명</th>
-									<td><input type="text" class="table-content" name="memberName" value="<%= loginMember.getMemberName() %>" ></td>
+									<td><input type="text" class="table-content" name="memberName" value="<%= loginMember.getMemberName() %>"  required></td>
 								</tr>
 								<tr>
 									<th class="table-text">&nbsp;이메일</th>
-									<td><input type="text" class="table-content" name="memberEmail" value="<%= loginMember.getMemberEmail() %>" ></td>
+									<td><input type="text" class="table-content" name="memberEmail" value="<%= loginMember.getMemberEmail() %>"  required></td>
 								</tr>
 								<tr>
 									<th class="table-text">&nbsp;연락처</th>
-									<td><input type="text" class="table-content" name="memberPhone" value="<%= loginMember.getMemberPhone() %>" ></td>
+									<td><input type="text" class="table-content" name="memberPhone" value="<%= loginMember.getMemberPhone() %>" required></td>
 								</tr>
 							</tbody>
 						</table>

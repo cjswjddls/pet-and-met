@@ -19,8 +19,6 @@ public class RegisterSuccessController extends HttpServlet {
      * @see HttpServlet#HttpServlet()
      */
     public RegisterSuccessController() {
-        super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -32,17 +30,12 @@ public class RegisterSuccessController extends HttpServlet {
 		
 		
 		request.getRequestDispatcher("views/member/account/registerSuccess.jsp").forward(request, response);
-		
-		
-		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
 }

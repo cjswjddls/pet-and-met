@@ -14,6 +14,8 @@ import java.util.Properties;
 import com.kh.common.JDBCTemplate;
 import com.kh.payment.model.dao.PaymentDao;
 import com.kh.statistics.model.vo.Income;
+import com.kh.statistics.model.vo.Percent;
+import com.kh.statistics.model.vo.Reserve;
 import com.kh.statistics.model.vo.Visitor;
 
 public class StatDao {
@@ -126,5 +128,85 @@ public class StatDao {
 		JDBCTemplate.close(pstmt);
 		
 		return list;
+	}
+	public ArrayList<Income> getVisitorYear(Connection conn, int y) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Income>list = new ArrayList<Income>();
+		
+		String sql = prop.getProperty("getIncome");
+		
+		String minDate = y + "-01-01";
+		String maxDate = y + "-12-31";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, minDate);
+			pstmt.setString(2, maxDate);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				int temp = 0;
+				try { temp = Integer.parseInt(rset.getString("INCOME")); } catch(Exception e) { temp = 0; }
+				list.add(new Income(y, temp, ((int)(temp / 10)) * 7)); 
+			}
+		} 
+		catch (SQLException e) { e.printStackTrace(); }
+		
+		JDBCTemplate.close(rset);
+		JDBCTemplate.close(pstmt);
+		
+		return list;
+	}
+	public ArrayList<Reserve> getTypeReserve(Connection conn) {
+		PreparedStatement pstmt = null;
+		PreparedStatement pstmt_whole = null;
+		ResultSet rset = null;
+		ResultSet rset_whole = null;
+		ArrayList<Reserve> list = new ArrayList<>();
+		
+		String sql = prop.getProperty("getTypeReserve");
+		String sql_whole = prop.getProperty("getTypeWhole");
+		
+		for(String s:new String[] {"A", "B"}) {
+			int whole = 0;
+			try {
+				pstmt_whole = conn.prepareStatement(sql_whole);
+				
+				pstmt_whole.setString(1, s);
+				
+				rset_whole = pstmt_whole.executeQuery();
+				
+				if(rset_whole.next()) { whole = rset_whole.getInt("WHOLE"); }
+				
+				pstmt = conn.prepareStatement(sql);
+			} 
+			catch (SQLException e) { e.printStackTrace(); }
+		}
+		
+		return list;
+	}
+	public Percent getTypePercent(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Percent percent = new Percent();
+		
+		String sql = prop.getProperty("getTypePercent");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) { percent = new Percent(rset.getInt("A"), rset.getInt("B"), rset.getInt("A") + rset.getInt("B")); } 
+		} 
+		catch (SQLException e) { e.printStackTrace(); }
+		
+		JDBCTemplate.close(rset);
+		JDBCTemplate.close(pstmt);
+		
+		return percent;
 	}
 }

@@ -103,5 +103,22 @@ public class ReservationService {
 		
 	}
 	
+	// 예약할 객실의 예약자 정보 조회
+	public Reservation selectReservationMemberModify(int reservationNo) {
+		
+		// 1) Connection 객체 생성
+		Connection conn = getConnection();
+		
+		// 2) Connection 과 전달값을 넘기면서 DAO 로 요청 후 결과 받기
+		Reservation resvMemer = new ReservationDao().selectReservationMemberModify(conn, reservationNo);
+		
+		// 4) Connection 객체 반납
+		close(conn);
+		
+		// 5) Controller 로 결과 리턴
+		return resvMemer;
+		
+	}
+	
 	
 }

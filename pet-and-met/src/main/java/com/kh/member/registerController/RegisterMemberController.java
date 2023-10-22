@@ -25,7 +25,6 @@ public class RegisterMemberController extends HttpServlet {
      * @see HttpServlet#HttpServlet()
      */
     public RegisterMemberController() {
-        super();
     }
 
 	/**
@@ -68,15 +67,12 @@ public class RegisterMemberController extends HttpServlet {
 				} else {
 					response.sendRedirect(request.getContextPath());
 				}
-			
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
 }

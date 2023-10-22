@@ -28,6 +28,7 @@ public class Review {
 		this.reviewIp = reviewIp;
 	}
 
+	// 관리자 페이지에서 조회용 생성자
 	public Review(int reviewNo, String reviewName, String reviewAuthor) {
 		this.reviewNo = reviewNo;
 		this.reviewName = reviewName;

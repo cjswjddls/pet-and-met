@@ -23,8 +23,7 @@ public class MemberDao {
 		String fileName = MemberDao.class
 				.getResource("/sql/member/member-mapper.xml").getPath(); 
 		try {
-			prop.loadFromXML(
-					new FileInputStream(fileName));
+			prop.loadFromXML(new FileInputStream(fileName));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -136,36 +135,34 @@ public class MemberDao {
 	// 아이디찾기
 	public String findMemberId(Connection conn, Member m) {
 	
-	PreparedStatement pstmt = null;
-	ResultSet rset = null;
-	
-	String resultId = null;
-	
-	String sql = prop.getProperty("findMemberId");
-	
-	try {
-		pstmt = conn.prepareStatement(sql);
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
 		
-		pstmt.setString(1, m.getMemberName());
-		pstmt.setString(2, m.getMemberEmail());
-		pstmt.setString(3, m.getMemberPhone());
+		String resultId = null;
 		
-		rset = pstmt.executeQuery();
+		String sql = prop.getProperty("findMemberId");
 		
-		if(rset.next()) {
-			resultId = rset.getString("MEMBER_ID");
+		try {
+			pstmt = conn.prepareStatement(sql);
 			
+			pstmt.setString(1, m.getMemberName());
+			pstmt.setString(2, m.getMemberEmail());
+			pstmt.setString(3, m.getMemberPhone());
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				resultId = rset.getString("MEMBER_ID");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
 		}
-		
-	} catch (SQLException e) {
-		e.printStackTrace();
-	} finally {
-		JDBCTemplate.close(rset);
-		JDBCTemplate.close(pstmt);
-	}
 	
-	return resultId;
-	
+		return resultId;
 	}
 	
 	// 비번찾기
@@ -487,5 +484,4 @@ public class MemberDao {
 		}
 		return result;
 	}
-	
 }

@@ -75,6 +75,15 @@ public class Reservation {
 		this.reservationFee = reservationFee;
 	}
 	
+	// 예약할 객실의 예약자 정보 조회
+	public Reservation(int reservationNo, String reservationUserName, String reservationUserEmail,
+			String reservationUserPhone) {
+		super();
+		this.reservationNo = reservationNo;
+		this.reservationUserName = reservationUserName;
+		this.reservationUserEmail = reservationUserEmail;
+		this.reservationUserPhone = reservationUserPhone;
+	}
 	
 	public int getReservationNo() {
 		return reservationNo;

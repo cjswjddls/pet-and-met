@@ -18,8 +18,6 @@ public class SendToLoginController extends HttpServlet {
      * @see HttpServlet#HttpServlet()
      */
     public SendToLoginController() {
-        super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -27,16 +25,12 @@ public class SendToLoginController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getRequestDispatcher("views/member/login.jsp").forward(request, response);
-		
-		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
 }

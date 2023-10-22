@@ -277,5 +277,46 @@ public class ReservationDao {
 		return list;	
 	}
 	
+	// 예약할 객실의 예약자 정보 조회
+	public Reservation selectReservationMemberModify(Connection conn, int reservationNo) {
+		
+		// SELECT 문
+		
+		// 필요한 변수들 먼저 셋팅
+		Reservation resvMember = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+
+		// 실행할 SQL문
+		String sql = prop.getProperty("selectReservationMemberModify");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+		
+			pstmt.setInt(1, reservationNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				
+				resvMember = new Reservation(rset.getInt("RESERVATION_NO"),
+											 rset.getString("RESERVATION_USER_NAME"),
+											 rset.getString("RESERVATION_USER_EMAIL"),
+											 rset.getString("RESERVATION_PHONE"));
+				
+			}
+			
+		} catch (SQLException e) {
+		
+			e.printStackTrace();
+		
+		} finally {
+			close(rset);
+			close(pstmt);		
+		}
+		
+		return resvMember;
+	}
+	
 	
 }

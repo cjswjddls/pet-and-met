@@ -5,8 +5,6 @@
 		String pagePath = "./"; 
 		String pageName = "리뷰게시판";
 
-		Board b = (Board)request.getAttribute("b");
-		Attachment at = (Attachment)request.getAttribute("at");
 	%>
 <!DOCTYPE html>
 <html>
@@ -21,7 +19,14 @@
             font-style: normal;
         }
         * { font-family: 'Pretendard-Regular'; }
-
+        #contain-area{
+			margin:auto;
+			width:1000px;
+			box-sizing:border-box;
+		}
+		#contain-area>h2{color:rgb(121, 172, 120);}
+		#contain-area>hr{background-color: rgb(121, 172, 120); border: 0; height: 4px;}
+		
 		.review{ 
             text-align: center; 
             width: 800px;
@@ -34,11 +39,11 @@
 
         #sub{
             width: 800px;
-            font-size: 24px;
+            font-size: 20px;
         }
         #name{
             width: 300px;
-            font-size: 24px;
+            font-size: 20px;
         }
         .writingButton { 
             text-decoration: none; 
@@ -67,7 +72,7 @@
 
         .review th,
         .review td { 
-            border-bottom: 1px solid black; 
+            border-bottom: 1px solid rgb(121, 172, 120);
             border-collapse : collapse;
         }
 
@@ -75,17 +80,19 @@
 	</head>
 	<body>
         <%@ include file="/views/common/header.jsp" %>
+        <%@ include file="/views/common/sidebarHotel.jsp" %>
 		<br><br><br><br>
-        <div>
-        <h1>리뷰게시판</h1>
-        </div>
-        <hr>
-        <br><br><br><br>
+        <div id="contain-area">
+        	<h2>&nbsp;&nbsp;리뷰게시판</h2>
+			<hr>
+        
+
+        <br><br>
         <div align="center">
             <div align="right" style="width:800px;">
-                <p><select name="phone">
-                    <option value="최신순">최신순</option>
-                    <option value="조회순">조회순</option>
+                <p><select selected name="phone" class="btn btn-success">
+                    <option value="byDate">최신순</option>
+                    <option value="byView">조회순</option>
                     
                 </select></p>
             </div>    
@@ -93,8 +100,8 @@
             <thead>
             <tr>
                 <th>NO</th>
-                <td id="sub"><span class="subject">SUBJECT</span></td>
-                <td id="name">NAME</td>
+                <td id="sub"><span class="subject">제목</span></td>
+                <td id="name">작성자</td>
             </tr>
             </thead>
             <tr>
@@ -156,11 +163,26 @@
             
         </table>	
         </div>	
-        <br>
-        <div style="float:right;"><a href="javascript:history.back();" 
-             class="writingButton">&nbsp;&nbsp;글쓰기&nbsp;&nbsp;</a></div></div>
-          
-        </div>   
+        <br><br>
+        
+        <!-- 페이징 버튼 영역 -->
+        
+        <div align="center" id="paging-btn-area">
+        <button>1</button>
+        <button>2</button>
+        </div>
+        
+        
+        <% if(loginMember != null) {  %>
+        	<div align="right" style="width:900px;">
+        	<a href="<%= contextPath %>/reviewWrite.rv" 
+             class="writingButton">
+             &nbsp;&nbsp;글쓰기&nbsp;&nbsp;
+             </a>
+         </div>
+        <% } %>
+        
+    </div>
 
         <br><br><br><br>
         <%@ include file="/views/common/footer.jsp" %>

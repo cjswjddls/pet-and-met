@@ -24,7 +24,7 @@
 
       .NO-table{
 		width: 800px;
-		height: 350px;
+		height: 150px;
         margin-right: 200px;
 	  }
       table {
@@ -73,9 +73,10 @@
     </div>
     <br>
     <table border="1" class="NO-table">
+    
       <thead>
         <tr style="background-color: lightgray; text-align: center;">
-            <th></th>
+            <th><input type="checkbox"></th>
             <th width="50">NO</th>
             <th width="200">NAME</th>
             <th width="200">Author</th>
@@ -83,25 +84,15 @@
         </tr>
       </thead>
       <tbody>
-         <tr>
-            <td colspan="4">아래 항목들이 모든 리스트입니다.</td>
-          </tr>
-          
-            <tr>
-              <th style="text-align: center;" width="30"><input type="checkbox"></th>
-              <td>1</td>
-              <td></td>
-              <td></td>
-            </tr>
                 <% if(list.isEmpty()) { %>
                   <tr>
                     <td colspan="6">조회된 리스트가 없습니다.</td>
                   </tr>
                 <% } else { %>
-                  <% for(Review r : list) { %>
+                  <% for(Review r:list) { %>
                     <tr>
                       <th width="20"  height="15"><input type="checkbox"></th>
-                      <td><%= r.getReviewNo() %></td>
+                      <td><%= r.getReviewNo() 	%></td>
                       <td><%= r.getReviewName() %></td>
                       <td><%= r.getReviewAuthor() %></td>
                     </tr>

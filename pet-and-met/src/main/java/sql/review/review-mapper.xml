@@ -2,30 +2,50 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 
-	<entry key="selectReviewList">
-		SELECT *
-		FROM REVIEW INNER JOIN MEMBER ON (REVIEW_AUTHOR=MEMBER_NO)
-	</entry>
+<entry key="enrollReview">
+INSERT INTO REVIEW(
+            REVIEW_NO,
+            REVIEW_NAME,
+            REVIEW_CONTENT,
+            REVIEW_AUTHOR,
+            REVIEW_INSERT
+)
+VALUES(
+            SEQ_REVIEW.NEXTVAL,
+            ?,
+            ?,
+            ?,
+            DEFAULT
+)
+</entry>
+
+<entry key="enrollFiles">
+INSERT INTO FILES(
+		FILES_NO,
+		FILES_REVIEW_NO,
+		FILES_ORIGIN_NAME,
+		FILES_CHANGE_NAME,
+		FILES_PATH,
+		FILES_UPLOAD_DATE,
+		FILES_STATUS
+)
+VALUES(
+		SEQ_FILES.NEXTVAL,
+		SEQ_REVIEW.CURRVAL,
+		?,
+		?,
+		?,
+		DEFAULT,
+		DEFAULT
+)
+</entry>
+
+<entry key="selectReviewList">
+	SELECT *
+	FROM REVIEW INNER JOIN MEMBER ON (REVIEW_AUTHOR=MEMBER_NO)
+</entry>
 <entry key="selectReviewSearch">
 	SELECT * FROM REVIEW INNER JOIN MEMBER ON (REVIEW_AUTHOR=MEMBER_NO)
 	WHERE REVIEW_NO= ?
 </entry>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </properties>
-
-
-

@@ -68,7 +68,7 @@
 			<br>
 			<ul>홈페이지 관리
 				<li><a href="<%= contextPath %>/lists.bo?currentPage=1&keyword=&method=">공지사항 관리</a></li>
-				<li><a>리뷰게시판 관리</a></li>
+				<li><a href="<%= contextPath %>/reviewListController">리뷰게시판 관리</a></li>
 			</ul>
 		    <ul>객실 / 예약 현황
 				<li><a  href="<%= contextPath %>/check">객실 관리</a></li>

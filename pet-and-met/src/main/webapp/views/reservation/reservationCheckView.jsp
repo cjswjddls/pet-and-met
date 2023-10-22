@@ -151,8 +151,6 @@
 		<!-- contnet 구분선 -->
 		<div class="dividing-line"></div>
 		
-		<input type="hidden" id="listSize" value="<%= resvList.size() %>">
-		
 		<!-- content -->
 		<div class="reservation-content" style="overFlow-y : scroll">	
 			
@@ -175,7 +173,7 @@
 			
 			<% for(Reservation resv : resvList) { %>
 			
-				<form action="<%= pagePath %>" method="get" class="form-resv">
+				<form class="form-resv">
 					<div class="type">		
 						<!-- 객실 img type -->
 						<div class="type-img">
@@ -186,20 +184,20 @@
 		
 						<!-- type content -->
 						<div class="type-content">
-							<div class="roomType" id="type"><%= resv.getReservationType() %> TYPE</div>
-							<input type="hidden" id="hiddenTypeA" name="hiddenTypeA" value="A">
+							<div class="roomType" id="type"><%= resv.getReservationType() %> TYPE</div>	
+							<input type="hidden"  name="hiddenNo" value="<%= resv.getReservationNo() %>">
 							<br><br>
 							<div class="type-data-div">
 								<div class="type-data" id="rDate"><%= resv.getReservationRegistDate().substring(0, 10) %></div>				
 								<div class="type-data" id="date"><%= resv.getReservationStartDate().substring(0, 10) + " ~ " + resv.getReservationEndDate().substring(0, 10) %></div>
-								<div class="type-data" id="won"><%= resv.getReservationFee() * resv.getReservationStayDate() %></div>
+								<div class="type-data" id="won"><%= resv.getReservationFee() * resv.getReservationStayDate() %>원</div>
 							</div>
 						</div>
 		
 						<!-- select-button -->
 						<div class="type-submit">
-							<button class="type-select-button" type="button">예약자 수정</button>
-							<button class="type-select-button" type="button">예약 취소</button>
+							<button class="type-select-button" id="button-update" type="submit">예약자 수정</button>
+							<button class="type-select-button" id="button-delete" type="submit">예약 취소</button>
 						</div>
 					</div>
 				</form>
@@ -209,10 +207,20 @@
 			
 			<% } %>
 			
-		<% } %>	
-				
+		<% } %>				
 		</div>
 	</div>
+	
+	<script>
+		$("#button-update").click(function () {
+		       $("form").attr("action", "<%= contextPath %>/modify.resv");
+		});
+		 
+		$("#button-delete").click(function () {
+		       $("form").attr("action", "/manage/delete");
+		});
+
+	</script>
 
 	<%@ include file="../common/footer.jsp" %>
 </body>

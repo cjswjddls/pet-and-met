@@ -1,4 +1,4 @@
-package com.kh.admin.controller;
+package com.kh.admin.review;
 
 import java.io.IOException;
 import java.util.ArrayList;

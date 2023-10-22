@@ -77,6 +77,9 @@
 				reloadVisitorMonth(d);
 				reloadVisitorYear(d);
 				reloadIncomeMonth(d);
+				reloadIncomeYear(d);
+				reloadTypeReserve();
+				reloadTypePercent();
 			};
 			function reloadVisitorMonth(e) {
 				$.ajax({
@@ -170,6 +173,100 @@
 					}
 				})
 			}
+			function reloadIncomeYear(e) {
+				$.ajax({
+					url: "stat.incomeYear",
+					type: "get",
+					data: { date: e },
+					success: function(list) {
+						function drawChartIncomeYear() {
+							var data = google.visualization.arrayToDataTable([
+								['Year', 'Income', 'Profit', { role: 'style' } ],
+								[parseInt(list[0].date), parseInt(list[0].income), parseInt(list[0].profit), 'color: gray'],
+								[parseInt(list[1].date), parseInt(list[1].income), parseInt(list[1].profit), 'color: #76A7FA'],
+								[parseInt(list[2].date), parseInt(list[2].income), parseInt(list[2].profit), 'opacity: 0.2'],
+							]);
+							var view = new google.visualization.DataView(data);
+							view.setColumns([0, 1,
+											{ calc: "stringify",
+												sourceColumn: 1,
+												type: "string",
+												role: "annotation" },
+											2]);
+							var options = {
+									title: '년별 매출',
+									fontSize: <%= fontSize %>
+							};
+							var chart = new google.visualization.BarChart(document.getElementById('drawchartIncomeYear'));
+							chart.draw(view, options);
+						}
+						google.charts.setOnLoadCallback(drawChartIncomeYear);
+					},
+					error: function() {
+						console.log("");
+					}
+				})
+			}
+			function reloadTypeReserve() {
+				$.ajax({
+					url: "stat.TypeReserve",
+					type: "get",
+					data: { },
+					success: function(list) {
+						function drawChartEmptyRoom() {
+							var data = google.visualization.arrayToDataTable([
+								['', '예약된 방', '빈 방', { role: 'style' } ],
+								['A타입', <%= currA %>, <%= maxA %> - <%= currA %>, 'color: gray'],
+								['B타입', <%= currB %>, <%= maxB %> - <%= currB %>, 'color: #76A7FA']
+							]);
+							var view = new google.visualization.DataView(data);
+							view.setColumns([0, 1,
+											{ calc: "stringify",
+												sourceColumn: 1,
+												type: "string",
+												role: "annotation" },
+											2]);
+							var options = {
+									title: '타입별 빈방 비율',
+									fontSize: <%= fontSize %>,
+									isStacked: 'relative'
+							};
+							var chart = new google.visualization.BarChart(document.getElementById('drawchartEmptyRoom'));
+							chart.draw(view, options);
+						}
+						google.charts.setOnLoadCallback(drawChartEmptyRoom);
+					},
+					error: function() {
+						console.log("");
+					}
+				})
+			}
+			function reloadTypePercent() {
+				$.ajax({
+					url: "stat.TypePercent",
+					type: "get",
+					data: { },
+					success: function(list) {
+						function drawChartType() {
+							var data = google.visualization.arrayToDataTable([
+								['Task', 'Hours per Day'],
+								['A타입', list.typeA/list.typeAll],
+								['B타입', list.typeB/list.typeAll],
+							]);
+							var options = {
+								title: '타입별 점유율',
+								fontSize: <%= fontSize %>
+							};
+							var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+							chart.draw(data, options);
+						}
+						google.charts.setOnLoadCallback(drawChartType);
+					},
+					error: function() {
+						console.log("");
+					}
+				})
+			}
 		</script>
 
 		<!-- 3 * 2 행렬 -->
@@ -191,75 +288,5 @@
 		<script type="text/javascript">
 			google.charts.load('current', {'packages':['corechart']});
 		</script>
-
-		<script type="text/javascript">
-			google.charts.setOnLoadCallback(drawChartIncomeYear);
-			
-			function drawChartIncomeYear() {
-			      var data = google.visualization.arrayToDataTable([
-			        ['Year', 'Income', 'Profit', { role: 'style' } ],
-			        ['2013년', <%= incomeYear1 %>, <%= profitYear1 %>, 'color: gray'],
-			        ['2014년', <%= incomeYear2 %>, <%= profitYear2 %>, 'color: #76A7FA'],
-			        ['2015년', <%= incomeYear3 %>, <%= profitYear3 %>, 'opacity: 0.2'],
-			      ]);
-			      var view = new google.visualization.DataView(data);
-			      view.setColumns([0, 1,
-			                       { calc: "stringify",
-			                         sourceColumn: 1,
-			                         type: "string",
-			                         role: "annotation" },
-			                       2]);
-			      var options = {
-						title: '년별 매출',
-						fontSize: <%= fontSize %>
-				  };
-			      var chart = new google.visualization.BarChart(document.getElementById('drawchartIncomeYear'));
-				  chart.draw(view, options);
-			}
-		</script>
-
-		<script type="text/javascript">
-			google.charts.setOnLoadCallback(drawChartEmptyRoom);
-			
-			function drawChartEmptyRoom() {
-			      var data = google.visualization.arrayToDataTable([
-			        ['', '예약된 방', '빈 방', { role: 'style' } ],
-			        ['A타입', <%= currA %>, <%= maxA %> - <%= currA %>, 'color: gray'],
-			        ['B타입', <%= currB %>, <%= maxB %> - <%= currB %>, 'color: #76A7FA']
-			      ]);
-			      var view = new google.visualization.DataView(data);
-			      view.setColumns([0, 1,
-			                       { calc: "stringify",
-			                         sourceColumn: 1,
-			                         type: "string",
-			                         role: "annotation" },
-			                       2]);
-			      var options = {
-						title: '타입별 빈방 비율',
-						fontSize: <%= fontSize %>,
-						isStacked: 'relative'
-				  };
-			      var chart = new google.visualization.BarChart(document.getElementById('drawchartEmptyRoom'));
-				  chart.draw(view, options);
-			}
-		</script>
-		
-		<script type="text/javascript">
-			google.charts.setOnLoadCallback(drawChartType);
-			
-			function drawChartType() {
-				  var data = google.visualization.arrayToDataTable([
-					['Task', 'Hours per Day'],
-					['A타입', <%= typeA  %>/<%= typeTotal %>],
-					['B타입', <%= typeB  %>/<%= typeTotal %>],
-				  ]);
-				  var options = {
-					title: '타입별 점유율',
-					fontSize: <%= fontSize %>
-				  };
-				  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-				  chart.draw(data, options);
-			}
-		  </script>
 	</body>
 </html>

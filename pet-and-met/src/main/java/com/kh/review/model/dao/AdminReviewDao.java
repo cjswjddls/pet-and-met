@@ -18,9 +18,7 @@ public class AdminReviewDao {
 	private Properties prop = new Properties();
 	
 	public AdminReviewDao() {
-		
 		String fileName = AdminCheckDao.class.getResource("/sql/review/review-mapper.xml").getPath();
-				
 		try {
 			prop.loadFromXML(new FileInputStream(fileName));
 		} catch (IOException e) {
@@ -32,50 +30,24 @@ public class AdminReviewDao {
 		
 		ArrayList<Review> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		
+		ResultSet rset = null;	
 		String sql = prop.getProperty("selectReviewList");
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			
 			rset = pstmt.executeQuery();
-			
 		while(rset.next()) {
-				
 			list.add(new Review(rset.getInt("REVIEW_NO"),
 							rset.getString("REVIEW_NAME"),
 							rset.getString("MEMBER_NAME")
 							));
 			}
-			
-			
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			
-	
 			JDBCTemplate.close(rset);
 			JDBCTemplate.close(pstmt);
-			
 		}
-		
-	
 		return list;
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 	}
-		
-		
 }
-
-
