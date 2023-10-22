@@ -30,11 +30,11 @@ public class AdminCheckInsertController extends HttpServlet {
 	
 		// 1) POST 방식이므로 인코딩 변경 먼저 진행
 		request.setCharacterEncoding("UTF-8");
-		
 		int roomNo = Integer.parseInt(request.getParameter("roomNo"));
-		
 		int result = new AdminCheckService().insertRoomA(roomNo);
 		
+		request.getSession().setAttribute("alertMsg", "객실 추가 성공");
+		response.sendRedirect(request.getContextPath() + "/check");
 	}
 
 	/**

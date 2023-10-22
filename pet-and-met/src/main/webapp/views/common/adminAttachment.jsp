@@ -103,5 +103,13 @@
 				});
 			});
 		</script>
+
+		<script>
+			let msg = "<%= alertMsg %>";
+			if (msg != "null") {
+				window.alert(msg);
+				<% session.removeAttribute("alertMsg"); %>
+			}
+		</script>
 	</body>
 </html>

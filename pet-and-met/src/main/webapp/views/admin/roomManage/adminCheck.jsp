@@ -131,8 +131,8 @@
             	<input type="number" value="0" id="in" name="" min="0">
             </tr>
             <tr>
-                <td><button class="insert" id="insertA"> A 타입객실 추가</button></td>
-                <td><button class="insert" id="insertB"> B 타입객실 추가</button></td>
+                <td><button type="button" class="insert" id="insertA"> A 타입객실 추가</button></td>
+                <td><button type="button" class="insert" id="insertB"> B 타입객실 추가</button></td>
             </tr>
           </table>  
         </div>

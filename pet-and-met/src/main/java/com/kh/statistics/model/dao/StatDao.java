@@ -172,6 +172,7 @@ public class StatDao {
 		
 		for(String s:new String[] {"A", "B"}) {
 			int whole = 0;
+			int resv = 0;
 			try {
 				pstmt_whole = conn.prepareStatement(sql_whole);
 				
@@ -182,9 +183,23 @@ public class StatDao {
 				if(rset_whole.next()) { whole = rset_whole.getInt("WHOLE"); }
 				
 				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setString(1, s);
+				
+				rset = pstmt.executeQuery();
+				
+				if(rset.next()) {
+					resv = rset.getInt("RESV");
+					list.add(new Reserve(s + "타입", resv, whole-resv)); 
+				}
 			} 
 			catch (SQLException e) { e.printStackTrace(); }
 		}
+		
+		JDBCTemplate.close(rset_whole);
+		JDBCTemplate.close(rset);
+		JDBCTemplate.close(pstmt_whole);
+		JDBCTemplate.close(pstmt);
 		
 		return list;
 	}

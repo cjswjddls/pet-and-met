@@ -216,8 +216,8 @@
 						function drawChartEmptyRoom() {
 							var data = google.visualization.arrayToDataTable([
 								['', '예약된 방', '빈 방', { role: 'style' } ],
-								['A타입', <%= currA %>, <%= maxA %> - <%= currA %>, 'color: gray'],
-								['B타입', <%= currB %>, <%= maxB %> - <%= currB %>, 'color: #76A7FA']
+								[list[0].date, list[0].reserve, list[0].empty, 'color: gray'],
+								[list[1].date, list[1].reserve, list[1].empty, 'color: #76A7FA']
 							]);
 							var view = new google.visualization.DataView(data);
 							view.setColumns([0, 1,

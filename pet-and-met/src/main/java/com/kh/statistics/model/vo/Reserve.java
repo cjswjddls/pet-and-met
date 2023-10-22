@@ -1,24 +1,24 @@
 package com.kh.statistics.model.vo;
 
 public class Reserve {
-	private String name;
+	private String date;
 	private int reserve;
-	private int empry;
+	private int empty;
 	
 	public Reserve() {}
 
-	public Reserve(String name, int reserve, int empry) {
-		this.name = name;
+	public Reserve(String date, int reserve, int empty) {
+		this.date = date;
 		this.reserve = reserve;
-		this.empry = empry;
+		this.empty = empty;
 	}
 
-	public String getName() {
-		return name;
+	public String getDate() {
+		return date;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setDate(String date) {
+		this.date = date;
 	}
 
 	public int getReserve() {
@@ -29,16 +29,16 @@ public class Reserve {
 		this.reserve = reserve;
 	}
 
-	public int getEmpry() {
-		return empry;
+	public int getEmpty() {
+		return empty;
 	}
 
-	public void setEmpry(int empry) {
-		this.empry = empry;
+	public void setEmpty(int empty) {
+		this.empty = empty;
 	}
 
 	@Override
 	public String toString() {
-		return "Reserve [name=" + name + ", reserve=" + reserve + ", empry=" + empry + "]";
+		return "Reserve [date=" + date + ", reserve=" + reserve + ", empty=" + empty + "]";
 	}
 }

@@ -30,8 +30,6 @@ public class TypePercentController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Percent percent = new StatService().getTypePercent();
-		// ArrayList<Percent> p = new ArrayList<>();
-		// p.add(percent);
 		
 		response.setContentType("application/json; charset=UTF-8");
 		new Gson().toJson(percent, response.getWriter());
