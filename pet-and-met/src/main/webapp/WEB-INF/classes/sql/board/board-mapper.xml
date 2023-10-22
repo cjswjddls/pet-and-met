@@ -18,4 +18,6 @@
 	<entry key="deleteBoard">UPDATE BOARD SET BOARD_DELETE=SYSDATE WHERE BOARD_NO=?</entry>
 	<entry key="deleteAttachmentAll">UPDATE ATTACHMENT SET ATTACHMENT_STATUS='N' WHERE ATTACHMENT_BOARD_NO=?</entry>
 	<entry key="updateBoard">UPDATE BOARD SET BOARD_NAME=?, BOARD_CONTENT=?, BOARD_ACCENT=?, BOARD_UPDATE=SYSDATE WHERE BOARD_NO=?</entry>
+	<entry key="updateBoardRemoveAttachment">UPDATE ATTACHMENT SET ATTACHMENT_STATUS='N' WHERE ATTACHMENT_STATUS='Y' AND ATTACHMENT_BOARD_NO=?</entry>
+	<entry key="updateBoardInsertAttachment">INSERT INTO ATTACHMENT VALUES(SEQ_ATTACHMENT.NEXTVAL, ?, ?, ?, ?, SYSDATE, 'Y')</entry>
 </properties>

@@ -295,7 +295,7 @@ public class BoardDao {
 		
 		JDBCTemplate.close(pstmt);
 	}
-	public int updateBoard(Connection conn, int bno, String bname, String bcontent, int baccent) {
+	public int updateBoard(Connection conn, Board b) {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		
@@ -304,14 +304,52 @@ public class BoardDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, bname);
-			pstmt.setString(2, bcontent);
-			pstmt.setInt(3, baccent);
-			pstmt.setInt(4, bno);
+			pstmt.setString(1, b.getBoardName());
+			pstmt.setString(2, b.getBoardContent());
+			pstmt.setInt(3, b.getBoardAccent());
+			pstmt.setInt(4, b.getBoardNo());
 			
 			result = pstmt.executeUpdate();
 		} 
 		catch (SQLException e) { e.printStackTrace(); } 
+		
+		JDBCTemplate.close(pstmt);
+		
+		return result;
+	}
+	public void updateBoardRemoveAttachment(Connection conn, int boardNo) {
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("updateBoardRemoveAttachment");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, boardNo);
+			
+			pstmt.executeUpdate();
+		} 
+		catch (SQLException e) { e.printStackTrace(); }
+		
+		JDBCTemplate.close(pstmt);
+	}
+	public int updateBoardInsertAttachment(Connection conn, Attachment at, int boardNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("updateBoardInsertAttachment");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, boardNo);
+			pstmt.setString(2, at.getAttachmentOriginName());
+			pstmt.setString(3, at.getAttachmentChangeName());
+			pstmt.setString(4, at.getAttachmentFilePath());
+			
+			result = pstmt.executeUpdate();
+		} 
+		catch (SQLException e) { e.printStackTrace(); }
 		
 		JDBCTemplate.close(pstmt);
 		

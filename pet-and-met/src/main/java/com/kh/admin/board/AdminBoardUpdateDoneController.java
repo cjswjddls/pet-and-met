@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import com.kh.board.model.service.BoardService;
+import com.kh.board.model.vo.Attachment;
+import com.kh.board.model.vo.Board;
 import com.kh.common.MyFileRenamePolicy;
 import com.oreilly.servlet.MultipartRequest;
 
@@ -43,9 +45,39 @@ public class AdminBoardUpdateDoneController extends HttpServlet {
 			int bno = Integer.parseInt(multiRequest.getParameter("boardNo"));
 			String bname = multiRequest.getParameter("title");
 			String bcontent = multiRequest.getParameter("content");
-			int baccent = (multiRequest.getParameter("isAccent") != null)?1:0;;
+			int baccent = (multiRequest.getParameter("isAccent") != null)?1:0;
+
+			Board b = new Board();
+			b.setBoardNo(bno);
+			b.setBoardName(bname);
+			b.setBoardContent(bcontent);
+			b.setBoardAccent(baccent);
 			
-			int result = new BoardService().updateBoard(bno, bname, bcontent, baccent);
+			Attachment at1 = null;
+			Attachment at2 = null;
+			
+			if(multiRequest.getOriginalFileName("upfile1") != null) {
+				at1 = new Attachment();
+				
+				String originName = multiRequest.getOriginalFileName("upfile1");
+				String changeName = multiRequest.getFilesystemName("upfile1");
+				
+				at1.setAttachmentOriginName(originName);
+				at1.setAttachmentChangeName(changeName);
+				at1.setAttachmentFilePath("resources/img/board/");
+			}
+			if(multiRequest.getOriginalFileName("upfile2") != null) {
+				at2 = new Attachment();
+				
+				String originName = multiRequest.getOriginalFileName("upfile2");
+				String changeName = multiRequest.getFilesystemName("upfile2");
+				
+				at2.setAttachmentOriginName(originName);
+				at2.setAttachmentChangeName(changeName);
+				at2.setAttachmentFilePath("resources/img/board/");
+			}
+			
+			int result = new BoardService().updateBoard(b, at1, at2);
 			
 			if(result > 0) { request.getSession().setAttribute("alertMsg", "공지사항 수정됨"); }
 			else { request.getSession().setAttribute("alertMsg", "공지사항 수정 실패"); }

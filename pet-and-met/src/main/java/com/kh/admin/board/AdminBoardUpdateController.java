@@ -38,7 +38,6 @@ public class AdminBoardUpdateController extends HttpServlet {
 			ArrayList<Attachment> att = new BoardService().selectAttachment(bno);
 			
 			request.setAttribute("board", b);
-			request.setAttribute("attachment", att);
 			request.getRequestDispatcher("views/board/boardUpdateView.jsp").forward(request, response);
 		}
 		else {

@@ -6,7 +6,6 @@
 	    String pageName = "공지사항 수정";
 	
 		Board b = (Board)request.getAttribute("board");
-		ArrayList<Attachment> at = (ArrayList<Attachment>)request.getAttribute("attachment");
     %>
 <!DOCTYPE html>
 <html>
@@ -78,29 +77,12 @@
 						<% } else { %>
 							<tr><th>필독!</th><td colspan="7"><input type="checkbox" name="isAccent">&nbsp;필독여부 지정</td></tr>
 						<% } %>
-						<% if(!(at.isEmpty())) { %>
-								<tr><th rowspan="3"><%= at.get(0).getAttachmentOriginName() %></th><td colspan="7" rowspan="3"><input type="hidden" name="upfile1_no" value="<%= at.get(0).getAttachmentNo() %>">
-								<input type="hidden" name="upfile1_origin" value="<%= at.get(0).getAttachmentChangeName() %>"></td></tr>
-								<tr><td></td></tr>
-								<tr><td></td></tr>
-							<% if(at.get(1) != null) { %>
-								<tr><th rowspan="3"><%= at.get(1).getAttachmentOriginName() %></th><td colspan="7" rowspan="3"><input type="hidden" name="upfile2_no" value="<%= at.get(1).getAttachmentNo() %>">
-								<input type="hidden" name="upfile2_origin" value="<%= at.get(1).getAttachmentChangeName() %>"></td></tr>
-								<tr><td></td></tr>
-								<tr><td></td></tr>
-							<% } else { %>
-								<tr><th rowspan="3">첨부파일2</th><td colspan="7" rowspan="3"><input type="file" name="upfile2"></td></tr>
-								<tr><td></td></tr>
-								<tr><td></td></tr>
-							<% } %>
-						<% } else { %>
-							<tr><th rowspan="3">첨부파일1</th><td colspan="7" rowspan="3"><input type="file" name="upfile1"></td></tr>
-							<tr><td></td></tr>
-							<tr><td></td></tr>
-							<tr><th rowspan="3">첨부파일2</th><td colspan="7" rowspan="3"><input type="file" name="upfile2"></td></tr>
-							<tr><td></td></tr>
-							<tr><td></td></tr>
-						<% } %>
+						<tr><th rowspan="3">첨부파일1</th><td colspan="7" rowspan="3"><input type="file" name="upfile1"></td></tr>
+						<tr><td></td></tr>
+						<tr><td></td></tr>
+						<tr><th rowspan="3">첨부파일2</th><td colspan="7" rowspan="3"><input type="file" name="upfile2"></td></tr>
+						<tr><td></td></tr>
+						<tr><td></td></tr>
 					</tbody>
 				</table>
 				<br><br>

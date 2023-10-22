@@ -121,12 +121,18 @@ public class BoardService {
 		return result;
 	}
 
-	public int updateBoard(int bno, String bname, String bcontent, int baccent) {
+	public int updateBoard(Board b, Attachment at1, Attachment at2) {
 		Connection conn = JDBCTemplate.getConnection();
 		
-		int result = new BoardDao().updateBoard(conn, bno, bname, bcontent, baccent);
+		int result = new BoardDao().updateBoard(conn, b);
+		new BoardDao().updateBoardRemoveAttachment(conn, b.getBoardNo());
+		int r1 = 1;
+		int r2 = 1;
 		
-		if(result > 0) { JDBCTemplate.commit(conn); }
+		if(at1 != null) { r1 = new BoardDao().updateBoardInsertAttachment(conn, at1, b.getBoardNo()); }
+		if(at2 != null) { r2 = new BoardDao().updateBoardInsertAttachment(conn, at2, b.getBoardNo()); }
+		
+		if(result > 0 && r1 > 0 && r2 > 0) { JDBCTemplate.commit(conn); }
 		else { JDBCTemplate.rollback(conn); }
 		
 		JDBCTemplate.close(conn);
