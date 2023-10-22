@@ -119,7 +119,7 @@
                   <h4>취침공간</h4>
                   <p>취침공간</p>
                   <div class="portfolio-links">
-                    <a href="resources/img/main/facil/1.PNG" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
+                    <a href="resources/img/main/facil/1.PNG" data-gallery="portfolioGallery" class="portfolio-lightbox" title="취침공간"><i class="bx bx-plus"></i></a>
                     <a href="#" title="More Details"><i class="bx bx-link"></i></a>
                   </div>
                 </div>
@@ -132,7 +132,7 @@
                   <h4>놀이공간</h4>
                   <p>놀이공간</p>
                   <div class="portfolio-links">
-                    <a href="resources/img/main/facil/2.PNG" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3"><i class="bx bx-plus"></i></a>
+                    <a href="resources/img/main/facil/2.PNG" data-gallery="portfolioGallery" class="portfolio-lightbox" title="놀이공간"><i class="bx bx-plus"></i></a>
                     <a href="#" title="More Details"><i class="bx bx-link"></i></a>
                   </div>
                 </div>
@@ -145,7 +145,7 @@
                   <h4>A타입</h4>
                   <p>A타입</p>
                   <div class="portfolio-links">
-                    <a href="resources/img/main/facil/3.PNG" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
+                    <a href="resources/img/main/facil/3.PNG" data-gallery="portfolioGallery" class="portfolio-lightbox" title="A타입"><i class="bx bx-plus"></i></a>
                     <a href="#" title="More Details"><i class="bx bx-link"></i></a>
                   </div>
                 </div>
@@ -158,7 +158,7 @@
                   <h4>이달의 강아지</h4>
                   <p>이달의 강아지</p>
                   <div class="portfolio-links">
-                    <a href="resources/img/main/month/1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 2"><i class="bx bx-plus"></i></a>
+                    <a href="resources/img/main/month/1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="이달의 강아지"><i class="bx bx-plus"></i></a>
                     <a href="#" title="More Details"><i class="bx bx-link"></i></a>
                   </div>
                 </div>
@@ -171,7 +171,7 @@
                   <h4>이달의 강아지</h4>
                   <p>이달의 강아지</p>
                   <div class="portfolio-links">
-                    <a href="resources/img/main/month/2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 2"><i class="bx bx-plus"></i></a>
+                    <a href="resources/img/main/month/2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="이달의 강아지"><i class="bx bx-plus"></i></a>
                     <a href="#" title="More Details"><i class="bx bx-link"></i></a>
                   </div>
                 </div>
@@ -184,7 +184,7 @@
                   <h4>B타입</h4>
                   <p>B타입</p>
                   <div class="portfolio-links">
-                    <a href="resources/img/main/facil/4.PNG" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3"><i class="bx bx-plus"></i></a>
+                    <a href="resources/img/main/facil/4.PNG" data-gallery="portfolioGallery" class="portfolio-lightbox" title="B타입"><i class="bx bx-plus"></i></a>
                     <a href="#" title="More Details"><i class="bx bx-link"></i></a>
                   </div>
                 </div>
@@ -197,7 +197,7 @@
                   <h4>이달의 강아지</h4>
                   <p>이달의 강아지</p>
                   <div class="portfolio-links">
-                    <a href="resources/img/main/month/3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 1"><i class="bx bx-plus"></i></a>
+                    <a href="resources/img/main/month/3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="이달의 강아지"><i class="bx bx-plus"></i></a>
                     <a href="#" title="More Details"><i class="bx bx-link"></i></a>
                   </div>
                 </div>
@@ -210,7 +210,7 @@
                   <h4>이달의 강아지</h4>
                   <p>이달의 강아지</p>
                   <div class="portfolio-links">
-                    <a href="resources/img/main/month/4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 3"><i class="bx bx-plus"></i></a>
+                    <a href="resources/img/main/month/4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="이달의 강아지"><i class="bx bx-plus"></i></a>
                     <a href="#" title="More Details"><i class="bx bx-link"></i></a>
                   </div>
                 </div>
@@ -223,7 +223,7 @@
                   <h4>이달의 강아지</h4>
                   <p>이달의 강아지</p>
                   <div class="portfolio-links">
-                    <a href="resources/img/main/month/5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 3"><i class="bx bx-plus"></i></a>
+                    <a href="resources/img/main/month/5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="이달의 강아지"><i class="bx bx-plus"></i></a>
                     <a href="#" title="More Details"><i class="bx bx-link"></i></a>
                   </div>
                 </div>
@@ -236,7 +236,7 @@
                   <h4>이달의 강아지</h4>
                   <p>이달의 강아지</p>
                   <div class="portfolio-links">
-                    <a href="resources/img/main/month/6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 3"><i class="bx bx-plus"></i></a>
+                    <a href="resources/img/main/month/6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="이달의 강아지"><i class="bx bx-plus"></i></a>
                     <a href="#" title="More Details"><i class="bx bx-link"></i></a>
                   </div>
                 </div>
@@ -249,7 +249,7 @@
                   <h4>놀이공터</h4>
                   <p>놀이공터</p>
                   <div class="portfolio-links">
-                    <a href="resources/img/main/facil/5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3"><i class="bx bx-plus"></i></a>
+                    <a href="resources/img/main/facil/5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="놀이공터"><i class="bx bx-plus"></i></a>
                     <a href="#" title="More Details"><i class="bx bx-link"></i></a>
                   </div>
                 </div>
@@ -262,7 +262,7 @@
                   <h4>이달의 강아지</h4>
                   <p>이달의 강아지</p>
                   <div class="portfolio-links">
-                    <a href="resources/img/main/month/7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 3"><i class="bx bx-plus"></i></a>
+                    <a href="resources/img/main/month/7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="이달의 강아지"><i class="bx bx-plus"></i></a>
                     <a href="#" title="More Details"><i class="bx bx-link"></i></a>
                   </div>
                 </div>
