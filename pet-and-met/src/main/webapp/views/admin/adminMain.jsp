@@ -9,7 +9,7 @@
 <html>
 	<head>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
+	<title>어드민페이지 - 메인</title>
 	</head>
 	<body>
 		<%@ include file="../common/adminAttachment.jsp" %>

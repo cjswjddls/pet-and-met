@@ -79,8 +79,7 @@
                                         margin: 0px; 
                                         padding: 0px;
                                         box-sizing:border-box;
-                                        resize:none;">
-</textarea>
+                                        resize:none;"></textarea>
 <br><br><br><br><br>
 					</tr>                  
 				<tr>

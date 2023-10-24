@@ -65,8 +65,9 @@
             <div class="carousel-item" style="background-image: url(resources/img/slide/slide-2.jpg)">
               <div class="carousel-container">
                 <div class="carousel-content">
-                  <h2 class="animate__animated fanimate__adeInDown">Lorem <span>Ipsum Dolor</span></h2>
-                  <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
+                  <h2 class="animate__animated fanimate__adeInDown">Pet <span>& Met</span></h2>
+                  <p class="animate__animated animate__fadeInUp">기존의 단순한 동물에서 벗어나 인생의 동반자로서 잊지못할 추억을 만들어주세요.
+                    바쁜 사회생활로 인해 피곤한 현대인들을 위한 서비스입니다.</p>
                   <a href="" class="btn-get-started animate__animated animate__fadeInUp">Read More</a>
                 </div>
               </div>
@@ -75,8 +76,9 @@
             <div class="carousel-item" style="background-image: url(resources/img/slide/slide-3.jpg)">
               <div class="carousel-container">
                 <div class="carousel-content">
-                  <h2 class="animate__animated animate__fadeInDown">Sequi ea <span>Dime Lara</span></h2>
-                  <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
+                  <h2 class="animate__animated animate__fadeInDown">Pet <span>& Met</span></h2>
+                  <p class="animate__animated animate__fadeInUp">기존의 단순한 동물에서 벗어나 인생의 동반자로서 잊지못할 추억을 만들어주세요.
+바쁜 사회생활로 인해 피곤한 현대인들을 위한 서비스입니다.</p>
                   <a href="" class="btn-get-started animate__animated animate__fadeInUp">Read More</a>
                 </div>
               </div>

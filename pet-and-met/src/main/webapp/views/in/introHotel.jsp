@@ -6,7 +6,7 @@
 <html>
 	<head>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
+	<title>호텔 소개</title>
 	<style>
 		@font-face {
             font-family: 'Pretendard-Regular';

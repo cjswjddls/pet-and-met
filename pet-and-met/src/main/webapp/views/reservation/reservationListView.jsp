@@ -7,7 +7,7 @@
 	
 	Reservation resvDay = (Reservation)request.getAttribute("resvDay");
 	
-	String resvType = (String)request.getAttribute("resvType");
+	String[] resvType = (String [])request.getAttribute("resvType");
 	
 	Room roomTypeA = (Room)request.getAttribute("roomTypeA");
 	Room roomTypeB = (Room)request.getAttribute("roomTypeB");
@@ -219,7 +219,7 @@
 							<div class="type-data">면적 : <%= roomTypeA.getRoomSize() %></div>
 							
 							<div class="type-data">요금 : <%= roomTypeA.getRoomFee() %></div>
-							<div class="type-data">남은 객실 수 : <%= resvType.substring(1,2) %></div>
+							<div class="type-data">남은 객실 수 : <%= Integer.parseInt(resvType[0].substring(1,5)) %></div>
 						</div>
 					</div>
 	
@@ -265,7 +265,7 @@
 						<div class="type-data-div">
 							<div class="type-data">면적 : <%= roomTypeB.getRoomSize() %></div>
 							<div class="type-data">요금 : <%= roomTypeB.getRoomFee() %></div>
-							<div class="type-data">남은 객실 수 : <%= resvType.substring(3,4) %></div>
+							<div class="type-data">남은 객실 수 : <%= Integer.parseInt(resvType[1].substring(1,5)) %></div>
 						</div>
 					</div>
 	

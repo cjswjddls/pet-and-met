@@ -54,7 +54,8 @@ public class PaymentCancelController extends HttpServlet {
 		catch (IOException e) { e.printStackTrace(); }
 		catch (org.json.simple.parser.ParseException e) { e.printStackTrace(); }
 		
-		String domain = "http://" + InetAddress.getLocalHost().getHostAddress() + ":8888";
+		// String domain = "http://" + InetAddress.getLocalHost().getHostAddress() + ":8888";
+		String domain = "http://192.168.40.6:8888";
 		
 		HttpSession session = request.getSession();
 		

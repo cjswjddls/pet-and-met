@@ -11,7 +11,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>예약 수정</title>
 <style>
 
 	.outer{
@@ -160,7 +160,7 @@
 				</div>
 
 				<div class="modify-button-div">
-					<button class="modify-button" type="button">취소</button>
+					<button class="modify-button" type="button" onclick="history.back();">취소</button>
 					<button class="modify-button" id="modify-commit" type="submit">완료</button>
 				</div>
 			</form>

@@ -10,7 +10,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>adminCheck</title>
+    <title>리뷰관리자</title>
     <style>
 
       @font-face {
@@ -23,10 +23,10 @@
       * { font-family: 'Pretendard-Regular'; }
 
       .NO-table{
-		width: 800px;
-		height: 150px;
-        margin-right: 200px;
-	  }
+        width: 800px;
+        height: 150px;
+            margin-right: 200px;
+      }
       table {
         border-spacing: 0px;
         margin-left:40%;
@@ -46,6 +46,12 @@
       .btn-area1 {
       margin-left:11%;
       }
+      .insert {
+        border-radius: 15px;
+        margin-right: 35px;
+        width: 70px;
+        height: 45px;
+      }
 		
     </style>
     
@@ -60,13 +66,14 @@
 
 	<%@ include file="/views/common/adminAttachment.jsp" %>
 	<br><br><br>
-    <form action="search.do" method="get">
+    <form action="reviewListController" method="get">
     <div style="margin-left: 35%; display: flex;">
         <div style="float: left; width: 48%;">
             <h4>게시글 목록</h4> 
         </div>
         <div style="width: 40%;">
-        NO: <input type="text" name="keyword">
+        <input type="hidden" value="1" name="currentPage">
+        NO: <input type="text" name="keyword" id="keyword">
             <input type="submit" value="검색">
         </form>
         </div>
@@ -76,22 +83,21 @@
     
       <thead>
         <tr style="background-color: lightgray; text-align: center;">
-            <th><input type="checkbox"></th>
+            <th><input id="selectAll" type="checkbox"></th>
             <th width="50">NO</th>
             <th width="200">NAME</th>
             <th width="200">Author</th>
-            
         </tr>
       </thead>
       <tbody>
                 <% if(list.isEmpty()) { %>
                   <tr>
-                    <td colspan="6">조회된 리스트가 없습니다.</td>
+                    <td colspan="4">조회된 리스트가 없습니다.</td>
                   </tr>
                 <% } else { %>
                   <% for(Review r:list) { %>
                     <tr>
-                      <th width="20"  height="15"><input type="checkbox"></th>
+                      <th width="20"  height="15" style="text-align: center;"><input type="checkbox" class="deleteCheck"></th>
                       <td><%= r.getReviewNo() 	%></td>
                       <td><%= r.getReviewName() %></td>
                       <td><%= r.getReviewAuthor() %></td>
@@ -104,7 +110,6 @@
     <br>
 
     <div class="btn-area" align="center">
-      
        <button type="button" class="btns1" data-toggle="modal" data-target="#myModal2" id="delete-room-btn">게시글 삭제</button>
     </div>
     
@@ -118,20 +123,14 @@
         
         <!-- Modal body -->
         <div class="modal-body" style="margin-right: 20%;">
-          <table border="1" height="100px">
-            
-            <tr style="background-color: lightgray;" >
-                <td colspan="2" height="50px">게시글을 정말 삭제하시겠습니까?</td>
+          <table height="100px">
+            <tr>
+                <td><button type="button" class="insert" style="background-color: rgb(160, 214, 161);" id="dog" onclick="checkbox();">YES</button></td>
+                <td><button type="button" class="insert" style="background-color: rgb(160, 214, 161);">NO</button></td>
             </tr>
-
-            <tr style="background-color: lightgreen;">
-                <td><button type="button" class="insert" style="background-color: lightgreen;" id="dog" onclick="checkbox();">YES</button></td>
-                <td><button type="button" class="insert" style="background-color: lightgreen;">NO</button></td>
-            </tr>
-
          </table>
         </div>
-        
+        <img src="" alt="">
         <!-- Modal footer -->
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
@@ -141,6 +140,34 @@
     </div>
   </div>
     
+  <script>
+    $(function() {
+      $("#selectAll").change(function(){
+          $(".deleteCheck").attr("checked", $("#selectAll").is(":checked"));
+      });
+    });
+
+    function checkbox(){
+      
+      let str = "";
+      let count = 0;
+     
+      
+      $(".NO-table tbody").children().each(function(e) {
+        
+        if($(this).children().eq(0).children().eq(0).is(':checked')) {
+          count += 1;
+         
+          str += $(".NO-table tbody").children().eq(e).children().eq(1).text() + "/";
+        }
+      })
+     
+      if (count != 0) {
+        str = str.slice(0, -1); 
+        location.href = '<%=contextPath %>/AdminReviewDeleteController?rev=' + str; 
+      }
+    }
+</script>
 </form>
 </body>
 </html>

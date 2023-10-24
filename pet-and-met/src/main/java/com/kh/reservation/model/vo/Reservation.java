@@ -61,7 +61,6 @@ public class Reservation {
 	public Reservation(int reservationNo, String reservationStartDate, String reservationEndDate,
 			int reservationStayDate, String reservationMemo, String reservationUserName, String reservationUserEmail,
 			String reservationUserPhone, String reservationRegistDate, String reservationType, int reservationFee) {
-		super();
 		this.reservationNo = reservationNo;
 		this.reservationStartDate = reservationStartDate;
 		this.reservationEndDate = reservationEndDate;
@@ -76,6 +75,16 @@ public class Reservation {
 	}
 	
 	// 예약할 객실의 예약자 정보 조회
+	public Reservation(int reservationNo, int reservationMemberNo, String reservationUserName,
+			String reservationUserEmail, String reservationUserPhone) {
+		this.reservationNo = reservationNo;
+		this.reservationMemberNo = reservationMemberNo;
+		this.reservationUserName = reservationUserName;
+		this.reservationUserEmail = reservationUserEmail;
+		this.reservationUserPhone = reservationUserPhone;
+	}
+
+	// 예약자 정보 보관
 	public Reservation(int reservationNo, String reservationUserName, String reservationUserEmail,
 			String reservationUserPhone) {
 		super();

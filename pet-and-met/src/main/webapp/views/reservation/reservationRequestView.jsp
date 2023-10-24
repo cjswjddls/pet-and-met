@@ -11,7 +11,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>예약 요청사항 접수</title>
 <style>
 
 	.outer{
@@ -138,7 +138,7 @@
 	/* rule */
 	.rule {width: 80%; height: 45%; margin: auto; margin-top: 25px; background-color: rgb(52, 152, 219); padding-top: 10px; padding-left: 30px;
 	font-size: 30px; font-weight: 700; color: white;}
-	.rule-text {width: 96%; height: 75%; margin-top: 10px; background-color: rgb(255, 235, 152);}
+	.rule-text {width: 96%; height: 75%; margin-top: 10px; background-color: rgb(255, 235, 152); font-size: 16px; color: black;}
 
 	
 	/* request-commit */
@@ -227,7 +227,19 @@
 							<div class="request-text">
 								<textarea name="reservationMemo" cols="70" rows="10" style="resize: none;"></textarea>
 							</div>
-							<div class="request-caution">내용입력시 주의사항</div>
+							<div class="request-caution">
+								<textarea name="reservationMemo" cols="70" rows="10" style="resize: none;" readonly>
+국내 숙소의 체크인은 일반적으로 오후 2시 이후부터 가능하며, 체크아웃은 정오 12시 전까지 입니다.
+숙소에 따라 체크인 시간이 다른 경우도 있으므로 해당 숙소 정보에서 반드시 확인해 주시기 바랍니다.
+
+체크인 시간이 늦어질 경우 호텔엔조이나 해당 숙소에 미리 알려주시기 바랍니다.
+
+숙소에 따라서 사전 요청 없이 늦게 체크인을 할 경우 고객이 숙박하지 않는 것으로 간주하여 숙소 별 
+규정에 따라 투숙이 불가능 할 수 있으므로 체크인이 늦어질 경우 호텔엔조이에 미리 알려주시면 숙소
+와 연락하여 전달해 드리며, 고객님께서 직접 숙소로 예약 확인을 하실 수 있습니다.
+								
+								</textarea>
+							</div>
 						</div>
 					</div>
 					
@@ -237,11 +249,44 @@
 				<div class="request-rule">
 					<div class="rule">
 						유의사항
-						<div class="rule-text"></div>
+						<div class="rule-text">
+							<pre>
+
+ 객실이용 시 에어컨이나 히터 등이 고장이거나 작동법을 모르실 경우 프론트에 문의하세요.
+
+ 객실 내 음료와 기타 식품들은 화장대 위나 냉장고 위에 비치되어 있는 간단한 차와 커피 등을 제외하면 대부분 유료이므로 꼭
+ 확인하시고 이용하시길 바랍니다. 숙소에 따라 치약/칫솔을 구비해두지 않으므로 별도로 준비하셔야 합니다.
+
+ 조식이 포함되어있는 숙소의 경우 아침 식사하는 장소에 대해 체크인 시 알아두면 편리하게 이용하실 수 있습니다.
+
+ 숙소 내 사우나, 헬스, 수영장 등의 부대시설을 이용하실 때에는 투숙객인 경우 할인되는 경우가 있으니 프론트에 문의하시면 
+ 보다 저렴하게 이용하실 수 있습니다.
+	
+							</pre>
+						</div>
 					</div>
 					<div class="rule">
 						취소 및 환불 규정
-						<div class="rule-text"></div>
+						<div class="rule-text">
+							<pre>
+								
+ 당사는 실제 투숙 여부와 관계없이 확정된 숙박 건에 수수료를 부과합니다.
+
+ 또한, 다음과 같은 경우에도 수수료를 납부하셔야 합니다.
+
+ 환불 불가 또는 부분 환불 가능 예약에서 노쇼 또는 취소가 발생하여 고객에게 위약금을 청구한 경우
+ 무료 취소 기간이 지난 후 예약을 취소한 고객에게 위약금을 청구한 경우
+ 다음과 같은 경우에는 수수료를 납부하실 필요가 없습니다.
+
+ 환불 불가 예약 또는 부분 환불 가능 예약에 부과되는 취소 위약금을 면제하기로 결정한 경우
+ 고객이 예정된 날짜에 숙소에 나타나지 않아 엑스트라넷 또는 Pulse 앱에서 해당 예약 건을 노쇼로 표시하고 
+ 위약금은 면제하기로 결정한 경우요금이 청구되지 않는 고객의 카드를 유효하지 않은 신용카드로 표시한 경우
+
+
+							</pre>
+
+
+						</div>
 					</div>
 				</div>
 

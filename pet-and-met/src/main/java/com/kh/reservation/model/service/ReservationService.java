@@ -1,6 +1,5 @@
 package com.kh.reservation.model.service;
 
-import static com.kh.common.JDBCTemplate.close;
 import static com.kh.common.JDBCTemplate.*;
 
 import java.sql.Connection;
@@ -121,6 +120,32 @@ public class ReservationService {
 		
 	}
 
+	// 예약자 정보 수정
+	public int updateReservationMemberModify(Reservation resvMemer) {
+		
+		// 1) Connection 객체 생성
+		Connection conn = getConnection();
+		
+		// 2) Connection 과 전달값을 넘기면서 DAO 로 요청 후 결과 받기
+		int result = new ReservationDao().updateReservationMemberModify(conn, resvMemer);
+		
+		// 3) 트랜잭션 처리
+		if(result > 0) {
+			
+			commit(conn);
+		
+		} else {
+			
+			rollback(conn);
+		}
+		
+		// 4) Connection 객체 반납
+		close(conn);
+		
+		// 5) Controller 로 결과 리턴
+		return result;
+	}
+
 	// 관리자 페이지에서 페이지네이션하기전 개수 구하는 용도
 	public int selectListCount() {
 		Connection conn = getConnection();
@@ -154,5 +179,21 @@ public class ReservationService {
 		close(conn);
 		
 		return result;
+	}
+
+	// 예약자 정보 아이디 조회
+	public String selectReservationMemberId(int resvMemberNo) {
+		
+		// 1) Connection 객체 생성
+		Connection conn = getConnection();
+		
+		// 2) Connection 과 전달값을 넘기면서 DAO 로 요청 후 결과 받기
+		String resvMemberId = new ReservationDao().selectReservationMemberId(conn, resvMemberNo);
+		
+		// 4) Connection 객체 반납
+		close(conn);
+		
+		// 5) Controller 로 결과 리턴
+		return resvMemberId;
 	}
 }

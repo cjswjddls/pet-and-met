@@ -78,6 +78,13 @@
         * License: https://bootstrapmade.com/license/
         ======================================================== -->
         <style>
+            @font-face {
+                font-family: 'Pretendard-Regular';
+                src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+                font-weight: 400;
+                font-style: normal;
+            }
+            * { font-family: 'Pretendard-Regular'; }
             .mainBackGroundGreen { background-color: rgb(121, 172, 120); width: 100%; }
             .modal{ transform: translate(-5%, 40%); }
             .modal-header {background-color: rgb(230, 230, 230);}
@@ -182,7 +189,7 @@
                         <li class="dropdown"><a href="<%= contextPath %>/FAQ"><span>고객문의</span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
                                 <li><a href="<%= contextPath %>/FAQ">FAQ 게시판</a></li>
-                                <li><a href="#">1:1 문의</a></li>
+                                <li><a href="<%= contextPath %>/chat.cs">1:1 문의</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -197,5 +204,18 @@
                 <% session.removeAttribute("alertMsg"); %>
             }
 		</script>
+        <!--Start of Tawk.to Script-->
+		<script type="text/javascript">
+                var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+                (function(){
+                    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+                    s1.async=true;
+                    s1.src='https://embed.tawk.to/6535c21fa84dd54dc483fa45/1hdcvsj45';
+                    s1.charset='UTF-8';
+                    s1.setAttribute('crossorigin','*');
+                    s0.parentNode.insertBefore(s1,s0);
+            })();
+        </script>
+        <!--End of Tawk.to Script-->
     </body>
 </html>

@@ -54,6 +54,13 @@
 	    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 
 		<style>
+			@font-face {
+				font-family: 'Pretendard-Regular';
+				src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+				font-weight: 400;
+				font-style: normal;
+			}
+			* { font-family: 'Pretendard-Regular'; }
 			.sidebar { background-color: rgb(176, 217, 177); width: 20%; height: 100%; margin: 0; padding: 0; outline: none; box-sizing: border-box; position: fixed; }
 			.sidebar ul { list-style-type:circle; color: white; font-size: 30px; font-weight: 1000; }
 			.sidebar li { color: white; font-size: 22px; font-weight: 1000; }
@@ -68,7 +75,7 @@
 			<br>
 			<ul>홈페이지 관리
 				<li><a href="<%= contextPath %>/lists.bo?currentPage=1&keyword=&method=">공지사항 관리</a></li>
-				<li><a href="<%= contextPath %>/reviewListController">리뷰게시판 관리</a></li>
+				<li><a href="<%= contextPath %>/reviewListController?currentPage=1&num=">리뷰게시판 관리</a></li>
 			</ul>
 		    <ul>객실 / 예약 현황
 				<li><a href="<%= contextPath %>/check">객실 관리</a></li>
@@ -81,7 +88,7 @@
 				<li><a href="<%= contextPath %>/selectBy.mm?currentPage=1&selected=&search=">전체 회원 조회</a></li>
 			</ul>
 			<ul>문의 내역
-				<li><a>문의 내역 조회</a></li>
+				<li><a href="https://www.tawk.to/" target='_blank'>문의 받으러 가기[새창]</a></li>
 			</ul>
 			<ul>메인페이지
 				<li><a href="<%= contextPath %>">메인페이지</a></li>

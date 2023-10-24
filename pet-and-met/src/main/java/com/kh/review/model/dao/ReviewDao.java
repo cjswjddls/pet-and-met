@@ -104,6 +104,34 @@ private Properties prop = new Properties();
 		return listCount;
 	}
 	
+	public int showReviewCountAll(Connection conn, int num) {
+		
+		int listCount = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("showReviewCountAllSearch");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, num);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt("COUNT(*)");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return listCount;
+	}
+	
 	public ArrayList<Review> showReviewList(PageInfo pi, Connection conn){
 		
 		ArrayList<Review> list = new ArrayList<>();

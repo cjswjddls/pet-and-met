@@ -131,9 +131,19 @@ public class ReservationDao {
 			
 			while(rset.next()) {
 			
-				type += rset.getString("ROOM_TYPE")+rset.getInt("COUNT(ROOM_TYPE)");
-		
+				type += rset.getString("ROOM_TYPE")+String.format("%04d", rset.getInt("COUNT(ROOM_TYPE)")) + "/";
 				// System.out.println(type);
+			}
+			type = type.substring(0, type.length() - 1);
+			if(type.length() != 11) {
+				if(type.length() == 5) {
+					try {
+						if(type.substring(0, 1).equals("A")) { type += "/B0000"; }
+						else { type = "A0000/" + type; }
+					}
+					catch (Exception e) { type="A0000/B0000"; }
+				}
+				else { type = "A0000/B0000"; }
 			}
 			
 		} catch (SQLException e) {
@@ -175,7 +185,6 @@ public class ReservationDao {
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
-				
 				roomNo = rset.getString("ROOM_NO");
 			}
 			
@@ -302,10 +311,10 @@ public class ReservationDao {
 			if(rset.next()) {
 				
 				resvMember = new Reservation(rset.getInt("RESERVATION_NO"),
+											 rset.getInt("MEMBER_NO"),
 											 rset.getString("RESERVATION_USER_NAME"),
 											 rset.getString("RESERVATION_USER_EMAIL"),
 											 rset.getString("RESERVATION_PHONE"));
-				
 			}
 			
 		} catch (SQLException e) {
@@ -318,6 +327,41 @@ public class ReservationDao {
 		}
 		
 		return resvMember;
+	}
+
+	// 예약자 정보 수정
+	public int updateReservationMemberModify(Connection conn, Reservation resvMemer) {
+		
+		// INSERT 문
+		
+		// 필요한 변수들 먼저 셋팅
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		// 실행할 SQL문
+		String sql = prop.getProperty("updateReservationMemberModify");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+	
+			pstmt.setString(1, resvMemer.getReservationUserName());
+			pstmt.setString(2, resvMemer.getReservationUserEmail());
+			pstmt.setString(3, resvMemer.getReservationUserPhone());
+			pstmt.setInt(4, resvMemer.getReservationNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+		
+			e.printStackTrace();
+		
+		} finally {
+			
+			close(pstmt);
+		}
+		
+		return result;
+		
 	}
 
 	public int selectListCount(Connection conn) {
@@ -396,5 +440,43 @@ public class ReservationDao {
 		JDBCTemplate.close(pstmt);
 		
 		return result;
+	}
+
+	// 예약자 정보 아이디 조회 
+	public String selectReservationMemberId(Connection conn , int resvMemberNo) {
+		
+		// SELECT 문
+
+		// 필요한 변수들 먼저 셋팅
+		String resvMemberId = "";
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		// 실행할 SQL문
+		String sql = prop.getProperty("selectReservationMemberId");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+		
+			pstmt.setInt(1, resvMemberNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) { 
+				
+				resvMemberId = rset.getString("MEMBER_ID"); 
+				
+			}
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		
+		} finally {
+			close(rset);
+			close(pstmt);	
+		}
+		
+		return resvMemberId;
 	}
 }

@@ -49,6 +49,16 @@ public class ReviewService {
 		return listCount;
 	}
 	
+	public int showReviewCountAll(int num) {
+		Connection conn = getConnection();
+		
+		int listCount = new ReviewDao().showReviewCountAll(conn, num);
+		
+		close(conn);
+		
+		return listCount;
+	}
+	
 	public ArrayList<Review> showReviewList(PageInfo pi){
 		
 		Connection conn = getConnection();

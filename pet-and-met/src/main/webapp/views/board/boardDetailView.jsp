@@ -12,7 +12,7 @@
 <html>
 	<head>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
+	<title>공지사항 상세보기</title>
 	<style>
 		.container hr { background-color: rgb(121, 172, 120); border: 0; height: 4px; }
 		.boardViewTable { width: 100%; height: 800px; }
@@ -73,7 +73,7 @@
 				</tr>
 				<tr>
 					<td colspan="6" rowspan="20">
-						<textarea name="" id="" readonly style="width: 100%; height: 100%; margin: 0; padding: 0px;"><%= b.getBoardContent() %></textarea>
+						<div style="box-sizing: border-box; width: 100%; height: 100%;"><textarea name="" id="" readonly style="width: 100%; height: 100%; margin: 0px; padding: 0px; resize: none;"><%= b.getBoardContent() %></textarea></div>
 					</td>
 				</tr>
 				<tr></tr>

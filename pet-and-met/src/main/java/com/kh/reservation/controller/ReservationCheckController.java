@@ -43,7 +43,6 @@ public class ReservationCheckController extends HttpServlet {
 			response.sendRedirect(request.getContextPath()+"/login.mb");
 			
 		} else { // 로그인 상태 
-					
 			Member loginMember = (Member)session.getAttribute("loginMember");
 			
 			int memberNo = loginMember.getMemberNo();

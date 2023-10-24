@@ -11,7 +11,7 @@
 <html>
 	<head>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
+	<title>리뷰게시판 상세보기</title>
 	<style>
 		#container{width: 800PX; margin:auto;}
 		#container hr { background-color: rgb(121, 172, 120); border: 0; height: 4px; }

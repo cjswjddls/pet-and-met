@@ -18,12 +18,24 @@
 <html>
 	<head>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
+	<title>예약 현황</title>
 	<style>
-		.tableInfo { margin-left: 20%; }
-		.tableInfo thead { background-color: lightgray; height: 60px; }
+		.tableInfo { margin-left: 15%; }
+		.tableInfo thead { 
+			background-color: rgb(121, 172, 120); 
+			border: 1px solid lightgray;
+			height: 60px; 
+			}
+			
+		.tableInfo td{
+            border: 1px solid lightgray;
+            box-sizing: border-box;
+        }	
+		.tableInfo tbody {border-top: 2px solid black;}	
 		.tableInfo tbody { text-align: center; }
 		.tableInfo tbody tr { height: 60px; }
+		
+		.admin-cancel, .admin-update { width: 45%; height: 85%; }
 	</style>
 	</head>
 	<body>
@@ -35,40 +47,47 @@
 					<thead>
 						<tr>
 							<th width="70">예약번호</th>
-							<th width="70">성명</th>
-							<th width="300">예약날짜</th>
+							<th width="90">성명</th>
+							<th width="160">예약날짜</th>
 							<th width="100">객실타입</th>
-							<th width="100">입실일</th>
-							<th width="100">퇴실일</th>
-							<th width="240">관리메뉴</th>
+							<th width="160">입실일</th>
+							<th width="160">퇴실일</th>
+							<th width="170">총금액</th>
+							<th width="140">관리메뉴</th>
 						</tr>
 					</thead>
 					<tbody>
 						<% if(list.isEmpty()) { %>
-							<tr><td colspan="7">조회된 리스트가 없습니다.</td></tr>
+							<tr><td colspan="8">조회된 리스트가 없습니다.</td></tr>
 						<% } else { %>
 							<% for(Reservation r: list) { %>
 								<tr>
 									<td><%= r.getReservationNo() %></td>
 									<td><%= r.getReservationUserName() %></td>
-									<td><%= r.getReservationRegistDate() %></td>
+									<td><%= r.getReservationRegistDate().substring(0, 12) %></td>
 									<% if(r.getReservationRoomNo() == 1) { %>
 										<td>A타입</td>
 									<% } else { %>
 										<td>B타입</td>
 									<% } %>
-									<td><%= r.getReservationStartDate() %></td>
-									<td><%= r.getReservationEndDate() %></td>
-									<td><button type="button">취소하기</td>
+									<td><%= r.getReservationStartDate().substring(0, 12) %></td>
+									<td><%= r.getReservationEndDate().substring(0, 12) %></td>
+									<td><%= r.getReservationFee() %>원</td>
+									<td>
+										<button type="button" class="admin-cancel" id="admin-cancel">삭제</button>
+										<button type="button" class="admin-update" id="admin-update">수정</button>
+									</td>
 								</tr>
 							<% } %>
 						<% } %>
 					</tbody>
 				</table>
 				<script>
-					$(".tableInfo>table>tbody>tr").click(function() {
-						// console.log($(this).children().eq(0).text());
-						location.href = "<%= contextPath %>/adminCancel.resv?rno=" + $(this).children().eq(0).text() + "&currentPage=<%= currentPage %>";
+					$(".admin-cancel").on("click", function() {
+						if(window.confirm("예약을 취소 하시겠습니까?")) { location.href = "<%= contextPath %>/adminCancel.resv?rno=" + $(this).parent().parent().children().eq(0).text() + "&currentPage=<%= currentPage %>"; }
+					});
+					$(".admin-update").click(function() {
+						location.href = "<%= contextPath %>/adminUpdate.resv?rno=" + $(this).parent().parent().children().eq(0).text() + "&currentPage=<%= currentPage %>";
 					});
 				</script>
 				<br><br>
@@ -88,7 +107,7 @@
 					<% } %>
 				</div>
 			<% } else { %>
-				<h1 align="center">장난 ㄴㄴ...</h1>
+				<h1 align="center">오류가 발생했습니다.</h1>
 			<% } %>
 		</div>
 		<br><br><br>

@@ -12,7 +12,7 @@
 <html>
     <head>
     <meta charset="UTF-8">
-    <title>Insert title here</title>
+    <title>예약 취소 결과</title>
     <style>
         .paymentCancelTable { background-color: rgb(121, 172, 120); color: azure; }
     </style>

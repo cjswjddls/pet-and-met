@@ -57,14 +57,15 @@
                             <h4>이용약관</h4>
                             <ul>
                                 <li><i class="bx bx-chevron-right"></i> <a href="#">개인정보 수집 및 이용 약관</a></li>
-                                <li><i class="bx bx-chevron-right"></i> <a href="#">개인정보 제3자 제공 약관</a></li>
+                                <li><i class="bx bx-chevron-right"></i> <a href="<%= contextPath %>/terms.indiv">개인정보 처리 방침</a></li>
                                 <li><i class="bx bx-chevron-right"></i> <a href="#">예약 취소 약관</a></li>
                                 <li><i class="bx bx-chevron-right"></i> <a href="<%= contextPath %>/terms.service">서비스 이용 약관</a></li>
                             </ul>
                         </div>
                         <div class="col-lg-3 col-md-6 footer-info">
-                            <h3>대충 소개하는 구역</h3>
-                            <p>대충 대충 누군가 채워주겠지 하는 내용.</p>
+                            <h3>Pet & Met</h3>
+                            <p>기존의 단순한 동물에서 벗어나 인생의 동반자로서 잊지못할 추억을 만들어주세요.
+                                바쁜 사회생활로 인해 피곤한 현대인들을 위한 서비스입니다.</p>
                             <div class="social-links mt-3">
                                 <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
                                 <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
@@ -96,7 +97,7 @@
         </footer><!-- End Footer -->
 
         <!--  상담버튼 -->
-        <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-phone"></i></a>
+        <!-- <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-phone"></i></a> -->
 
         <!-- 페이지 맨위로 올라가는 아이콘(우상단에 있음)-->
         <!--<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>-->

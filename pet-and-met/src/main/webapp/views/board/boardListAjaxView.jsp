@@ -11,7 +11,7 @@
 <html>
 	<head>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
+	<title>공지사항 리스트</title>
 	<style>
 		.container hr { background-color: rgb(121, 172, 120); border: 0; height: 4px; }
 		.boardSearch { float: right; margin-right: 150px; }

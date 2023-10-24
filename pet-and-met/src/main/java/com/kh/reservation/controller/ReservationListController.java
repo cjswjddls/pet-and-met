@@ -69,25 +69,23 @@ public class ReservationListController extends HttpServlet {
 				// System.out.println(resvDay.getReservationStartDate());
 				
 				// SELECT 문 실행
-				String resvType = new ReservationService().selectReservationDay(resvDay);
+				String resvString = new ReservationService().selectReservationDay(resvDay);
 				
+				String[] resvType = resvString.split("/");
+				for(String s:resvType) { System.out.println(s); }
 				Room roomTypeA = null;
 				Room roomTypeB = null;
 				
 				// 출력 타입 구별
-				if(resvType.length() == 0) { // 출력 없음
+				if(resvType[0].substring(1,5) == "0000" && resvType[1].substring(1,5) == "0000") { // 출력 없음
 					
-					
-				} else if(resvType.length() == 2 && (resvType.substring(0,1)).equals("A")) { // A만 출력			
-						
+				} else if(!(resvType[0].substring(1,5).equals("0000")) && resvType[1].substring(1,5).equals("0000")) { // A만 출력			
 					roomTypeA = new ReservationService().selectReservationRoom("A");
 					
-				} else if(resvType.length() == 2 && (resvType.substring(0,1)).equals("B")) { // B만 출력	
-					
+				} else if(resvType[0].substring(1,5).equals("0000") && !(resvType[1].substring(1,5).equals("0000"))) { // B만 출력	
 					roomTypeB = new ReservationService().selectReservationRoom("B");
 				
 				} else { // 둘다 출력
-					
 					roomTypeA = new ReservationService().selectReservationRoom("A");
 					roomTypeB = new ReservationService().selectReservationRoom("B");
 					

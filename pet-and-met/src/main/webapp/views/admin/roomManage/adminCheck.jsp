@@ -9,7 +9,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>adminCheck</title>
+    <title>객실 현황</title>
     <style>
 
       @font-face {
@@ -55,6 +55,7 @@
         width: 100%; 
         height: 100%; 
         margin: 0px;
+        border-radius: 30px;
       }
 
       #in {
@@ -62,7 +63,6 @@
         text-align:center;
         
       }
-		
     </style>
     
     
@@ -114,6 +114,7 @@
        <button type="button" class="btns" data-toggle="modal" data-target="#myModal" id="insert-room-btn">객실 추가</button>
        <button type="button" class="btns" data-toggle="modal" data-target="#myModal2" id="delete-room-btn">객실 삭제</button>
     </div>
+    <br><br><br><br>
     
     <!-- 객실추가 모달창 -->
   <div class="modal" id="myModal">
@@ -126,13 +127,13 @@
         <!-- Modal body -->
         <div class="modal-body" style="margin-right: 20%;">
         <br>
-          <table border="1" height="70" width="242px">
+          <table height="70" width="242px">
           <tr rowspan="2">
             	<input type="number" value="0" id="in" name="" min="0">
             </tr>
             <tr>
-                <td><button type="button" class="insert" id="insertA"> A 타입객실 추가</button></td>
-                <td><button type="button" class="insert" id="insertB"> B 타입객실 추가</button></td>
+                <td><button type="button" class="insert" id="insertA" style="background-color:rgb(176, 217, 177);"> A 타입객실 추가</button></td>
+                <td><button type="button" class="insert" id="insertB" style="background-color:rgb(176, 217, 177);"> B 타입객실 추가</button></td>
             </tr>
           </table>  
         </div>
@@ -178,9 +179,9 @@
                 <td colspan="2" height="50px">정말 객실을 삭제하시겠습니까?</td>
             </tr>
 
-            <tr style="background-color: lightgreen;">
-                <td><button type="button" class="insert" style="background-color: lightgreen;" id="dog" onclick="checkbox();">YES</button></td>
-                <td><button type="button" class="insert" style="background-color: lightgreen;">NO</button></td>
+            <tr style="background-color: rgb(176, 217, 177);">
+                <td><button type="button" class="insert" style="background-color: rgb(176, 217, 177);" id="dog" onclick="checkbox();">YES</button></td>
+                <td><button type="button" class="insert" style="background-color: rgb(176, 217, 177);">NO</button></td>
             </tr>
 
          </table>

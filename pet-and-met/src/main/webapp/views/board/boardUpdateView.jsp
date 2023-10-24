@@ -11,7 +11,7 @@
 <html>
 	<head>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
+	<title>공지사항 수정하기</title>
 	<style>
 		.adminNameBar { width:1000px; margin:auto; color: rgb(121, 172, 120) }
 	 	.pageName{ text-align:left; }

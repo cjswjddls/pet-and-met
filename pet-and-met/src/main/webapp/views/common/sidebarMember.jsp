@@ -4,7 +4,7 @@
 <html>
 	<head>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
+	<title>Pet & Met</title>
 	<style>
 		.sidebar { background-color: rgb(176, 217, 177); width: 240px; height: 400px; margin: 0; padding: 0; outline: none; border: outset; box-sizing: border-box; position: fixed; box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1); }
 		.sidebar hr { background-color: rgb(121, 172, 120); border: 0; height: 4px; margin-right: 20%; }
@@ -23,7 +23,7 @@
 				<li><a href="<%= contextPath %>/updateProfile.mp">프로필 수정</a></li>
 				<li><a href="<%= contextPath %>/updatePwd.mp">비밀번호 변경</a></li>
 			</ul>
-		    <ul><h3><a href="">예약확인/취소</a></h3><hr></ul>
+		    <ul><h3><a href="<%= contextPath %>/check.resv">예약확인/취소</a></h3><hr></ul>
 		    <ul><h3><a href="<%= contextPath %>/withdraw.mp">회원 탈퇴</a><hr></h3></ul>
 		</nav>
 	</body>

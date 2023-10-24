@@ -44,23 +44,17 @@
 		}
 		.RoomA {
 			text-align:center;
-			border-top:1px solid black;
-			border-bottom:1px solid black;
-			background-color: aquamarine;
+			font-size:20px;
 			color: black;
+			height:300px;
 		}
 		.RoomB {
 			text-align:center;
-			border-top:1px solid black;
-			border-bottom:1px solid black;
-			background-color: aquamarine;
+			font-size:20px;
 			color: black;
+			height:300px;	
 		}
-		#SB{ 
-			width : 400px;
-			height: 250px;
-			margin-left:295px;
-		}
+
 		#table span{
 	    margin-left : 30px;
 	    font-size : 40px;
@@ -87,54 +81,58 @@
 		   
 		    <br>
 		        
-		        <table border="0" class="RoomA">
+		        <table class="RoomA">
 		            
 		            <tr>
-		                <td colspan="3" rowspan="4" width="30%" height="70%" style="border: 1px solid black;"><img src="<%= pagePath %>resources/img/intro/small.PNG" width="100%"></img></td>
-		                <td width="30%" height="30" style=" border-bottom:1px solid black;">타입</td>
-		                <td width="85%" height="30" style=" border-bottom:1px solid black;">A타입</td>
+		                <td colspan="3" rowspan="4" width="30%" height="70%" style="border: 1px solid black;">
+		                <img src="<%= pagePath %>resources/img/intro/small.PNG" width="100%"  height="100%" style="border:0px; box-sizing:border-box;">
+		                </td>
+		                <td width="30%" height="30" style=" border-bottom:1px solid black; background-color: rgb(121, 172, 120);">타입</td>
+		                <td width="85%" height="30" style=" border-bottom:1px solid black; background-color: rgb(121, 172, 120);">설명</td>
 		            </tr>
 		            
 		            <tr>
-		                <td width="50" height="30" style=" border-bottom:1px solid black;">설명</td>
-		                <td width="200" height="60" style=" border-bottom:1px solid black;">소형견과 중형견들을 위한 방입니다.</td>
+		                <td width="50" height="30" style=" border-bottom:1px solid black;">A-타입</td>
+		                <td width="200" height="80" style=" border-bottom:1px solid black;">소형견과 중형견들을 위한 방입니다.</td>
 		            </tr>
 		            
 		            <tr>
-		                <td width="50" height="30" style=" border-bottom:1px solid black;">분류</td>
-		                <td width="200" height="30" style=" border-bottom:1px solid black;">소형반려동물전용</td>
+		                <td width="50" height="30" style=" border-bottom:1px solid black; background-color: rgb(121, 172, 120);">가격</td>
+		                <td width="200" height="30" style=" border-bottom:1px solid black; background-color: rgb(121, 172, 120);">분류</td>
 		            </tr>
 		            
 		            <tr>
-		                <td width="50" height="30" style=" border-bottom:1px solid black;">가격</td>
-		                <td width="200" height="60" style=" border-bottom:1px solid black;">80,000</td>
+		                <td width="50" height="30" style=" border-bottom:1px solid black; ">80,000</td>
+		                <td width="200" height="80" style=" border-bottom:1px solid black;">소형반려동물 전용</td>
 		            </tr>
 		            
 		        </table>
 				 
-				 <br>
+				 <br><br>
 		        
-		        <table border="0" class="RoomB">
-		        
+		        <table class="RoomB">
+		            
 		            <tr>
-		                <td colspan="3" rowspan="4" height="230"width="30%" style="border: 1px solid black;"><img src="<%= pagePath %>resources/img/intro/big.PNG" width="100%"></img></td>
-		                <td width="30%" height="30" style=" border-bottom:1px solid black;">타입</td>
-		                <td width="85%" height="30" style=" border-bottom:1px solid black;">B타입</td>
+		                <td colspan="3" rowspan="4" width="30%" height="70%" style="border: 1px solid black;">
+		                <img src="<%= pagePath %>resources/img/intro/big.PNG" width="100%"  height="100%" style="border:0px; box-sizing:border-box;">
+		                </td>
+		                <td width="30%" height="30" style=" border-bottom:1px solid black; background-color: rgb(121, 172, 120);">타입</td>
+		                <td width="85%" height="30" style=" border-bottom:1px solid black; background-color: rgb(121, 172, 120);">설명</td>
 		            </tr>
 		            
 		            <tr>
-		                <td width="50" height="30" style=" border-bottom:1px solid black;">설명</td>
-		                <td width="200" height="60" style=" border-bottom:1px solid black;">대형견들을 위한 방입니다.</td>
+		                <td width="50" height="30" style=" border-bottom:1px solid black;">B-타입</td>
+		                <td width="200" height="80" style=" border-bottom:1px solid black;">대형 견종을 위한 방입니다.</td>
 		            </tr>
 		            
 		            <tr>
-		                <td width="50" height="30" style=" border-bottom:1px solid black;">분류</td>
-		                <td width="200" height="30" style=" border-bottom:1px solid black;">대형반려동물전용</td>
+		                <td width="50" height="30" style=" border-bottom:1px solid black; background-color: rgb(121, 172, 120);">가격</td>
+		                <td width="200" height="30" style=" border-bottom:1px solid black; background-color: rgb(121, 172, 120);">분류</td>
 		            </tr>
 		            
 		            <tr>
-		                <td width="50" height="30" style=" border-bottom:1px solid black;">가격</td>
-		                <td width="200" height="60" style=" border-bottom:1px solid black;">120,000</td>
+		                <td width="50" height="30" style=" border-bottom:1px solid black; ">120,000</td>
+		                <td width="200" height="80" style=" border-bottom:1px solid black;">대형견 전용</td>
 		            </tr>
 		            
 		        </table>
@@ -142,15 +140,15 @@
 			</tr>
 			<tr>
 			  <td>
-			  <br>
-					<img src="<%= pagePath %>resources/img/intro/sb.PNG" id="SB"></img>
-			  </td>
-			  <td id="key">
-					<span>소,중,대형견들의 쉼터</span>
+			  <br><br><br><br>
+			  <div align="center">
+					<img src="<%= pagePath %>resources/img/intro/sb.PNG" id="SB"
+					style="border-radius:20px;">
+					<br><br>
+					<p style="font-size:32px; color:rgb(121, 172, 120);">"소중한 우리 아이를 위한 프리미엄 쉼터"</p>
+			  </div>
 			  </td>
 		   </tr>
-		   </table>
-
 
 		    </fieldset>  
 			
@@ -163,4 +161,3 @@
         
 	</body>
 </html>
-

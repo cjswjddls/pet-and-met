@@ -5,17 +5,12 @@
 	String pagePath = "./";
 
 	ArrayList<Reservation> resvList = (ArrayList<Reservation>)request.getAttribute("resvList");
-	
-	System.out.println(resvList);
-	// 내가 그동안 예약했던 내역들이 다들어있음
-	
-	
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>예약 정보 리스트</title>
 <style>
 
 	.outer{
@@ -65,9 +60,10 @@
 	/* type div */
 	.type {width: 100%; height: 100%; box-sizing: border-box;}
 	.type > div {float: left; box-sizing: border-box; border: 1px solid lightgrey;}
-	.type-img { width: 45%; height: 100%; }
+	.type-img { width: 40%; height: 100%; }
 	.type-content { width: 35%; height: 100%;}
 	.type-submit { width: 18%; height: 100%;}
+	.type-num {width: 5%; height: 100%; font-size: 35px; font-weight: 700; text-align: center; line-height: 350px;}
 	
 	/* 객실 img */
 	.roomImg { width: 100%; height: 80%; margin-top: 35px;}
@@ -91,7 +87,7 @@
 
 
 	/* select-button */
-	.type-select-button {
+	.button-update , .button-delete {
 		width: 150px;
 		height: 45px;
 		font-size: 18px;
@@ -134,6 +130,17 @@
 
 	#date { font-size: 18px;}
 	
+	#modal-reservation1, #modal-reservation2-id {
+                width: 45%;
+                height: 75%;
+                display: inline-block;
+                margin: auto;
+                margin-left: 5px;
+                border: 1px solid lightgrey;
+                margin-top: 20px;
+            }
+
+	.resv-div2 { margin: auto; margin-top: 25px; text-align: center; height: 50%; font-size: 30px;}
 </style>
 </head>
 <body>
@@ -169,13 +176,17 @@
 			
 			<% } else { %>
 			
-			<% int index = 0; %>
+			<% int index = 1; %>
 			
 			<% for(Reservation resv : resvList) { %>
 			
 				<form class="form-resv">
 					<div class="type">		
 						<!-- 객실 img type -->
+						<div class="type-num">
+							<%= index %>
+						</div>
+
 						<div class="type-img">
 							<div class="roomImg">
 								<img src="<%= pagePath%>resources/img/room/A_type.png">
@@ -196,30 +207,65 @@
 		
 						<!-- select-button -->
 						<div class="type-submit">
-							<button class="type-select-button" id="button-update" type="submit">예약자 수정</button>
-							<button class="type-select-button" id="button-delete" type="submit">예약 취소</button>
+							<button class="button-update" id="button-update" type="submit">예약자 수정</button>
+							<button class="button-delete" id="button-delete" data-toggle="modal" data-target="#myModal2" type="button" value="<%= resv.getReservationNo() %>">예약 취소</button>
+							<input type="hidden" id="button-delete-rno" value="">
 						</div>
+						
+									
+						
 					</div>
 				</form>
 				
 				<!-- contnet 구분선 -->
 				<div class="dividing-line"></div>
-			
+				<% index++; %>
+
 			<% } %>
 			
 		<% } %>				
 		</div>
 	</div>
 	
+	 <!-- 예약하기 모달창 -->
+	<div class="modal" id="myModal2">
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+
+                         <!-- Modal Header -->
+                         <div class="modal-header">
+	                <h4 class="modal-title">예약 취소</h4>
+	                <button type="button" class="close" data-dismiss="modal">&times;</button>
+	            </div>
+
+                         <!-- Modal body -->
+                        <div class="modal-body">
+                            <div class="modal-reservation" id="modal-reservation1" style=" cursor: pointer;">
+								<div class="resv-div2">예</div>
+                            </div>             
+                            <div class="close" data-dismiss="modal" id="modal-reservation2-id" style=" cursor: pointer;">
+								<div class="resv-div2">아니요</div>
+                            </div>
+                        </div>
+
+	        </div>
+	    </div>
+	</div>
+	
 	<script>
-		$("#button-update").click(function () {
+		$(".button-update").click(function () {
 		       $("form").attr("action", "<%= contextPath %>/modify.resv");
 		});
 		 
-		$("#button-delete").click(function () {
-		       $("form").attr("action", "/manage/delete");
+		$(".button-delete").click(function (){
+			var v = $(this).val();
+			$("#button-delete-rno").val(v);
 		});
 
+		$(".modal-reservation").click(function() {
+			location.href='<%= contextPath %>/cancel.resv?rno=' + $('#button-delete-rno').val();
+		})
+		
 	</script>
 
 	<%@ include file="../common/footer.jsp" %>

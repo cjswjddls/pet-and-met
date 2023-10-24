@@ -74,8 +74,6 @@ public class SelectByController extends HttpServlet {
 		PageInfo pi
 		= new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		
-		System.out.println(pi);
-		
 		ArrayList<Member> list = new MemberService().selectBy(con, search, pi);
 		
 		request.setAttribute("pi", pi);

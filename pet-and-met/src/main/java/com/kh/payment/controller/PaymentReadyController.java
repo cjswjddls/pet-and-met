@@ -78,8 +78,8 @@ public class PaymentReadyController extends HttpServlet {
 				catch (IOException e) { e.printStackTrace(); }
 				catch (org.json.simple.parser.ParseException e) { e.printStackTrace(); }
 				
-				// String domain = "http://192.168.40.19:8888";
-				String domain = "http://" + InetAddress.getLocalHost().getHostAddress() + ":8888";
+				String domain = "http://192.168.40.6:8888";
+				// String domain = "http://" + InetAddress.getLocalHost().getHostAddress() + ":8888";
 				// String redirectSuccess = "https://kapi.kakao.com/v1/payment/approve";
 				String redirectSuccess = domain + request.getContextPath() + "/payment.approve";
 				String redirectHome = domain + request.getContextPath();

@@ -12,7 +12,7 @@
 <html>
 	<head>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
+	<title>결제 진행중...</title>
 	</head>
 	<body>
 		<%@ include file="../common/header.jsp" %>

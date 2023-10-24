@@ -13,7 +13,7 @@
 <html>
 	<head>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
+	<title>매출 현황</title>
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	<style>
 		.adminStatisticsWrapper { margin: 0% 15% 5% 30%; }

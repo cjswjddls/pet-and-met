@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.kh.reservation.model.service.ReservationService;
 import com.kh.reservation.model.vo.Reservation;
@@ -22,8 +23,6 @@ public class ReservationModifyController extends HttpServlet {
      * @see HttpServlet#HttpServlet()
      */
     public ReservationModifyController() {
-        super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -31,8 +30,10 @@ public class ReservationModifyController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		System.out.println(request.getParameter("hiddenNo"));
+		HttpSession session = request.getSession();
 		
+		session.removeAttribute("alertMsg");
+
 		int reservationNo = Integer.parseInt(request.getParameter("hiddenNo"));
 		
 		Reservation resvMemer = new ReservationService().selectReservationMemberModify(reservationNo);
@@ -47,8 +48,6 @@ public class ReservationModifyController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
 }
